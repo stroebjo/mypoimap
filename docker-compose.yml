@@ -1,0 +1,38 @@
+version: '2'
+services:
+  webserver:
+    build: ./docker/php
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/php/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./log/s:/var/log/
+      - ./:/var/www/html
+    networks:
+      - default
+
+  mysql:
+    image: mysql:5.7.13
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mypoimap
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+
+volumes:
+    persistent:
