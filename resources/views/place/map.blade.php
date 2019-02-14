@@ -29,12 +29,8 @@ var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 
 var map = L.map('map').setView([33.7834477, 10.8641857], 12).addLayer(osm);
 
-/*
-L.marker([51.504, -0.159])
-    .addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br />Easily customizable.')
-    .openPopup();
-    */
+L.control.locate().addTo(map);
+
 
 @foreach($places as $place)
 
