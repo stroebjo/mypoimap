@@ -20,6 +20,7 @@ class PlacesTableSeeder extends Seeder
         $p->title = 'Thugga';
         $p->description = 'Thugga war eine antike Stadt im heutigen Tunesien, deren Überreste heute zum Teil freigelegt sind und zu den besterhaltenen in Nordafrika zählen. Ihre Blütezeit erlebte die Stadt als Teil der römischen Provinz Africa im 3. Jahrhundert n. Chr. Ihre Geschichte liefert jedoch auch Kenntnisse über die numidische, punische und byzantinische Zeit.';
         $p->location = new Point(36.4232907, 9.2099453);
+        $p->source = 'https://www.reddit.com/r/Tunisia/comments/acgfcw/the_dougga_amphitheatre/';
         $p->save();
 
         $p = new Place();
@@ -145,7 +146,8 @@ Ist auch von der Natur her ganz hübsch. ;)';
 
 Rommels Führungsstand Bunker ist auch direkt daneben, aber unklar, ob das dazugehört, oder nicht.
 
-Merh Info: [http://www.exploguide.com/site/mareth-line-military-museum-mareth](http://www.exploguide.com/site/mareth-line-military-museum-mareth).
+- [Deutsche infos](https://www.tunesieninformationen.de/uebersicht/mareth/mareth.htm)
+- [gefunden via](http://www.exploguide.com/site/mareth-line-military-museum-mareth)
         ';
         $p->location = new Point(33.596187,10.311312);
         $p->save();
@@ -158,11 +160,61 @@ Merh Info: [http://www.exploguide.com/site/mareth-line-military-museum-mareth](h
         $p->priority = 3;
         $p->description = 'Römische Stadt. _Erwarten Sie nicht den Ausgrabungs- oder Restaurierungsstand von » Dougga zu sehen, dafür werden Sie mit einer übersichtlichen antiken Stätte in beeindruckender landschaftlicher Lage direkt am Golf von Bou Ghrara belohnt._.
 
-[Mehr info](https://web.archive.org/web/20131013102519/http://www.tunesieninformationen.de/geschichte/roemische-geschichte/gightis-giktis/index.htm)';
+[Mehr info](https://www.tunesieninformationen.de/geschichte/roemische-geschichte/gightis-giktis/gightis.htm)';
         $p->location = new Point(33.532687,10.674438);
         $p->save();
 
 
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Hotel Sidi Driss / Dreh location Lukes eltern / Berber architektur Dorf';
+        $p->priority = 2;
+        $p->description = 'Das ist ein [echtes Hotel](https://www.atlasobscura.com/places/hotel-sidi-driss), in dem Star Wars gedreht wurde. Diese "löcher" sind dort die übliche Bauweise. Geht wohl auf die Berber zurück.
+
+Unklar ob es da auch führungen o.ä. gibt als Tourist zu besuch, da wohnen halt normale Leute, die es nciht so toll finden, wenn plörtzlich Touris mit Kamera im Wohnzimmer stehen.';
+        $p->location = new Point(33.542687,9.967312);
+        $p->save();
+
+
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Musée Berbère de Tamezret';
+        $p->priority = 2;
+        $p->description = 'Auch ein Berberdorf, aber in die Höhe - nicht in Tiefe! ;)
+
+Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber Traditionen geben. Ist aber nicht auf Google Maps.
+
+[Habe es hier gefunden](https://www.tripadvisor.de/Attraction_Review-g4108196-d7757447-Reviews-Musee_Berbere_de_Tamezret-Tamezret_Gabes_Governorate.html?m=19905), ob die GPS Location genau stimmt, weiß ich nicht.';
+        $p->location = new Point(33.536907, 9.864364);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Ksar Ouled Soltane';
+        $p->priority = 1;
+        $p->description = 'Restourierte Ksare (Berbische Bauweise für Häuser, Kornspeicher). Dieser spezielle Ksar war in Star Wars Episode I in manchen Hintergründen zu sehen.';
+        $p->location = new Point(32.788437,10.514812);
+        $p->save();
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Ksar Medenine';
+        $p->priority = 3;
+        $p->description = 'Anakins Zuhause in Star Wars Epsidoe I.';
+        $p->location = new Point(33.347472, 10.492083);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Ksar Medenine';
+        $p->priority = 3;
+        $p->description = 'Ganz gut erhaltene Ksars.';
+        $p->location = new Point(33.369444, 10.438889);
+        $p->save();
 
 
 
