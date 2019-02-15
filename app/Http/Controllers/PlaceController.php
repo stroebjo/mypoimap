@@ -50,10 +50,14 @@ class PlaceController extends Controller
 
         $p->user_id = Auth::id();
         $p->title = $request->title;
+        $p->url = $request->url;
+        $p->priority = $request->priority;
         $p->description = $request->description;
         $p->location = new Point($request->lat, $request->lng);	// (lat, lng)
 
         $p->save();
+
+        return redirect('/');
     }
 
     /**

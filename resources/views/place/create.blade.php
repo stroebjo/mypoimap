@@ -39,6 +39,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="priority" type="number" min="0" max="5" step="1" class="form-control{{ $errors->has('priority') ? ' is-invalid' : '' }}" name="priority" value="{{ old('priority') }}" required>
+
+                                @if ($errors->has('priority'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('priority') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
