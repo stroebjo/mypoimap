@@ -3,7 +3,7 @@
 @section('content')
 
 
-<table class="table">
+<table id="poitable" class="table">
 
     <thead>
 
@@ -50,6 +50,14 @@
 </table>
 
 
+
+<script>
+$(document).ready(function() {
+    $('#poitable').DataTable({
+        "pageLength": 50
+    });
+} );
+</script>
 
 
 @endsection

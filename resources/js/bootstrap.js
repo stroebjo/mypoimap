@@ -11,6 +11,8 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
+    var dt = require( 'datatables.net-bs4' )( window, $ );
+
     require('bootstrap');
 } catch (e) {}
 
