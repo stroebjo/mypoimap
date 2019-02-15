@@ -76,7 +76,7 @@ Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neoker
         $p->priority = 3;
         $p->description = 'Hier scheinen zwischen ein paar Olivenbäumen ein paar Steinchen / eine Ruine eines Tempels zu sein.
 
-        Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninformationen.de/suedtunesien/djerba-und-zarzis/djerba/el-kantara-und-meninx.htm).';
+Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninformationen.de/suedtunesien/djerba-und-zarzis/djerba/el-kantara-und-meninx.htm).';
         $p->location = new Point(33.699227, 10.914993);
         $p->save();
 
@@ -214,6 +214,28 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 3;
         $p->description = 'Ganz gut erhaltene Ksars.';
         $p->location = new Point(33.369444, 10.438889);
+        $p->save();
+
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Djerba Golf Club';
+        $p->url = 'http://www.djerbagolf.com.tn/';
+        $p->priority = 3;
+        $p->description = 'Man braucht schon eine Platzreife, aber es gibt wohl auch eine Driving Range.
+
+[Reviews](http://www.1golf.eu/en/club/djerba-golf-club/)';
+        $p->location = new Point(33.826188,11.011312);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Guellala Museum (Volkskunde Museum über Djerba?)';
+        $p->priority = 2;
+        $p->description = 'Mir ist nicht so ganz klar, was das Muesum ausstellt, ich glaube so ein Mix aus Volkskunde, Geschichte, Kultur, etc. von Djerba. Die Google Reviews sind recht positiv, wobei auch viel "gut mit Kindern zu besuchen" dabei ist.';
+        $p->location = new Point(33.732563,10.865687);
         $p->save();
 
 
