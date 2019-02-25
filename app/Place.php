@@ -8,6 +8,7 @@ use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 class Place extends Model
 {
     use SpatialTrait;
+    use \Spatie\Tags\HasTags;
 
     protected $spatialFields = [
         'location',

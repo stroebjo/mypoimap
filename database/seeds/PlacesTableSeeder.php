@@ -50,7 +50,8 @@ class PlacesTableSeeder extends Seeder
 Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neokerberos.free.fr/star%20wars/moseisley.htm)). Ich denke das lohnt sich nicht.';
         $p->location = new Point(33.723937,10.750062);
         $p->save();
-
+        $p->attachTags(['Star Wars', 'Episode IV']);
+        $p->save();
 
         $p = new Place();
         $p->user_id = 1;
@@ -110,16 +111,20 @@ Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninf
  War ausserdem die Star Wars Dreh Location für _[Tosche Stattion](http://neokerberos.free.fr/star%20wars/tosche.htm)_, dort wo Luke in IV Power converter kaufen will. Die Szenen waren aber wohl nicht im finalen Cut zu sehen ([YT Video der Szene](https://www.youtube.com/watch?v=f00IkrWvur4&t=27s)).';
         $p->location = new Point(33.831812,10.748188);
         $p->save();
+        $p->attachTags(['Star Wars', 'Episode IV']);
+        $p->save();
 
 
         $p = new Place();
         $p->user_id = 1;
         $p->title = 'Star Wars Bens Hütte (IV)';
         $p->priority = 5;
-        $p->description = 'Bens Hütte aus Episode IV.
+        $p->description = 'Bens Hütte aus Episode IV, wobei die Szene ab dem re-release im Jahr 1997 durch eine CGI Animation ersetzt wurde.
 
 [Rekostruktion der Hütte](http://neokerberos.free.fr/star%20wars/benshut.htm).';
         $p->location = new Point(33.740938,10.734937);
+        $p->save();
+        $p->attachTags(['Star Wars', 'Episode IV']);
         $p->save();
 
 
@@ -135,6 +140,8 @@ Eine [Zusammenfassung der Drehorte mit vergleichs Bildern](https://www.youtube.c
 Ist auch von der Natur her ganz hübsch. ;)';
         $p->location = new Point(34.033563,8.282063);
         $p->save();
+        $p->attachTags(['Star Wars', 'Episode IV']);
+        $p->save();
 
 
 
@@ -147,9 +154,10 @@ Ist auch von der Natur her ganz hübsch. ;)';
 Rommels Führungsstand Bunker ist auch direkt daneben, aber unklar, ob das dazugehört, oder nicht.
 
 - [Deutsche infos](https://www.tunesieninformationen.de/uebersicht/mareth/mareth.htm)
-- [gefunden via](http://www.exploguide.com/site/mareth-line-military-museum-mareth)
-        ';
+- [gefunden via](http://www.exploguide.com/site/mareth-line-military-museum-mareth)';
         $p->location = new Point(33.596187,10.311312);
+        $p->save();
+        $p->attachTags(['WW2']);
         $p->save();
 
 
@@ -264,7 +272,7 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
 
 > it was recognized by scientific circles internationally for its glorious past whose origins go back to protohistory. A spectacular mausoleum-tower, built by a native prince in the 2nd century. BC. AD, arises south of the site, recalling, by its architecture, other parallels attested in Sabratha (Libya), Siga (Algeria) and Dougga (Tunisia)
 
-(Via)[http://kapitalis.com/tunisie/2015/12/29/archeologie-les-etudiants-de-liset-au-chevet-de-henchir-bourgou/]
+[Via](http://kapitalis.com/tunisie/2015/12/29/archeologie-les-etudiants-de-liset-au-chevet-de-henchir-bourgou/)
 
 [Video davon](https://youtu.be/LFQf-C3zsss).';
         $p->location = new Point(33.8198125, 10.9704375);

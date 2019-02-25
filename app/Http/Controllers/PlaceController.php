@@ -57,6 +57,10 @@ class PlaceController extends Controller
 
         $p->save();
 
+        $tags = array_map('trim', explode(',', $request->tags));
+        $p->syncTags($tags); // all other tags on this model will be detached
+        $p->save();
+
         return redirect('/');
     }
 

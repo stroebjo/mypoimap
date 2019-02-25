@@ -44,6 +44,7 @@
 
                             <div class="col-md-6">
                                 <input id="priority" type="number" min="0" max="5" step="1" class="form-control{{ $errors->has('priority') ? ' is-invalid' : '' }}" name="priority" value="{{ old('priority') }}" required>
+                                <small class="form-text text-muted">{{ __('A value between 0 and 5, where 5 is a must see and 0 is not important.') }}</small>
 
                                 @if ($errors->has('priority'))
                                     <span class="invalid-feedback" role="alert">
@@ -52,6 +53,24 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="tags" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tags" type="text" class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags" value="{{ old('tags') }}" required>
+
+                                <small class="form-text text-muted">{{ __('Seperated by commas.') }}</small>
+
+
+                                @if ($errors->has('tags'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('tags') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
