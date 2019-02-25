@@ -238,6 +238,49 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->location = new Point(33.732563,10.865687);
         $p->save();
 
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Chenini';
+        $p->priority = 4;
+        $p->description = 'Berber Dorf mit ksaren im Fels. Sind nicht mehr bewohnt, bzw. Die Bewohner wohnen seit Ende der 50er in einem "modernen" Dorf in der Nähe.';
+        $p->location = new Point(32.911111, 10.261667);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Mosquee des 7 Dormants';
+        $p->priority = 4;
+        $p->description = 'Sieht fancy aus. Reviews sagen toller Ausblick. Man soll den lokalen Guides folgen. / Braucht man um rein zu kommen?';
+        $p->location = new Point(32.9099375, 10.2749375);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Henchir Bourgou';
+        $p->priority = 1;
+        $p->description = 'War wohl ein Mausoleum eines numidischen Prinzen, ist leider komplett verfallen und vermuellt.
+
+> it was recognized by scientific circles internationally for its glorious past whose origins go back to protohistory. A spectacular mausoleum-tower, built by a native prince in the 2nd century. BC. AD, arises south of the site, recalling, by its architecture, other parallels attested in Sabratha (Libya), Siga (Algeria) and Dougga (Tunisia)
+
+(Via)[http://kapitalis.com/tunisie/2015/12/29/archeologie-les-etudiants-de-liset-au-chevet-de-henchir-bourgou/]
+
+[Video davon](https://youtu.be/LFQf-C3zsss).';
+        $p->location = new Point(33.8198125, 10.9704375);
+        $p->save();
+
+
+        $p = new Place();
+        $p->user_id = 1;
+        $p->title = 'Fadhloun Mosque';
+        $p->url = 'https://mosquee-fadhloun-djerba-midoun.business.site';
+        $p->priority = 1;
+        $p->description = 'Nicht mehr genutzte Mosche. Für Touristen zugänglich.';
+        $p->location = new Point(33.8246875, 10.9594375);
+        $p->save();
+
+
 
 
 
