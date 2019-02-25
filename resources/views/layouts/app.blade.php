@@ -30,6 +30,12 @@
         height: calc(100vh - 55px);
         width: 100%;
     }
+
+    blockquote {
+        border-left: 5px solid #ddd;
+        padding-left: 5px;
+        font-style: italic;
+    }
 </style>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
