@@ -59,20 +59,20 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        $p = new Place();
+        $place = new Place();
 
-        $p->user_id = Auth::id();
-        $p->title = $request->title;
-        $p->url = $request->url;
-        $p->priority = $request->priority;
-        $p->description = $request->description;
-        $p->location = new Point($request->lat, $request->lng);	// (lat, lng)
+        $place->user_id = Auth::id();
+        $place->title = $request->title;
+        $place->url = $request->url;
+        $place->priority = $request->priority;
+        $place->description = $request->description;
+        $place->location = new Point($request->lat, $request->lng);	// (lat, lng)
 
-        $p->save();
+        $place->save();
 
         $tags = array_map('trim', explode(',', $request->tags));
-        $p->syncTags($tags); // all other tags on this model will be detached
-        $p->save();
+        $place->syncTags($tags); // all other tags on this model will be detached
+        $place->save();
 
         return redirect('/');
     }
