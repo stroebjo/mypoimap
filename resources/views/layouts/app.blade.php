@@ -26,16 +26,17 @@
 
 
     <style>
-    #map {
-        height: calc(100vh - 55px);
-        width: 100%;
-    }
+#map {
+    height: calc(100vh - 55px);
+    width: 100%;
+}
 
-    blockquote {
-        border-left: 5px solid #ddd;
-        padding-left: 5px;
-        font-style: italic;
-    }
+blockquote {
+    border-left: 5px solid #ddd;
+    padding-left: 5px;
+    font-style: italic;
+}
+
 .custom-color-marker {
     margin-left: -14px;
     margin-top: -41px;
@@ -53,9 +54,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'POIs') }}
+                <a class="" href="{{ url('/') }}">
+                   {{ __('Map') }}
                 </a>
+
+                &nbsp;
 
                 <a href="{{ route('place.table') }}">{{ __('Table') }}</a>
 
