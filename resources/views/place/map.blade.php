@@ -30,11 +30,12 @@
 
     // Djerba: 33.7834477,10.8641857
 
-    var map = L.map('map').setView([33.7834477, 10.8641857], 12).addLayer(osm);
+    var map = L.map('map', {
+        preferCanvas: true
+    }).setView([33.7834477, 10.8641857], 12).addLayer(osm);
 
     // fetch user location button
     L.control.locate().addTo(map);
-
 
     @foreach($places as $place)
 
@@ -47,11 +48,16 @@
             visited: {{ !is_null($place->visited_at) ? 'true' : 'false' }}
         }),
 
-        title: '{{ $place->title }}'
+        title: '{{ $place->title }}',
     })
         .addTo(map)
         .bindPopup(`@include('place.popup', ['place' => $place])`)
-        /*.openPopup()*/;
+        .on('popupopen', function(e) {
+            var marker = e.popup._source;
+
+            // init photoswipe on popup
+            initPhotoSwipeFromDOM('.my-gallery');
+        });
 
     @endforeach
 

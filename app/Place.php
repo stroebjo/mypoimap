@@ -5,10 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 
-class Place extends Model
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Image\Manipulations;
+
+class Place extends Model implements HasMedia
 {
     use SpatialTrait;
     use \Spatie\Tags\HasTags;
+    use HasMediaTrait;
 
     protected $spatialFields = [
         'location',
@@ -18,6 +24,20 @@ class Place extends Model
     {
         return $this->belongsTo('App\UserCategory');
     }
+
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 150, 75)
+            ->optimize();
+
+        $this->addMediaConversion('gallery')
+            ->fit(Manipulations::FIT_CROP, 1200, 800)
+            ->optimize();
+
+    }
+
 
     public function getTagsAsString()
     {

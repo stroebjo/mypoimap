@@ -45,8 +45,6 @@ L.Icon.CustomColorMarker = L.Icon.extend({
         var darker25Color = pSBC(-0.25, options.color);
         var darker75Color = pSBC(-0.75, options.color);
 
-        console.log(options.color, lighterColor, darker25Color, darker75Color);
-
 		// marker icon L.DomUtil doesn't seem to like svg, just append out html directly
 		div.innerHTML = `<svg width="28" height="41" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -76,7 +74,6 @@ L.Icon.CustomColorMarker = L.Icon.extend({
 
 </svg>`;
         }
-
 
 		return div;
 	}

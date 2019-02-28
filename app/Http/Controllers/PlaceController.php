@@ -128,9 +128,21 @@ class PlaceController extends Controller
 
         $place->save();
 
+        // tags
         $tags = array_filter(array_map('trim', explode(',', $request->tags)));
         $place->syncTags($tags); // all other tags on this model will be detached
         $place->save();
+
+        //$place->addMediaFromRequest('images')->toMediaCollection('media');
+
+        // media
+        if ($request->hasFile('images')) {
+            $fileAdders = $place
+            ->addMultipleMediaFromRequest(['images'])
+            ->each(function ($fileAdder) {
+                $fileAdder->toMediaCollection('images');
+            });
+        }
 
         return redirect('/');
     }

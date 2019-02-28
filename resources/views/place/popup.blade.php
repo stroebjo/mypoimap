@@ -33,6 +33,27 @@
     {!! $place->getHTMLDescription() !!}
     </div>
 
+    @if(count($place->getMedia('images')) > 0 )
+    <div style="overflow: scroll;">
+    <div style="display: flex; justify-content: space-between; width: {{ count($place->getMedia('images')) * 151 }}px; " class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+
+        @foreach($place->getMedia('images') as $media)
+
+        <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="600x400">
+                <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
+            </a>
+
+            @if ($media->hasCustomProperty('caption'))
+            <figcaption itemprop="caption description">{{ $media->getCustomProperty('caption') }}</figcaption>
+            @endif
+        </figure>
+
+        @endforeach
+
+    </div>
+</div>
+    @endif
 
     @if (!is_null($place->visited_at))
     <div class="m-popup-review">

@@ -54,6 +54,7 @@ blockquote {
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
+
                 <a class="" href="{{ url('/') }}">
                    {{ __('Map') }}
                 </a>
@@ -129,5 +130,7 @@ blockquote {
     <script src="{{ asset('js/L.Icon.CustomColorMarker.js') }}" ></script>
 
     @yield('script')
+
+    @include('layouts.photoswipe')
 </body>
 </html>

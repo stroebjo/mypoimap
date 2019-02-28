@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Place') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('place.update', [$place]) }}">
+                    <form method="POST" action="{{ route('place.update', [$place]) }}" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PATCH') }}
 
@@ -137,6 +137,24 @@
                         </div>
 
                         <hr>
+
+                        <div class="form-group row">
+                            <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="images" type="file" multiple="multiple" class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" name="images[]" value="{{ old('images') }}">
+
+                                @if ($errors->has('images'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('images') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <hr>
+
                         <div class="form-group row">
                             <label for="visited_at" class="col-md-4 col-form-label text-md-right">{{ __('Visited at') }}</label>
 
