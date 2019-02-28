@@ -33,4 +33,22 @@
     {!! $place->getHTMLDescription() !!}
     </div>
 
+
+    @if (!is_null($place->visited_at))
+    <div class="m-popup-review">
+        <hr>
+        <b>{{ __('was there at :date:', ['date' => $place->visited_at]) }}</b><br>
+        {!! $place->getHTMLReview() !!}
+        </div>
+
+
+    @endif
+
+    <hr>
+
+    <small>
+        <!-- <a href="{{ route('place.show', ['id' => $place->id]) }}">{{ __('Details')}}</a> -->
+        <a href="{{ route('place.edit', ['id' => $place->id]) }}">{{ __('Edit')}}</a>
+    </small>
+
 </div>

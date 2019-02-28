@@ -92,7 +92,12 @@ class PlaceController extends Controller
      */
     public function edit(Place $place)
     {
-        //
+        $categories = UserCategory::where('user_id', Auth::id())->get();
+
+        return view('place.edit', [
+            'place' => $place,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -104,7 +109,26 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        //
+        if ($place->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $place->title = $request->title;
+        $place->url = $request->url;
+        $place->priority = $request->priority;
+        $place->description = $request->description;
+        $place->location = new Point($request->lat, $request->lng);	// (lat, lng)
+
+        $place->visited_at = $request->visited_at;
+        $place->visit_review = $request->visit_review;
+
+        $place->save();
+
+        $tags = array_filter(array_map('trim', explode(',', $request->tags)));
+        $place->syncTags($tags); // all other tags on this model will be detached
+        $place->save();
+
+        return redirect('/');
     }
 
     /**

@@ -18,9 +18,28 @@ class Place extends Model
     {
         return $this->belongsTo('App\UserCategory');
     }
+
+    public function getTagsAsString()
+    {
+        $tag_names = [];
+
+        foreach($this->tags as $tag) {
+            $tag_names[] = $tag->name;
+        }
+
+        return implode(', ', $tag_names);
+    }
+
     public function getHTMLDescription()
     {
 		$Parsedown = new \Parsedown();
 		return $Parsedown->text($this->description);
     }
+
+    public function getHTMLReview()
+    {
+		$Parsedown = new \Parsedown();
+		return $Parsedown->text($this->visit_review);
+    }
+
 }

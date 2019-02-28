@@ -35,6 +35,9 @@ class CreatePlacesTable extends Migration
 
             $table->point('location');
 
+            // visit
+            $table->date('visited_at')->nullable();
+            $table->text('visit_review')->nullable();
         });
     }
 
