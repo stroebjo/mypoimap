@@ -70,7 +70,7 @@ class PlaceController extends Controller
 
         $place->save();
 
-        $tags = array_map('trim', explode(',', $request->tags));
+        $tags = array_filter(array_map('trim', explode(',', $request->tags)));
         $place->syncTags($tags); // all other tags on this model will be detached
         $place->save();
 
