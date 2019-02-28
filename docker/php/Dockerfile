@@ -23,6 +23,8 @@ RUN docker-php-ext-install gd
 # Install opcache
 RUN docker-php-ext-install opcache
 
+RUN docker-php-ext-install exif
+
 # Install APCu
 RUN pecl install apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini

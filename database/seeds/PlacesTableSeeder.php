@@ -99,7 +99,8 @@ Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neoker
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Sieht von außen spannend aus, allerdings ist es innnen einfach ein *leerer Keller* mit Tags an den Wänden. Unsere Frage ob wir als nicht muslime da rein dürfen, war wohl etwas unnötig. ;)';
 
-
+        $p->save();
+        $p->attachTags(['Ibaditen']);
         $p->save();
 
 
