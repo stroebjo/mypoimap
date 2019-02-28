@@ -14,6 +14,10 @@ class Place extends Model
         'location',
     ];
 
+    public function user_category()
+    {
+        return $this->belongsTo('App\UserCategory');
+    }
     public function getHTMLDescription()
     {
 		$Parsedown = new \Parsedown();

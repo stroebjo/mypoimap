@@ -25,6 +25,26 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label for="user_category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+
+                            <div class="col-md-6">
+
+                                <select id="user_category_id" class="form-control{{ $errors->has('user_category_id') ? ' is-invalid' : '' }}"  name="user_category_id" required>
+                                @foreach($categories as $category)
+                                    <option {{ old('user_category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name}}</option>
+                                @endforeach
+                                </select>
+
+                                @if ($errors->has('user_category_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('user_category_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="url" class="col-md-4 col-form-label text-md-right">{{ __('Website') }}</label>
 

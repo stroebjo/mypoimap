@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resources([
     'place' => 'PlaceController'
 ]);
+
+Route::resources([
+    'user_category' => 'UserCategoryController'
+]);

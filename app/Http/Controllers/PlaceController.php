@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\UserCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
@@ -24,8 +25,12 @@ class PlaceController extends Controller
     public function map()
     {
         $places = Place::all();
+        $categories = UserCategory::where('user_id', Auth::id())->get();
 
-        return view('place.map', ['places' => $places]);
+        return view('place.map', [
+            'places' => $places,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -35,7 +40,11 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        return view('place.create');
+        $categories = UserCategory::where('user_id', Auth::id())->get();
+
+        return view('place.create', [
+            'categories' => $categories,
+        ]);
     }
 
     /**

@@ -35,18 +35,35 @@
     // fetch user location button
     L.control.locate().addTo(map);
 
+    @foreach($categories as $category)
+
+
+    /* var icon{{ $category->id}} = L.icon.fontAwesome({
+		iconClasses: 'fa fa-hotel', // you _could_ add other icon classes, not tested.
+		markerColor: '{{ $category->color }}',
+		iconColor: '#FFF'
+    }); */
+
+
+    const icon{{ $category->id}} = L.icon.customColorMarker({
+        color: '{{ $category->color }}',
+        unique_id: '{{ $category->id}}',
+    });
+
+    @endforeach
+
 
     @foreach($places as $place)
 
     L.marker([{{ $place->location->getLat() }}, {{ $place->location->getLng()}}], {
-        // unqie icon per place, so we can use visited / color settings
-        // inside the CustomColorMarker class
+        //icon: icon{{ $place->user_category_id}},
         icon: L.icon.customColorMarker({
-            color: '{{ !is_null($place->user_category) ? $place->user_category->color : '#000000' }}',
+            color: '{{ $place->user_category->color }}',
             unique_id: '{{ $place->id}}',
             visited: {{ !is_null($place->visited_at) ? 'true' : 'false' }}
         }),
-
+        //icon: {{ $place->user_category->color }}Icon,
+        //opacity: {{ $place->getVisitedOpacity() }},
         title: '{{ $place->title }}'
     })
         .addTo(map)

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlacesTable extends Migration
+class CreateUserCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('places', function (Blueprint $table) {
+        Schema::create('user_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
@@ -21,20 +21,10 @@ class CreatePlacesTable extends Migration
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
 
-            // category
-			$table->integer('user_category_id')->unsigned();
-			$table->foreign('user_category_id')->references('id')->on('user_categories');
-
             // data
-            $table->string('title');
-            $table->tinyInteger('priority')->nullable();
-
-            $table->string('url')->nullable();
-			$table->text('description')->nullable();
-            $table->text('source')->nullable();
-
-            $table->point('location');
-
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->char('color', 7); // HTML5 color input gives 7 cahr color in hex (`#aabbcc`)
         });
     }
 
@@ -45,6 +35,6 @@ class CreatePlacesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('places');
+        Schema::dropIfExists('user_categories');
     }
 }

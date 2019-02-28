@@ -36,6 +36,13 @@
         padding-left: 5px;
         font-style: italic;
     }
+.custom-color-marker {
+    margin-left: -14px;
+    margin-top: -41px;
+    width: 28px;
+    height: 41px;
+}
+
 </style>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
@@ -82,8 +89,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="{{ route('place.create') }}">
-                                        {{ __('Add POI') }}
+                                    <a class="dropdown-item" href="{{ route('place.create') }}">
+                                        {{ __('Add Place') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('user_category.index') }}">
+                                        {{ __('Categories') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -111,6 +122,8 @@
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
     <script src="{{ asset('js/L.Control.Locate.min.js') }}" ></script>
+
+    <script src="{{ asset('js/L.Icon.CustomColorMarker.js') }}" ></script>
 
     @yield('script')
 </body>
