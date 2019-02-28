@@ -10,6 +10,11 @@ use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 class PlaceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +22,13 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $places = Place::all();
-
+        $places = Place::where('user_id', Auth::id())->get();
         return view('place.table', ['places' => $places]);
     }
 
     public function map()
     {
-        $places = Place::all();
+        $places = Place::where('user_id', Auth::id())->get();
         $categories = UserCategory::where('user_id', Auth::id())->get();
 
         return view('place.map', [
