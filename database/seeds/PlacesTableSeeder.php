@@ -109,7 +109,11 @@ Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neoker
         $p->user_category_id = $c_kultur;
         $p->title = 'Meninx (antike Stadt)';
         $p->priority = 2;
-        $p->description = 'Wirklich was zu sehen gibt es hier nicht, die Städte ist nicht erschlossen. Es liegen ein paar Fragmente im Sand.';
+        $p->description = 'Wirklich was zu sehen gibt es hier nicht, die Stätte ist nicht erschlossen. Es liegen ein paar Fragmente im Sand.
+
+Meninx, gr. Μῆνιγξ. War früher auch der namengeber der Insel, hatte bis zum 3 Jhdt. n. Chr. zentrale beduetung als wichtiger Purpur lieferant im Mittelmeerraum.
+
+Bericht über den [Verfall](http://archaeologieblog.de/tunesien-meninx-djerba/) und die [Forschunggeschichte](https://www.klass-archaeologie.uni-muenchen.de/forschung/d-projekte-laufend/meninx/stadt_forschungsgeschichte/index.html).';
         $p->location = new Point(33.682812,10.919188);
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Kann man mal kurz halten wenn man möchte, aber man sieht hier nur ein paar Säulen Sockel und ein paar Steine. Ausserdem eine Zisterne, ob die noch Antik ist, weiß ich aber nicht, laut unserem Taxifahrer ja…';

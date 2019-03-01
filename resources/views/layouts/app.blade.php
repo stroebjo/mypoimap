@@ -128,6 +128,8 @@ blockquote {
     <script src="{{ asset('js/L.Control.Locate.min.js') }}" ></script>
 
     <script src="{{ asset('js/L.Icon.CustomColorMarker.js') }}" ></script>
+    <script src="{{ asset('js/L.Control.StartPosition.js') }}" ></script>
+
 
     @yield('script')
 

@@ -11,6 +11,18 @@
 @section('script')
 <script>
 
+function lsTest(){
+    var test = 'test';
+    try {
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+
     /*
     var map = L.map('map').setView([51.505, -0.09], 13);
 
@@ -28,14 +40,29 @@
         osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
 
-    // Djerba: 33.7834477,10.8641857
+    // Djerba: 33.7834477,10.8641857 12
+
+    // check for saved map area/zoom
+    var map_position = {lat: 0, lng: 0, zoom: 3};
+    if(lsTest() === true) {
+
+        if (localStorage.getItem("map_position") !== null) {
+            map_position = JSON.parse(localStorage.getItem("map_position"));
+        }
+    }
 
     var map = L.map('map', {
         preferCanvas: true
-    }).setView([33.7834477, 10.8641857], 12).addLayer(osm);
+    }).setView([map_position.lat, map_position.lng], map_position.zoom).addLayer(osm);
 
     // fetch user location button
     L.control.locate().addTo(map);
+
+    L.control.scale().addTo(map);
+
+    L.control.startposition({ position: 'topleft' }).addTo(map);
+
+
 
     @foreach($places as $place)
 
