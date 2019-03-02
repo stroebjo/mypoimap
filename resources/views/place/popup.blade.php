@@ -40,7 +40,7 @@
         @foreach($place->getMedia('images') as $media)
 
         <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="600x400">
+            <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="1200x800">
                 <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
             </a>
 
