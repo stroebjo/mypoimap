@@ -1,0 +1,10 @@
+.m-thumbgallery {
+    overflow-x: auto;
+    @include scrollbars(5px, #aaa);
+
+    &-inner {
+        display: flex;
+        justify-content: space-between;
+        // width is set in relation to amount of pictures in style=""
+    }
+}

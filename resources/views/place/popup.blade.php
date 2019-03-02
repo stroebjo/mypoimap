@@ -34,8 +34,8 @@
     </div>
 
     @if(count($place->getMedia('images')) > 0 )
-    <div style="overflow: scroll;">
-    <div style="display: flex; justify-content: space-between; width: {{ count($place->getMedia('images')) * 151 }}px; " class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+    <div class="m-thumbgallery">
+    <div class="m-thumbgallery-inner my-gallery" style="width: {{ count($place->getMedia('images')) * 151 }}px;" itemscope itemtype="http://schema.org/ImageGallery">
 
         @foreach($place->getMedia('images') as $media)
 

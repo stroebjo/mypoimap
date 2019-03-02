@@ -1,5 +1,6 @@
 // Variables
 @import 'variables';
+@import 'mixins';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -7,6 +8,9 @@
 // Photoswipe
 @import '~photoswipe/src/css/main';
 @import '~photoswipe/src/css/default-skin/default-skin';
+
+// Modules
+@import 'modules/thumbgallery';
 
 .navbar-laravel {
   background-color: #fff;
