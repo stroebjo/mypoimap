@@ -62,6 +62,7 @@ class PlaceController extends Controller
         $place = new Place();
 
         $place->user_id = Auth::id();
+        $place->user_category_id = $request->user_category_id;
         $place->title = $request->title;
         $place->url = $request->url;
         $place->priority = $request->priority;
@@ -118,6 +119,7 @@ class PlaceController extends Controller
         }
 
         $place->title = $request->title;
+        $place->user_category_id = $request->user_category_id;
         $place->url = $request->url;
         $place->priority = $request->priority;
         $place->description = $request->description;
