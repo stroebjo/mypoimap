@@ -67,7 +67,9 @@ class PlaceController extends Controller
         $place->url = $request->url;
         $place->priority = $request->priority;
         $place->description = $request->description;
+
         $place->location = new Point($request->lat, $request->lng);	// (lat, lng)
+        $place->google_place_id = $request->google_place_id;
 
         $place->save();
 
@@ -123,7 +125,9 @@ class PlaceController extends Controller
         $place->url = $request->url;
         $place->priority = $request->priority;
         $place->description = $request->description;
+
         $place->location = new Point($request->lat, $request->lng);	// (lat, lng)
+        $place->google_place_id = $request->google_place_id;
 
         $place->visited_at = $request->visited_at;
         $place->visit_review = $request->visit_review;

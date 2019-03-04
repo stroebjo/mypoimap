@@ -46,6 +46,7 @@ class PlacesTableSeeder extends Seeder
         $p->title = 'Thugga';
         $p->description = 'Thugga war eine antike Stadt im heutigen Tunesien, deren Überreste heute zum Teil freigelegt sind und zu den besterhaltenen in Nordafrika zählen. Ihre Blütezeit erlebte die Stadt als Teil der römischen Provinz Africa im 3. Jahrhundert n. Chr. Ihre Geschichte liefert jedoch auch Kenntnisse über die numidische, punische und byzantinische Zeit.';
         $p->location = new Point(36.4232907, 9.2099453);
+        $p->google_place_id = 'ChIJqSqRjsyC_BIRvAhsJaCR4-0';
         $p->source = 'https://www.reddit.com/r/Tunisia/comments/acgfcw/the_dougga_amphitheatre/';
         $p->save();
 
@@ -57,6 +58,7 @@ class PlacesTableSeeder extends Seeder
         $p->priority = 3;
         $p->description = 'Streetart die im ganzen Ort verteilt ist. Es gibt auch eine [Karte mit den Orten der Kunstwerke](http://itinerrance.fr/wp-content/uploads/2014/08/Plan_Djerbahood_Itinerrance.pdf).';
         $p->location = new Point(33.821312, 10.854312);
+        $p->google_place_id = 'ChIJU6a4Nxq7qhMRxMlTUd_iMWA';
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Mit unter echt scchöne Graffities, bzw. Street-Art an den wänden. Auf jeden Fall einen Blick wert.';
         $p->save();
@@ -70,7 +72,7 @@ class PlacesTableSeeder extends Seeder
         $p->location = new Point(33.813937,10.859312);
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Sehr schön zu besuchen, man muss durch eine Sicherheitskontrolle um hineinzu dürfen. Links ist dann die Synagoge, rechts sind Unterkünfte für Pilger.';
-
+        $p->google_place_id = 'ChIJ2RI8_Q67qhMRFziw07KQE_s';
 
         $p->save();
 
@@ -84,6 +86,7 @@ class PlacesTableSeeder extends Seeder
 
 Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neokerberos.free.fr/star%20wars/moseisley.htm)). Ich denke das lohnt sich nicht.';
         $p->location = new Point(33.723937,10.750062);
+        $p->google_place_id = 'ChIJiWUjO1S2qhMRMdi1ehwMIsU';
         $p->save();
         $p->attachTags(['Star Wars', 'Episode IV']);
         $p->save();
@@ -95,6 +98,7 @@ Davon ist aber scheinbar nicht mehr wirklcih was zu sehen ([siehe](http://neoker
         $p->priority = 4;
         $p->description = 'Wird laut Wikipedia nicht mehr genutzt und kann besichtigt werden.';
         $p->location = new Point(33.72167, 10.9119);
+        $p->google_place_id = 'ChIJKbn1nd2-qhMRiEh8qE-0nL8';
 
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Sieht von außen spannend aus, allerdings ist es innnen einfach ein *leerer Keller* mit Tags an den Wänden. Unsere Frage ob wir als nicht muslime da rein dürfen, war wohl etwas unnötig. ;)';
@@ -115,6 +119,8 @@ Meninx, gr. Μῆνιγξ. War früher auch der namengeber der Insel, hatte bis 
 
 Bericht über den [Verfall](http://archaeologieblog.de/tunesien-meninx-djerba/) und die [Forschunggeschichte](https://www.klass-archaeologie.uni-muenchen.de/forschung/d-projekte-laufend/meninx/stadt_forschungsgeschichte/index.html).';
         $p->location = new Point(33.682812,10.919188);
+        $p->google_place_id = 'ChIJMVRj0G6_qhMRFwHqEbIixQc';
+
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'Kann man mal kurz halten wenn man möchte, aber man sieht hier nur ein paar Säulen Sockel und ein paar Steine. Ausserdem eine Zisterne, ob die noch Antik ist, weiß ich aber nicht, laut unserem Taxifahrer ja…';
 
@@ -145,6 +151,7 @@ Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninf
         $p->priority = 3;
         $p->description = 'Ein Fort aus dem 15. Jhdt. Wurde auf eine ätere rönische Stadt gebaut, von der sieht man "gegenüber" (?) aber nur noch eine Zisterne.' ;
         $p->location = new Point(33.884062,10.860562);
+        $p->google_place_id = 'ChIJL01n3PGkqhMRwiUZ9W3cRVc';
 
         $p->visited_at = '2019-02-17';
         $p->visit_review = 'War leider schon geschlossen als wit gegen 17 Uhr da waren. Man sollte sich also nicht auf die Google Maps Öffnungszeiten verlassen. ;)';
@@ -158,6 +165,8 @@ Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninf
         $p->title = 'Fort de Borj El Kastil';
         $p->description = 'Festung des Spansichen Eroberers Ruggiero di Lauria aus dem 13. Jhdt. Kann nur mit einem Gelände gängigen Fahrzeug bei Ebbe erreicht werden. Sind ein haufen steine im Sand. ;)' ;
         $p->location = new Point(33.683688,10.973937);
+        $p->google_place_id = 'ChIJ35BzI-e_qhMRHKi5pkfmyII';
+
         $p->save();
 
 
@@ -173,6 +182,8 @@ Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninf
 
  War ausserdem die Star Wars Dreh Location für _[Tosche Stattion](http://neokerberos.free.fr/star%20wars/tosche.htm)_, dort wo Luke in IV Power converter kaufen will. Die Szenen waren aber wohl nicht im finalen Cut zu sehen ([YT Video der Szene](https://www.youtube.com/watch?v=f00IkrWvur4&t=27s)).';
         $p->location = new Point(33.831812,10.748188);
+        $p->google_place_id = 'ChIJo6RlRrGxqhMRWINAnGsTx5I';
+
         $p->save();
         $p->attachTags(['Star Wars', 'Episode IV']);
         $p->save();
@@ -187,6 +198,7 @@ Gefunden [via](https://web.archive.org/web/20140322073933/http://www.tunesieninf
 
 [Rekostruktion der Hütte](http://neokerberos.free.fr/star%20wars/benshut.htm).';
         $p->location = new Point(33.740938,10.734937);
+        $p->google_place_id = 'ChIJG78Zd-22qhMRzE1Hdn9kkso';
 
         $p->visited_at = '2019-02-21';
         $p->visit_review = 'Toll!';
@@ -210,6 +222,8 @@ Eine [Zusammenfassung der Drehorte mit vergleichs Bildern](https://www.youtube.c
 
 Ist auch von der Natur her ganz hübsch. ;)';
         $p->location = new Point(34.033563,8.282063);
+        $p->google_place_id = 'ChIJ7-GGmT7FVxIRXY9eQP5h2kg';
+
         $p->save();
         $p->attachTags(['Star Wars', 'Episode IV']);
         $p->save();
@@ -228,6 +242,8 @@ Rommels Führungsstand Bunker ist auch direkt daneben, aber unklar, ob das dazug
 - [Deutsche infos](https://www.tunesieninformationen.de/uebersicht/mareth/mareth.htm)
 - [gefunden via](http://www.exploguide.com/site/mareth-line-military-museum-mareth)';
         $p->location = new Point(33.596187,10.311312);
+        $p->google_place_id = 'ChIJtddCgk08VRIRtW8ZgS2NfWc';
+
         $p->save();
         $p->attachTags(['WW2']);
         $p->save();
@@ -243,18 +259,22 @@ Rommels Führungsstand Bunker ist auch direkt daneben, aber unklar, ob das dazug
 
 [Mehr info](https://www.tunesieninformationen.de/geschichte/roemische-geschichte/gightis-giktis/gightis.htm)';
         $p->location = new Point(33.532687,10.674438);
+        $p->google_place_id = 'ChIJb9hJSpjNqhMRd7Z45Ya6F34';
+
         $p->save();
 
 
         $p = new Place();
         $p->user_id = 1;
         $p->user_category_id = $c_kultur;
-        $p->title = 'Hotel Sidi Driss / Dreh location Lukes eltern / Berber architektur Dorf';
+        $p->title = 'Hotel Sidi Idriss / Dreh location Lukes eltern / Berber architektur Dorf';
         $p->priority = 2;
         $p->description = 'Das ist ein [echtes Hotel](https://www.atlasobscura.com/places/hotel-sidi-driss), in dem Star Wars gedreht wurde. Diese "löcher" sind dort die übliche Bauweise. Geht wohl auf die Berber zurück.
 
 Unklar ob es da auch führungen o.ä. gibt als Tourist zu besuch, da wohnen halt normale Leute, die es nciht so toll finden, wenn plörtzlich Touris mit Kamera im Wohnzimmer stehen.';
         $p->location = new Point(33.542687,9.967312);
+        $p->google_place_id = 'ChIJvV0fQ0IGVRIRe5vMH9-HJXA';
+
         $p->save();
         $p->attachTags(['Berber', 'Star Wars', 'Episode IV']);
         $p->save();
@@ -270,6 +290,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
 
 [Habe es hier gefunden](https://www.tripadvisor.de/Attraction_Review-g4108196-d7757447-Reviews-Musee_Berbere_de_Tamezret-Tamezret_Gabes_Governorate.html?m=19905), ob die GPS Location genau stimmt, weiß ich nicht.';
         $p->location = new Point(33.536907, 9.864364);
+        $p->google_place_id = 'ChIJ94q1-YGpVRIRMe5Mr-QscgQ';
+
         $p->save();
         $p->attachTags(['Berber']);
         $p->save();
@@ -282,6 +304,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 1;
         $p->description = 'Restourierte Ksare (Berbische Bauweise für Häuser, Kornspeicher). Dieser spezielle Ksar war in Star Wars Episode I in manchen Hintergründen zu sehen.';
         $p->location = new Point(32.788437,10.514812);
+        $p->google_place_id = 'ChIJAQBAOmyuVBIRThuFz26wztg';
+
         $p->save();
         $p->attachTags(['Berber', 'Star Wars', 'Episode I']);
         $p->save();
@@ -293,6 +317,7 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 3;
         $p->description = 'Anakins Zuhause in Star Wars Episode I.';
         $p->location = new Point(33.347472, 10.492083);
+        $p->google_place_id = 'ChIJD_RMESnWVBIRreRkpgMnUUk';
         $p->save();
         $p->attachTags(['Berber', 'Star Wars', 'Episode I']);
         $p->save();
@@ -300,10 +325,11 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p = new Place();
         $p->user_id = 1;
         $p->user_category_id = $c_kultur;
-        $p->title = 'Ksar Medenine';
+        $p->title = 'Ksar Metameur';
         $p->priority = 3;
-        $p->description = 'Ganz gut erhaltene Ksars.';
+        $p->description = 'Ganz gut erhaltene Ksars ([Video](https://www.youtube.com/watch?v=-i3sOqlVdPo)).';
         $p->location = new Point(33.369444, 10.438889);
+
         $p->save();
         $p->attachTags(['Berber']);
         $p->save();
@@ -319,6 +345,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
 
 [Reviews](http://www.1golf.eu/en/club/djerba-golf-club/)';
         $p->location = new Point(33.826188,11.011312);
+        $p->google_place_id = 'ChIJ7zPaW46XqhMRE5mml0NCwBQ';
+
         $p->save();
 
 
@@ -329,6 +357,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 2;
         $p->description = 'Mir ist nicht so ganz klar, was das Muesum ausstellt, ich glaube so ein Mix aus Volkskunde, Geschichte, Kultur, etc. von Djerba. Die Google Reviews sind recht positiv, wobei auch viel "gut mit Kindern zu besuchen" dabei ist.';
         $p->location = new Point(33.732563,10.865687);
+        $p->google_place_id = 'ChIJ6xCYZxa5qhMRpXwJba8Cw5A';
+
         $p->save();
 
         $p = new Place();
@@ -338,6 +368,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 4;
         $p->description = 'Berber Dorf mit ksaren im Fels. Sind nicht mehr bewohnt, bzw. Die Bewohner wohnen seit Ende der 50er in einem "modernen" Dorf in der Nähe.';
         $p->location = new Point(32.911111, 10.261667);
+        $p->google_place_id = 'ChIJBXT4M-a9VBIRm5BPXcQfPEE';
+
 
         $p->visited_at = '2019-02-21';
         $p->visit_review = 'Unser Guide sprach leider kein deutsch und Erklärungen gibt es da leider nicht, wir haben also keine Hintergruünde erklärt bekommen. Unabhänig davon aber eine Beeindruckender Anblick!';
@@ -353,6 +385,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 4;
         $p->description = 'Sieht fancy aus. Reviews sagen toller Ausblick. Man soll den lokalen Guides folgen. / Braucht man um rein zu kommen?';
         $p->location = new Point(32.9099375, 10.2749375);
+        $p->google_place_id = 'ChIJczFy7-69VBIRFc3vF09SSag';
+
 
         $p->visited_at = '2019-02-21';
         $p->visit_review = '';
@@ -372,6 +406,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
 
 [Video davon](https://youtu.be/LFQf-C3zsss).';
         $p->location = new Point(33.8198125, 10.9704375);
+        $p->google_place_id = 'ChIJFRk8R129qhMR2ExZ7bSwlkw';
+
         $p->save();
 
 
@@ -383,6 +419,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
         $p->priority = 1;
         $p->description = 'Nicht mehr genutzte Mosche. Für Touristen zugänglich.';
         $p->location = new Point(33.8246875, 10.9594375);
+        $p->google_place_id = 'ChIJi5wTtEC9qhMRUMnx71F7FGY';
+
         $p->save();
 
 
@@ -395,6 +433,8 @@ Ungefähr an der GPS Location soll ein ein kleines, privates Museum über Berber
 
 Wir waren in der Nebensaison (Februrar, 2019), das Hotel war also nicht seh voll. Ich stelle mir das Hotel sehr, sehr anstrengend vor, wenn es voll belegt ist. Da es schon groß ist, aberR Restaurant, Bars, Pool und Strand dann aber schon sehr gedrängt sein müssen, denke ich.';
         $p->location = new Point(33.772687,11.032063);
+        $p->google_place_id = 'ChIJiSyDcR2YqhMRg21IH0Z26Rs';
+
         $p->save();
 
 

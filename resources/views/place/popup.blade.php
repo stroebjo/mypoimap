@@ -11,9 +11,9 @@
     </h4>
 
     <small>
-        <a href="https://www.google.com/maps/search/?api=1&query={{ $place->location->getLat() }},{{ $place->location->getLng() }}">{{ __('Maps') }}</a> |
-        <a href="http://maps.google.com/maps?f=d&daddr={{ $place->location->getLat() }},{{ $place->location->getLng() }}">{{ __('Directions') }}</a> |
-        {{ $place->location->getLat() }}, {{ $place->location->getLng()}} |
+        <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer">{{ __('Maps') }}</a> |
+        <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">{{ __('Directions') }}</a> |
+        {{ $place->getLatLng() }} |
         Prio: {{ $place->priority }}
     </small>
 

@@ -136,6 +136,35 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+
+                                <div class="col-md-4 text-md-right">
+
+                                    <span class="col-form-label">
+                                        <label for="google_place_id" class=" col-form-label">{{ __('Google Place ID') }}</label>
+
+                                        <button type="button" class="" data-toggle="modal" data-target="#modal_google_place_id">
+                                            ?
+                                        </button>
+                                    </span>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <input id="google_place_id" type="text" class="form-control{{ $errors->has('google_place_id') ? ' is-invalid' : '' }}" name="google_place_id" value="{{ old('google_place_id', $place->google_place_id) }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+                                    <small class="form-text text-muted"><a href="https://developers.google.com/places/place-id" rel="noreferrer" target="_blank">{{ __('Google Place ID finder.') }}</a></small>
+
+
+                                    @if ($errors->has('google_place_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('google_place_id') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+
                         <hr>
 
                         <div class="form-group row">
@@ -200,4 +229,7 @@
         </div>
     </div>
 </div>
+
+@include('place.google_place_id_modal')
+
 @endsection
