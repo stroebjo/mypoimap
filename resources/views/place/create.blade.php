@@ -97,7 +97,7 @@
 
                             <div class="col-md-6">
 
-                                <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('lng') }}</textarea>
+                                <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
                                 <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
 
                                 @if ($errors->has('description'))
@@ -108,31 +108,60 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="lat" class="col-md-4 col-form-label text-md-right">{{ __('Lat') }}</label>
+
+                        <div class="row">
+
+                            <div class="col-md-4 text-md-right">
+                                <label for="lat" class="col-form-label">{{ __('Lat') }}</label> /
+                                <label for="lng" class="col-form-label">{{ __('Lng') }}</label>
+                            </div>
 
                             <div class="col-md-6">
-                                <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat') }}" required>
 
-                                @if ($errors->has('lat'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('lat') }}</strong>
-                                    </span>
-                                @endif
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat') }}" required>
+
+                                        @if ($errors->has('lat'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('lat') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-6">
+                                        <input id="lng" type="text" class="form-control{{ $errors->has('lng') ? ' is-invalid' : '' }}" name="lng" value="{{ old('lng') }}" required>
+
+                                        @if ($errors->has('lng'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('lng') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
+
+
                         <div class="form-group row">
-                            <label for="lng" class="col-md-4 col-form-label text-md-right">{{ __('Lng') }}</label>
+                            <label for="plus_code" class="col-md-4 col-form-label text-md-right">{{ __('Plus Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lng" type="text" class="form-control{{ $errors->has('lng') ? ' is-invalid' : '' }}" name="lng" value="{{ old('title') }}" required>
+                                <input id="plus_code" type="text" class="form-control{{ $errors->has('plus_code') ? ' is-invalid' : '' }}" name="plus_code" value="{{ old('plus_code') }}" required>
 
-                                @if ($errors->has('lng'))
+                                @if ($errors->has('plus_code'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('lng') }}</strong>
+                                        <strong>{{ $errors->first('plus_code') }}</strong>
                                     </span>
                                 @endif
+
+                                <div class="small js-plus_code_feedback"></div>
+
+                                <small class="text-muted">{{ __('Derive Lat/Lng by Googles Plus Code.') }}</small>
+
+
                             </div>
                         </div>
 
@@ -181,6 +210,13 @@
 </div>
 
 
+
+
 @include('place.google_place_id_modal')
 
+@endsection
+
+@section('script')
+<script src="{{ asset('js/openlocationcode.min.js') }}"></script>
+<script src="{{ asset('js/pluscode2latlng.js') }}"></script>
 @endsection
