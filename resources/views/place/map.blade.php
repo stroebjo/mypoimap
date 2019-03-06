@@ -51,6 +51,18 @@ function lsTest(){
         }
     }
 
+    // get paramter is more important than local storage
+    var url = new URL(window.location.href);
+    if (url.searchParams.get('lat') && url.searchParams.get('lng') &&
+     !isNaN(parseFloat(url.searchParams.get('lat'))) && !isNaN(parseFloat(url.searchParams.get('lng')))) {
+        map_position.lat = parseFloat(url.searchParams.get('lat'));
+        map_position.lng = parseFloat(url.searchParams.get('lng'));
+
+        if (url.searchParams.get('zoom') && !isNaN(parseInt(url.searchParams.get('zoom')))) {
+            map_position.zoom = parseInt(url.searchParams.get('zoom'));
+        }
+    }
+
     var map = L.map('map', {
         preferCanvas: true
     }).setView([map_position.lat, map_position.lng], map_position.zoom).addLayer(osm);

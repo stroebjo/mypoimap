@@ -77,7 +77,11 @@ class PlaceController extends Controller
         $place->syncTags($tags); // all other tags on this model will be detached
         $place->save();
 
-        return redirect('/');
+        return redirect()->route('place.map', [
+            'lat' => $place->location->getLat(),
+            'lng' => $place->location->getLng(),
+            'zoom' => 12
+        ]);
     }
 
     /**
@@ -150,7 +154,11 @@ class PlaceController extends Controller
             });
         }
 
-        return redirect('/');
+        return redirect()->route('place.map', [
+            'lat' => $place->location->getLat(),
+            'lng' => $place->location->getLng(),
+            'zoom' => 12
+        ]);
     }
 
     /**
