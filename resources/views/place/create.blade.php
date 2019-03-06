@@ -146,10 +146,10 @@
 
 
                         <div class="form-group row">
-                            <label for="plus_code" class="col-md-4 col-form-label text-md-right">{{ __('Plus Code') }}</label>
+                            <label for="plus_code" class="col-md-4 col-form-label col-form-label-sm text-md-right">{{ __('Plus Code') }}</label>
 
                             <div class="col-md-6">
-                                <input id="plus_code" type="text" class="form-control{{ $errors->has('plus_code') ? ' is-invalid' : '' }}" name="plus_code" value="{{ old('plus_code') }}">
+                                <input id="plus_code" type="text" class="form-control form-control-sm{{ $errors->has('plus_code') ? ' is-invalid' : '' }}" name="plus_code" value="{{ old('plus_code') }}">
 
                                 @if ($errors->has('plus_code'))
                                     <span class="invalid-feedback" role="alert">
@@ -208,9 +208,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 @include('place.google_place_id_modal')
 
