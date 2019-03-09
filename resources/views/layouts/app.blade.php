@@ -50,13 +50,14 @@ blockquote {
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
 
-                <a class="" href="{{ url('/') }}">
-                   {{ __('Map') }}
-                </a>
-
-                &nbsp;
-
-                <a href="{{ route('place.table') }}">{{ __('Table') }}</a>
+                <ul class="navbar-nav mr-auto" style="flex-direction: row;">
+                    <li class="nav-item mr-3 mr-md-0">
+                        <a class="nav-link" href="{{ route('place.map') }}">{{ __('Map') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('place.table') }}">{{ __('Table') }}</a>
+                    </li>
+                </ul>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
