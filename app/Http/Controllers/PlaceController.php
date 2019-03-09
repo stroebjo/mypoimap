@@ -169,6 +169,11 @@ class PlaceController extends Controller
      */
     public function destroy(Place $place)
     {
-        //
+        if ($place->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $place->delete();
+        return redirect()->route('place.table');
     }
 }

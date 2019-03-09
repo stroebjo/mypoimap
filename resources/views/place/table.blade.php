@@ -6,6 +6,11 @@
 
 @section('content')
 
+<div class="container">
+
+        <div class="card">
+            <div class="card-body">
+
 
 <table id="poitable" class="table">
 
@@ -13,9 +18,9 @@
 
         <tr>
             <th>{{ __('Name')}}</th>
-            <th>{{ __('Location')}}</th>
             <th>{{ __('Priority')}}</th>
-
+            <th class="no-sort">{{ __('Location')}}</th>
+            <th class="no-sort text-right">{{ __('Actions')}}</th>
         </tr>
 
 
@@ -36,21 +41,36 @@
             </a>
             @endif
 
-            <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="js-open-modal">{{ __('Info')}}</button>
-
             <div style="display: none">
                 {{ $place->description }}
             </div>
 
         </td>
 
-        <td>
-            <a href="https://www.google.com/maps/search/?api=1&query={{ $place->location->getLat() }},{{ $place->location->getLng() }}">{{ __('Maps') }}</a> |
-            <a href="http://maps.google.com/maps?f=d&daddr={{ $place->location->getLat() }},{{ $place->location->getLng() }}">{{ __('Directions') }}</a>
-        </td>
 
         <td>
             {{ $place->priority }}
+        </td>
+
+
+        <td>
+            <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer">{{ __('Maps') }}</a> |
+            <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">{{ __('Directions') }}</a>
+        </td>
+
+        <td>
+                <div class="d-flex justify-content-end">
+
+            <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="btn btn-sm btn-primary js-open-modal">{{ __('Info')}}</button>
+            <a class="ml-1 btn btn-sm btn-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
+
+            <form class="ml-1" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
+                @csrf
+                {{ method_field('DELETE') }}
+                <button class="btn btn-sm btn-danger" type="submit">{{ __('Delete') }}</button>
+            </form>
+        </div>
+
         </td>
 
     </tr>
@@ -61,6 +81,10 @@
 </table>
 
 
+</div>
+
+</div>
+</div>
 
 
 @foreach($places as $place)
@@ -83,6 +107,8 @@
     </div>
 
 
+
+
 @endforeach
 
 
@@ -93,7 +119,12 @@
     <script>
         $(document).ready(function() {
             $('#poitable').DataTable({
-                "pageLength": 50
+                "pageLength": 50,
+
+                columnDefs: [
+                    { targets: 'no-sort', orderable: false }
+                ]
+
             });
         } );
     </script>
