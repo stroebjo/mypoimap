@@ -113,7 +113,7 @@ blockquote {
             </div>
         </nav>
 
-        <main class="">
+        <main class="@yield('mainclass', 'py-3')">
             @yield('content')
         </main>
     </div>
