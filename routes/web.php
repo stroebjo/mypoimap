@@ -23,6 +23,9 @@ Route::resources([
     'place' => 'PlaceController'
 ]);
 
+Route::get('/tags', 'PlaceController@tags')->name('tags.autocomplete');
+
+
 Route::resources([
     'user_category' => 'UserCategoryController'
 ]);

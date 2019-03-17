@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 
+use Spatie\Tags\Tag;
+
 class PlaceController extends Controller
 {
     public function __construct()
@@ -35,6 +37,19 @@ class PlaceController extends Controller
             'places' => $places,
             'categories' => $categories,
         ]);
+    }
+
+    public function tags(Request $request)
+    {
+        $q = !empty($request->q) ? $request->q : '';
+        $tags = Tag::containing($q)->get();
+        $tag_names = [];
+
+        foreach($tags as $tag) {
+            $tag_names[] = $tag->name;
+        }
+
+        return response()->json($tag_names);
     }
 
     /**

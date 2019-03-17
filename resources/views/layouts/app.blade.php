@@ -10,6 +10,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script>
+    window.app = @json([
+        'routes'     => ['tagsAutocomplete' => route('tags.autocomplete')],
+    ]);
+    </script>
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
