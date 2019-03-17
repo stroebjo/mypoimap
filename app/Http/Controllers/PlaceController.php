@@ -31,7 +31,7 @@ class PlaceController extends Controller
     public function map()
     {
         $places = Place::where('user_id', Auth::id())->get();
-        $categories = UserCategory::where('user_id', Auth::id())->get();
+        $categories =  UserCategory::where('user_id', Auth::id())->orderBy('order', 'ASC')->get();
 
         return view('place.map', [
             'places' => $places,
@@ -59,7 +59,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        $categories = UserCategory::where('user_id', Auth::id())->get();
+        $categories = UserCategory::where('user_id', Auth::id())->orderBy('order', 'ASC')->get();
 
         return view('place.create', [
             'categories' => $categories,

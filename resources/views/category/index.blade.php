@@ -17,6 +17,7 @@
         <tr>
             <th>{{ __('Name')}}</th>
             <th>{{ __('Places')}}</th>
+            <th>{{ __('Order')}}</th>
             <th class="no-sort text-right">{{ __('Actions')}}</th>
         </tr>
     </thead>
@@ -33,6 +34,10 @@
 
         <td>
             {{ $category->places->count() }}
+        </td>
+
+        <td>
+            {{ $category->order }}
         </td>
 
         <td>

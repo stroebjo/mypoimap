@@ -21,6 +21,7 @@ class PlacesTableSeeder extends Seeder
         $c->user_id = 1;
         $c->name = 'Unterkunft';
         $c->color = '#72a555';
+        $c->order = 50;
         $c->save();
         $c_unterkunft = $c->id;
 
@@ -28,6 +29,7 @@ class PlacesTableSeeder extends Seeder
         $c->user_id = 1;
         $c->name = 'Sport & Aktivitäten';
         $c->color = '#ab62c0';
+        $c->order = 40;
         $c->save();
         $c_sport = $c->id;
 
@@ -36,6 +38,7 @@ class PlacesTableSeeder extends Seeder
         $c->user_id = 1;
         $c->name = 'Kultur';
         $c->color = '#638ccc';
+        $c->order = 10;
         $c->save();
         $c_kultur = $c->id;
 

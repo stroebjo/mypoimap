@@ -22,7 +22,7 @@ class UserCategoryController extends Controller
      */
     public function index()
     {
-        $categories = UserCategory::where('user_id', Auth::id())->get();
+        $categories = UserCategory::where('user_id', Auth::id())->orderBy('order', 'ASC')->get();
         return view('category.index', ['categories' => $categories]);
     }
 
@@ -47,8 +47,9 @@ class UserCategoryController extends Controller
         $userCategory = new UserCategory();
 
         $userCategory->user_id = Auth::id();
-        $userCategory->name = $request->name;
-        $userCategory->color = $request->color;
+        $userCategory->name    = $request->name;
+        $userCategory->color   = $request->color;
+        $userCategory->order   = $request->order;
 
         $userCategory->save();
 
@@ -90,8 +91,9 @@ class UserCategoryController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $userCategory->name = $request->name;
+        $userCategory->name  = $request->name;
         $userCategory->color = $request->color;
+        $userCategory->order = $request->order;
 
         $userCategory->save();
 

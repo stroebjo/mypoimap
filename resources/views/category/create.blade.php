@@ -25,6 +25,23 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="order" class="col-md-4 col-form-label text-md-right">{{ __('Order') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="order" type="number" step="1" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ old('order', 0) }}" required>
+
+                                <small class="form-text text-muted">{{ __('Categories are order by this value, beginnging with the lowest.') }}</small>
+
+
+                                @if ($errors->has('order'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('order') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Color') }}</label>
 
                             <div class="col-md-6">
