@@ -15,7 +15,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "spatie/laravel-medialibrary": "^7.0.0",
-        "spatie/laravel-tags": "^2.2"
+        "spatie/laravel-tags": "^2.2",
+        "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -14,8 +14,22 @@
 
 // Modules
 @import 'modules/thumbgallery';
+@import 'modules/map';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+blockquote {
+    border-left: 5px solid #ddd;
+    padding-left: 5px;
+    font-style: italic;
+}
+
+.custom-color-marker {
+    margin-left: -14px;
+    margin-top: -41px;
+    width: 28px;
+    height: 41px;
 }

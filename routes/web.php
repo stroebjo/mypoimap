@@ -29,3 +29,11 @@ Route::get('/tags', 'PlaceController@tags')->name('tags.autocomplete');
 Route::resources([
     'user_category' => 'UserCategoryController'
 ]);
+
+Route::resources([
+    'filter' => 'FilterController'
+]);
+Route::get('/map/{filter}', 'FilterController@map')->name('filter.map');
+
+Route::get('/shared/map/{uuid}', 'FilterController@sharedmap')->name('filter.sahredmap');
+

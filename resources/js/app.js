@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-//window.Vue = require('vue');
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,12 +22,21 @@ require('./bootstrap');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('filter-component', require('./components/FilterComponent.vue').default);
+Vue.component('filterrow-date', require('./components/FilterRowDate.vue').default);
+Vue.component('filterrow-visited', require('./components/FilterRowVisited.vue').default);
+Vue.component('filterrow-wkt', require('./components/FilterRowWkt.vue').default);
+Vue.component('filterrow-priority', require('./components/FilterRowPriority.vue').default);
+Vue.component('filterrow-tag', require('./components/FilterRowTag.vue').default);
+
+Vue.config.ignoredElements = ['tags'];
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-/*const app = new Vue({
+const app = new Vue({
     el: '#app'
-});*/
+});

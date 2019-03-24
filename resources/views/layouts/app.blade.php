@@ -16,40 +16,16 @@
     ]);
     </script>
 
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/L.Control.Locate.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    @yield('head')
+
     @yield('style')
 
-
-
-    <style>
-#map {
-    height: calc(100vh - 55px);
-    width: 100%;
-}
-
-blockquote {
-    border-left: 5px solid #ddd;
-    padding-left: 5px;
-    font-style: italic;
-}
-
-.custom-color-marker {
-    margin-left: -14px;
-    margin-top: -41px;
-    width: 28px;
-    height: 41px;
-}
-
-</style>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
-
-
 </head>
 <body>
     <div id="app">
@@ -60,7 +36,7 @@ blockquote {
                     <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('place.map') }}">{{ __('Map') }}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('place.table') }}">{{ __('Table') }}</a>
                     </li>
                 </ul>
@@ -101,6 +77,10 @@ blockquote {
 
                                     <a class="dropdown-item" href="{{ route('user_category.index') }}">
                                         {{ __('Categories') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('filter.index') }}">
+                                        {{ __('Filters') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
