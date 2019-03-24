@@ -40,3 +40,5 @@ Vue.config.ignoredElements = ['tags'];
 const app = new Vue({
     el: '#app'
 });
+
+require('./tagify');
