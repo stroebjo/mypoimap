@@ -76,7 +76,7 @@ class Filter extends Model
 
                 case 'visited':
                     $column   = 'visited_at';
-                    $whereFnc = $where . ($filter->fields->operator === 'is') ? 'NotNull' : 'Null';
+                    $whereFnc = $where . (($filter->fields->operator === 'is') ? 'NotNull' : 'Null');
 
                     $query->$whereFnc($column);
                 break;
