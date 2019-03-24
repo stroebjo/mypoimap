@@ -195,6 +195,24 @@
                         </div>
 
 
+                        <div class="form-group row">
+                            <label for="unesco_world_heritage" class="col-md-4 col-form-label text-md-right">{{ __('UNESCO World Heritage ID') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="unesco_world_heritage" type="text" class="form-control{{ $errors->has('unesco_world_heritage') ? ' is-invalid' : '' }}" name="unesco_world_heritage" value="{{ old('unesco_world_heritage') }}">
+
+                                <small class="form-text text-muted">Get the ID from the URL of the <a href="https://whc.unesco.org/en/list/" rel="noreferrer" target="_blank">World Heritage List</a> item.</small>
+
+
+                                @if ($errors->has('unesco_world_heritage'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('unesco_world_heritage') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

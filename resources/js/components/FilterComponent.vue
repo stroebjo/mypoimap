@@ -81,6 +81,10 @@
                             <filterrow-priority v-bind:fields="filter.fields"></filterrow-priority>
                         </div>
 
+                        <div v-if="filter.type == 'unesco'">
+                            <filterrow-unesco v-bind:fields="filter.fields"></filterrow-unesco>
+                        </div>
+
                         <div v-if="filter.type == 'wkt'">
                             <filterrow-wkt v-bind:fields="filter.fields"></filterrow-wkt>
                         </div>
@@ -120,7 +124,6 @@
 
 <script>
     export default {
-
         data() {
             return {
                 fields: {
@@ -136,6 +139,7 @@
                 options: [
                     { text: 'Tag', value: 'tag' },
                     { text: 'Priority', value: 'priority' },
+                    { text: 'UNESCO', value: 'unesco' },
                     { text: 'Geofence (WKT)', value: 'wkt' },
                     { text: 'Visited', value: 'visited' },
                     { text: 'Creation date', value: 'creation_date' },

@@ -100,4 +100,9 @@ class Place extends Model implements HasMedia
         return 'https://www.google.com/maps/dir/?' . http_build_query($query);
     }
 
+    public function getunescoWorldHeritageLinkAttribute()
+    {
+        return 'https://whc.unesco.org/en/list/' . $this->unesco_world_heritage;
+    }
+
 }

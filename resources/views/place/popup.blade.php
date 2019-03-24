@@ -13,6 +13,11 @@
     <small>
         <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer">{{ __('Maps') }}</a> |
         <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">{{ __('Directions') }}</a> |
+
+        @if (!empty($place->unesco_world_heritage))
+            <a href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a> |
+        @endif
+
         {{ $place->getLatLng() }} |
         Prio: {{ $place->priority }}
     </small>

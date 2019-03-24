@@ -48,6 +48,13 @@ class Filter extends Model
                     $query->$whereFnc($column, $operator, $value);
                 break;
 
+                case 'unesco':
+                    $column   = 'unesco_world_heritage';
+                    $whereFnc = $where . (($filter->fields->operator === 'is') ? 'NotNull' : 'Null');
+
+                    $query->$whereFnc($column);
+                break;
+
                 case 'wkt':
                     $whereFnc = $where . 'Raw';
                     $value    = $filter->fields->value;

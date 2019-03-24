@@ -28,6 +28,7 @@ Vue.component('filterrow-visited', require('./components/FilterRowVisited.vue').
 Vue.component('filterrow-wkt', require('./components/FilterRowWkt.vue').default);
 Vue.component('filterrow-priority', require('./components/FilterRowPriority.vue').default);
 Vue.component('filterrow-tag', require('./components/FilterRowTag.vue').default);
+Vue.component('filterrow-unesco', require('./components/FilterRowUnesco.vue').default);
 
 Vue.config.ignoredElements = ['tags'];
 

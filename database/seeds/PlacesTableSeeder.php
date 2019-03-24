@@ -50,6 +50,7 @@ class PlacesTableSeeder extends Seeder
         $p->description = 'Thugga war eine antike Stadt im heutigen Tunesien, deren Überreste heute zum Teil freigelegt sind und zu den besterhaltenen in Nordafrika zählen. Ihre Blütezeit erlebte die Stadt als Teil der römischen Provinz Africa im 3. Jahrhundert n. Chr. Ihre Geschichte liefert jedoch auch Kenntnisse über die numidische, punische und byzantinische Zeit.';
         $p->location = new Point(36.4232907, 9.2099453);
         $p->google_place_id = 'ChIJqSqRjsyC_BIRvAhsJaCR4-0';
+        $p->unesco_world_heritage = 794;
         $p->source = 'https://www.reddit.com/r/Tunisia/comments/acgfcw/the_dougga_amphitheatre/';
         $p->save();
 
