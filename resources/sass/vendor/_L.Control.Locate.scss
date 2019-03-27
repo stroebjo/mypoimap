@@ -1,0 +1,60 @@
+/* Compatible with Leaflet 0.7 */
+.leaflet-control-locate {
+    a {
+        font-size: 1.4em;
+        color: #444;
+        cursor: pointer;
+    }
+
+    &.active {
+        a {
+            color: #2074B6;
+        }
+        &.following a {
+            color: #FC8428;
+        }
+    }
+}
+
+.leafet-control-locate-location circle {
+animation: leaflet-control-locate-throb 4s ease infinite;
+}
+
+@keyframes leaflet-control-locate-throb {
+      0% { r: 9; stroke-width: 1; }
+     50% { r: 7; stroke-width: 3; }
+    100% { r: 9; stroke-width: 1; }
+}
+
+
+// icons
+.my-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+
+    svg.marker,
+    svg.spinner {
+        display: none;
+    }
+
+    &.my-marker {
+        width: 9px;
+
+        svg.marker {
+            display: inline-block;
+        }
+
+    }
+
+    &.my-spinner {
+        width: 12px;
+
+        svg.spinner {
+            display: inline-block;
+        }
+    }
+
+
+}

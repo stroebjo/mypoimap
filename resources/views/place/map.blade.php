@@ -25,30 +25,13 @@ function lsTest(){
     }
 }
 
-
-    /*
-    var map = L.map('map').setView([51.505, -0.09], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup(); */
-
-
-
-    var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
-
-    // Djerba: 33.7834477,10.8641857 12
+    var osmUrl    = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    var osm       = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
 
     // check for saved map area/zoom
     var map_position = {lat: 0, lng: 0, zoom: 3};
     if(lsTest() === true) {
-
         if (localStorage.getItem("map_position") !== null) {
             map_position = JSON.parse(localStorage.getItem("map_position"));
         }
@@ -70,11 +53,27 @@ function lsTest(){
         preferCanvas: true
     }).setView([map_position.lat, map_position.lng], map_position.zoom).addLayer(osm);
 
-    // fetch user location button
-    L.control.locate().addTo(map);
+    // Leafleat plugins, buttons, etc.
+    L.control.locate({
+        icon: 'my-icon my-marker',
+        iconLoading: 'my-icon my-spinner',
 
-    L.control.scale().addTo(map);
+        // spinner svg: https://fontawesome.com/icons/spinner?style=solid
+        // marker svg: https://fontawesome.com/icons/map-marker-alt?style=solid
+        createButtonCallback: function(container, options) {
+            var link = L.DomUtil.create('a', 'leaflet-bar-part leaflet-bar-part-single', container);
+            link.title = options.strings.title;
+            var icon = L.DomUtil.create(options.iconElementTag, options.icon, link);
 
+            icon.innerHTML = `<svg class="marker" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg>
+<svg class="spinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"></path></svg>
+`;
+
+            return { link: link, icon: icon };
+        }
+
+    }).addTo(map); // fetch user location button
+    L.control.scale().addTo(map); // km/mile scale at bottom/left
     L.control.startposition({ position: 'topleft' }).addTo(map);
 
 
