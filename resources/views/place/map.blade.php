@@ -77,21 +77,25 @@ function lsTest(){
     L.control.startposition({ position: 'topleft' }).addTo(map);
 
 
+    var markers = L.markerClusterGroup({
+        disableClusteringAtZoom: 9,
+        spiderfyOnMaxZoom: false,
+        animate: false
+    });
 
     @foreach($places as $place)
 
     L.marker([{{ $place->location->getLat() }}, {{ $place->location->getLng()}}], {
-        // unqie icon per place, so we can use visited / color settings
+        // unique icon per place, so we can use visited / color settings
         // inside the CustomColorMarker class
         icon: L.icon.customColorMarker({
             color: '{{ !is_null($place->user_category) ? $place->user_category->color : '#000000' }}',
             unique_id: '{{ $place->id}}',
             visited: {{ !is_null($place->visited_at) ? 'true' : 'false' }}
         }),
-
         title: '{{ $place->title }}',
     })
-        .addTo(map)
+        .addTo(markers)
         .bindPopup(`@include('place.popup', ['place' => $place])`)
         .on('popupopen', function(e) {
             var marker = e.popup._source;
@@ -102,5 +106,6 @@ function lsTest(){
 
     @endforeach
 
+    map.addLayer(markers);
 </script>
 @endsection
