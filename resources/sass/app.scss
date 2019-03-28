@@ -12,7 +12,11 @@
 // tagify (copied from node_modules b/c no defaults on vars?
 @import 'vendor/tagify';
 
+@import 'vendor/leaflet';
 @import 'vendor/L.Control.Locate';
+@import 'vendor/MarkerCluster';
+@import 'vendor/MarkerCluster.Default';
+
 
 // Modules
 @import 'modules/thumbgallery';

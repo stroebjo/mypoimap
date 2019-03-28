@@ -43,3 +43,11 @@ const app = new Vue({
 });
 
 require('./tagify');
+
+require('./photoswipe');
+
+
+
+
+require('./leaflet');
+
