@@ -20,12 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('head')
-
     @yield('style')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
 
                 <ul class="navbar-nav mr-auto" style="flex-direction: row;">

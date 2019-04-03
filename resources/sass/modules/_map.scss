@@ -1,4 +1,15 @@
+
+// height of hte navbar
+$map-navbar-height: 55px;
+
+// declare global CSS var to be changed dynamically on the client side with JavaSript.
+// this prevents the scroll issues with vh and mobile (smaller browser UI after
+// scrolling).
+:root {
+    --app-height: calc(100vh - #{$map-navbar-height});
+}
+
 #map {
-    height: calc(100vh - 55px);
+    height: var(--app-height);
     width: 100%;
 }

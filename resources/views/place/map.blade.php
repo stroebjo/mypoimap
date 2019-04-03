@@ -107,5 +107,19 @@ function lsTest(){
     @endforeach
 
     map.addLayer(markers);
+
+
+/**
+ * Small inline function to set dynamicalle viewport height on mobile.
+ * Prevents vh + mobile issue with scrolling.
+ *
+ */
+const appHeight = () => {
+    const doc = document.documentElement;
+    // set global css variable
+    doc.style.setProperty('--app-height', `${window.innerHeight - document.getElementById('navbar').offsetHeight}px`);
+}
+window.addEventListener('resize', appHeight)
+appHeight()
 </script>
 @endsection
