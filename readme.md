@@ -2,6 +2,9 @@
 
 This is a simple map on wich you can store point of interest to you. Think of it as an geographical todo list. I use it to store POIs I want to visit someday and write down notes about places I visited. 
 
+![Screenshot of Map with some saved places](./poi-map-example.png)
+
+
 ## Installation
 
 - Clone the Repo
