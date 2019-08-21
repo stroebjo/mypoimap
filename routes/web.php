@@ -11,7 +11,13 @@
 |
 */
 
-Auth::routes();
+
+/**
+ * Registration is disabled. Use first line and comment out second line to enable.
+ *
+ */
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', 'PlaceController@map')->name('place.map');
 Route::get('/table', 'PlaceController@index')->name('place.table');
