@@ -29,6 +29,9 @@ Route::resources([
     'place' => 'PlaceController'
 ]);
 
+Route::get('/kml', 'PlaceController@kml')->name('place.kml');
+
+
 Route::get('/tags', 'PlaceController@tags')->name('tags.autocomplete');
 
 

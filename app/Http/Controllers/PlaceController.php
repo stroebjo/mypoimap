@@ -39,6 +39,18 @@ class PlaceController extends Controller
         ]);
     }
 
+
+    public function kml()
+    {
+        $places = Place::where('user_id', Auth::id())->get();
+        $categories =  UserCategory::where('user_id', Auth::id())->orderBy('order', 'ASC')->get();
+
+        return view('place.kml', [
+            'places' => $places,
+        ]);
+    }
+
+
     public function tags(Request $request)
     {
         $q = !empty($request->q) ? $request->q : '';
