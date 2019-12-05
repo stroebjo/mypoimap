@@ -12,3 +12,4 @@ yarn-error.log
 /log
 
 deploy.php
+.DS_Store
