@@ -10,24 +10,24 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.0.0",
-        "cross-env": "^5.1",
+        "axios": "^0.18.1",
+        "bootstrap": "^4.4.1",
+        "cross-env": "^5.2.1",
         "jquery": "^3.4",
-        "laravel-mix": "^4.0.7",
+        "laravel-mix": "^4.1.4",
         "lodash": "^4.17.13",
-        "popper.js": "^1.12",
-        "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.6"
+        "popper.js": "^1.16.0",
+        "resolve-url-loader": "^2.3.2",
+        "sass": "^1.23.7",
+        "sass-loader": "^7.3.1",
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@yaireo/tagify": "^2.13.0",
-        "datatables.net-bs4": "^1.10.19",
-        "leaflet": "^1.4.0",
-        "leaflet.locatecontrol": "^0.66.1",
+        "@yaireo/tagify": "^2.31.6",
+        "datatables.net-bs4": "^1.10.20",
+        "leaflet": "^1.6.0",
+        "leaflet.locatecontrol": "^0.66.2",
         "leaflet.markercluster": "^1.4.1",
         "photoswipe": "^4.1.3"
     }
