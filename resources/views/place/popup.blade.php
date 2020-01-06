@@ -73,8 +73,8 @@
     <hr>
 
     <small>
-        <!-- <a href="{{ route('place.show', ['id' => $place->id]) }}">{{ __('Details')}}</a> -->
-        <a href="{{ route('place.edit', ['id' => $place->id]) }}">{{ __('Edit')}}</a>
+        <!-- <a href="{{ route('place.show', ['place' => $place->id]) }}">{{ __('Details')}}</a> -->
+        <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
     </small>
 
 </div>
