@@ -13,3 +13,4 @@ yarn-error.log
 
 deploy.php
 .DS_Store
+*.code-workspace
