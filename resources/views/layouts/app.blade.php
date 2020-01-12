@@ -34,6 +34,9 @@
                     <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('place.table') }}">{{ __('Table') }}</a>
                     </li>
+                    <li class="nav-item mr-3 mr-md-0">
+                        <a class="nav-link" href="{{ route('journey.index') }}">{{ __('Journeys') }}</a>
+                    </li>
                 </ul>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -68,6 +71,10 @@
 
                                     <a class="dropdown-item" href="{{ route('place.create') }}">
                                         {{ __('Add Place') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('journey.create') }}">
+                                        {{ __('Add journey') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('user_category.index') }}">

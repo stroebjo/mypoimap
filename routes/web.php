@@ -26,7 +26,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resources([
-    'place' => 'PlaceController'
+    'place' => 'PlaceController',
+    'journey' => 'JourneyController'
 ]);
 
 Route::get('/kml', 'PlaceController@kml')->name('place.kml');
@@ -45,4 +46,4 @@ Route::resources([
 Route::get('/map/{filter}', 'FilterController@map')->name('filter.map');
 
 Route::get('/shared/map/{uuid}', 'FilterController@sharedmap')->name('filter.sahredmap');
-
+Route::get('/shared/journey/{uuid}', 'SharedController@journey')->name('shared.journey');

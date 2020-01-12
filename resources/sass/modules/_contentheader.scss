@@ -1,0 +1,10 @@
+.m-contentheader {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    @include media-breakpoint-down(sm) {
+        padding-bottom: 0.5rem;
+    }
+
+}
