@@ -8,8 +8,13 @@
 
 <div class="container">
 
-<div class="card">
-    <div class="card-body">
+    <header class="m-contentheader d-sm-flex justify-content-between">
+        <h1 class="h2">{{ __('Categories') }}</h1>
+
+        <div>
+            <a class="btn btn-sm btn-primary" href="{{ route('user_category.create', []) }}">{{ __('Add new category') }}</a>
+        </div>
+    </header>
 
 <table id="user_category_table" class="table table-sm table-hover">
 
@@ -28,8 +33,8 @@
 
     <tr>
         <td>
-            {{ $category->name }}
             <span class="badge" style="display: inline-block; width: 1em; height: 1em; background: {{ $category->color }}"></span>
+            {{ $category->name }}
         </td>
 
         <td>
@@ -61,15 +66,7 @@
 
 </table>
 
-<hr>
-
-<a class="btn btn-primary" href="{{ route('user_category.create', []) }}">{{ __('Add new category') }}</a>
-
 </div>
-
-</div>
-</div>
-
 
 @endsection
 

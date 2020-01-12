@@ -8,9 +8,13 @@
 
 <div class="container">
 
-        <div class="card">
-            <div class="card-body">
+    <header class="m-contentheader d-sm-flex justify-content-between">
+        <h1 class="h2">{{ __('Places') }}</h1>
 
+        <div>
+            <a class="btn btn-sm btn-primary" href="{{ route('place.create', []) }}">{{ __('Add new place') }}</a>
+        </div>
+    </header>
 
 <table id="poitable" class="table">
 
@@ -79,13 +83,7 @@
     </tbody>
 
 </table>
-
-
 </div>
-
-</div>
-</div>
-
 
 @foreach($places as $place)
 

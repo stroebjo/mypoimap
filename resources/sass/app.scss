@@ -24,8 +24,11 @@
 @import 'modules/contentheader';
 
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid $border-color;
+}
+
+.btn-dropdown-add {
+    border-color: $border-color;
 }
 
 blockquote {
