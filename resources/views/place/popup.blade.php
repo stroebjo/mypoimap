@@ -35,7 +35,7 @@
     @endif
 
     <div class="m-popup-description">
-    {!! $place->getHTMLDescription() !!}
+        @parsedown($place->description)
     </div>
 
     @if(count($place->getMedia('images')) > 0 )
@@ -64,7 +64,7 @@
     <div class="m-popup-review">
         <hr>
         <b>{{ __('was there at :date:', ['date' => $place->visited_at]) }}</b><br>
-        {!! $place->getHTMLReview() !!}
+        @parsedown($place->visit_review)
         </div>
 
 

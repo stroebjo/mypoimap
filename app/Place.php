@@ -50,18 +50,6 @@ class Place extends Model implements HasMedia
         return implode(', ', $tag_names);
     }
 
-    public function getHTMLDescription()
-    {
-		$Parsedown = new \Parsedown();
-		return $Parsedown->text($this->description);
-    }
-
-    public function getHTMLReview()
-    {
-		$Parsedown = new \Parsedown();
-		return $Parsedown->text($this->visit_review);
-    }
-
     public function getLatLng($seperator = ', ')
     {
         return sprintf('%s%s%s', $this->location->getLat(), $seperator, $this->location->getLng());
