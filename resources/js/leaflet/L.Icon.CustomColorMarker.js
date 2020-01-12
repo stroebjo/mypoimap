@@ -34,7 +34,8 @@ L.Icon.CustomColorMarker = L.Icon.extend({
         popupAnchor: [0, -30],
         color: '#000000',
         unique_id: 'random',
-        visited: false
+        visited: false,
+        number: false
 	},
 
 	createIcon: function () {
@@ -47,6 +48,20 @@ L.Icon.CustomColorMarker = L.Icon.extend({
         var lighterColor = pSBC(0.5, options.color);
         var darker25Color = pSBC(-0.25, options.color);
         var darker75Color = pSBC(-0.75, options.color);
+
+        var number_fillcolor = 'white';
+
+        if (options.visited) {
+            number_fillcolor = 'rgba(255, 255, 255, .8)';
+        }
+
+        var number = '';
+
+        if (options.number != false) {
+            number = `<circle cx="14.5" cy="15" r="10" stroke="#666"
+                    stroke-width="1" fill="${ number_fillcolor }" />
+    <text x="50%" y="19" text-anchor="middle" fill="#333">${ options.number }</text>`;
+        }
 
 		// marker icon L.DomUtil doesn't seem to like svg, just append out html directly
 		div.innerHTML = `<svg width="28" height="41" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -67,6 +82,8 @@ L.Icon.CustomColorMarker = L.Icon.extend({
     <path stroke-linecap="round" stroke-width="1.1" stroke="url(#d${ options.unique_id })" fill="url(#c${ options.unique_id })" d="m14.735894,2.820094c-6.573,0 -12.044,5.691 -12.044,11.866c0,2.778 1.564,6.308 2.694,8.746l9.306,17.872l9.262,-17.872c1.13,-2.438 2.738,-5.791 2.738,-8.746c0,-6.175 -5.383,-11.866 -11.956,-11.866zm0,7.155c2.584,0.017 4.679,2.122 4.679,4.71s-2.095,4.663 -4.679,4.679c-2.584,-0.017 -4.679,-2.09 -4.679,-4.679c0,-2.588 2.095,-4.693 4.679,-4.71z"/>
     <path fill="none" stroke-opacity="0.122" stroke-linecap="round" stroke-width="1.1" stroke="#fff" d="m14.722894,3.927094c-5.944,0 -10.938,5.219 -10.938,10.75c0,2.359 1.443,5.832 2.563,8.25l0.031,0.031l8.313,15.969l8.25,-15.969l0.031,-0.031c1.135,-2.448 2.625,-5.706 2.625,-8.25c0,-5.538 -4.931,-10.75 -10.875,-10.75zm0,4.969c3.168,0.021 5.781,2.601 5.781,5.781c0,3.18 -2.613,5.761 -5.781,5.781c-3.168,-0.02 -5.75,-2.61 -5.75,-5.781c0,-3.172 2.582,-5.761 5.75,-5.781z"/>
 
+    ${ number }
+
 </svg>`;
 
         if (options.visited) {
@@ -74,6 +91,8 @@ L.Icon.CustomColorMarker = L.Icon.extend({
 
     <path stroke-linecap="round" stroke-width="1.1" stroke="${ options.color }" fill-opacity=".23" fill="${ options.color }" d="m14.735894,2.820094c-6.573,0 -12.044,5.691 -12.044,11.866c0,2.778 1.564,6.308 2.694,8.746l9.306,17.872l9.262,-17.872c1.13,-2.438 2.738,-5.791 2.738,-8.746c0,-6.175 -5.383,-11.866 -11.956,-11.866zm0,7.155c2.584,0.017 4.679,2.122 4.679,4.71s-2.095,4.663 -4.679,4.679c-2.584,-0.017 -4.679,-2.09 -4.679,-4.679c0,-2.588 2.095,-4.693 4.679,-4.71z"/>
     <path fill="none" stroke-opacity="0.122" stroke-linecap="round" stroke-width="1.1" stroke="#fff" d="m14.722894,3.927094c-5.944,0 -10.938,5.219 -10.938,10.75c0,2.359 1.443,5.832 2.563,8.25l0.031,0.031l8.313,15.969l8.25,-15.969l0.031,-0.031c1.135,-2.448 2.625,-5.706 2.625,-8.25c0,-5.538 -4.931,-10.75 -10.875,-10.75zm0,4.969c3.168,0.021 5.781,2.601 5.781,5.781c0,3.18 -2.613,5.761 -5.781,5.781c-3.168,-0.02 -5.75,-2.61 -5.75,-5.781c0,-3.172 2.582,-5.761 5.75,-5.781z"/>
+
+    ${ number }
 
 </svg>`;
         }
