@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-12 col-lg-4">
-                <div class="m-journey-map" style="position: sticky">
+                <div class="m-journey-map" style="position: sticky; top: 15px">
                     <div id="map" style="width: 100%; height: 400px"></div>
                 </div>
             </div>
