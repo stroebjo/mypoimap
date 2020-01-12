@@ -51,6 +51,25 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        @auth
+
+                        <li class="nav-item mr-3">
+                            <div class="dropdown" style="padding-top: 0.4rem;">
+                            <button class="btn btn-sm btn-outline-secondary btn-dropdown-add dropdown-toggle" type="button" id="dropdown-add" data-toggle="dropdown" aria-label="{{ __('New…') }}" aria-haspopup="true" aria-expanded="false">
+                                    +
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-add">
+                                    <a class="dropdown-item" href="{{ route('place.create') }}">{{ __('Place') }}</a>
+                                    <a class="dropdown-item" href="{{ route('journey.create') }}">{{ __('Journey') }}</a>
+                                    <a class="dropdown-item" href="{{ route('filter.create') }}">{{ __('Filter') }}</a>
+                                    <a class="dropdown-item" href="{{ route('user_category.create') }}">{{ __('Category') }}</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        @endauth
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
