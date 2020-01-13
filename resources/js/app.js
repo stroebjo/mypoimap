@@ -51,3 +51,5 @@ require('./photoswipe');
 
 require('./leaflet');
 
+require('./datatables');
+

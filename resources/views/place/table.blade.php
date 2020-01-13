@@ -57,11 +57,11 @@
                 <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="ml-2 btn btn-sm btn-outline-primary js-open-modal">{{ __('Info')}}</button>
 
                 @if(!empty($edit) && $edit === true)
-                <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
+                <a class="ml-1 d-none d-sm-inline btn btn-sm btn-outline-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
                 @endif
 
                 @if(!empty($delete) && $delete === true)
-                <form class="ml-1" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
+                <form class="ml-1 d-none d-sm-inline" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>

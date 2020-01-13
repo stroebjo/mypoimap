@@ -65,8 +65,10 @@
 @section('script')
 <script>
     $(document).ready(function() {
-        $('#poitablesm').DataTable({
+        $('#poitable').DataTable({
             "pageLength": 50,
+
+            responsive: true,
 
             columnDefs: [
                 { targets: 'no-sort', orderable: false }
