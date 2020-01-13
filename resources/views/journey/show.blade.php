@@ -39,6 +39,7 @@
             <div class="col-12 col-lg-8">
                 <div class="m-journey-places">
                     @include('place.table', [
+                        'number' => true,
                         'places' => $journey->getAllPOIsInArea()]
                     )
                 </div>
@@ -49,15 +50,9 @@
                     <div id="map" style="width: 100%; height: 400px"></div>
                 </div>
             </div>
-
         </div>
 
-
-
-
-
     </article>
-
 </div>
 
 @endsection
@@ -144,7 +139,7 @@ function lsTest(){
         title: '{{ $place->title }}',
     })
         //.addTo(map)
-        .bindPopup(`@include('place.popup', ['place' => $place])`)
+        .bindPopup(`@include('place.popup', ['title' => true, 'controls' => true, 'place' => $place])`)
         .on('popupopen', function(e) {
             var marker = e.popup._source;
 
