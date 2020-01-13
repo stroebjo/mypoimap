@@ -1,0 +1,20 @@
+////
+/// Overwrites to the Bootstrap framework.
+/// This files contains changes made to available Boostrap stuff, for example
+/// because no variables are available for that change.
+////
+
+caption {
+    caption-side: top;
+}
+
+// centered+max-wdith, but flexibile on smaller sizes
+.container-fluid {
+    max-width: 1140px;
+}
+
+// custom select hast rounded corners on the inside
+.input-group-append > .custom-select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

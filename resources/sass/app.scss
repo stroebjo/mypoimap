@@ -5,6 +5,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'bootstrap-overwrites';
+@import 'bootstrap-additions';
+
 // Photoswipe
 @import '~photoswipe/src/css/main';
 @import '~photoswipe/src/css/default-skin/default-skin';
@@ -31,9 +34,15 @@
     border-bottom: 1px solid $border-color;
 }
 
-.btn-dropdown-add {
-    border-color: $border-color;
+@media (min-width: 768px) {
+    .navbar-laravel {
+        // navbar elements have .5rem padding (8px), we use 7px here to
+        // get the normal gutter width.
+        padding-left: 7px;
+        padding-right: 7px;
+    }
 }
+
 
 blockquote {
     border-left: 5px solid #ddd;
@@ -46,4 +55,13 @@ blockquote {
     margin-top: -41px;
     width: 28px;
     height: 41px;
+}
+
+.custom-color-marker {
+
+    &--highlighted {
+        circle {
+            fill: yellow;
+        }
+    }
 }

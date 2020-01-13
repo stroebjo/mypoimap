@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
 
     <header class="m-contentheader d-sm-flex justify-content-between">
         <h1 class="h2">{{ __('Filters') }}</h1>

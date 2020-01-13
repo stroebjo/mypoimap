@@ -1,0 +1,15 @@
+////
+/// Additions to the Bootstrap framework.
+/// This files contains rules that follow the Bootstrap naming,
+/// but are added by us.
+////
+
+.table-vertical-align-middle {
+    td {
+        vertical-align: middle;
+    }
+}
+
+.btn-dropdown-add {
+    border-color: $border-color;
+}

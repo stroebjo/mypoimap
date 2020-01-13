@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <nav id="navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container-fluid">
+
 
                 <ul class="navbar-nav mr-auto" style="flex-direction: row;">
                     <li class="nav-item mr-3 mr-md-0">
