@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
-@endsection
-
 @section('content')
 
 <div class="container">
