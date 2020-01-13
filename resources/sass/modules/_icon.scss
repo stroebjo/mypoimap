@@ -1,0 +1,15 @@
+.icon {
+    &--currentColor {
+        fill: currentColor;
+    }
+}
+
+.btn {
+    .icon {
+        fill: currentColor;
+        width: 16px;
+        height: 16px;
+        margin-top: -1px;
+    }
+}
+
