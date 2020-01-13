@@ -23,25 +23,15 @@ Route::get('/', 'PlaceController@map')->name('place.map');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::resources([
-    'place' => 'PlaceController',
-    'journey' => 'JourneyController'
+    'place'         => 'PlaceController',
+    'journey'       => 'JourneyController',
+    'user_category' => 'UserCategoryController',
+    'filter'        => 'FilterController'
 ]);
 
 Route::get('/kml', 'PlaceController@kml')->name('place.kml');
-
-
 Route::get('/tags', 'PlaceController@tags')->name('tags.autocomplete');
-
-
-Route::resources([
-    'user_category' => 'UserCategoryController'
-]);
-
-Route::resources([
-    'filter' => 'FilterController'
-]);
 Route::get('/map/{filter}', 'FilterController@map')->name('filter.map');
 
 Route::get('/shared/map/{uuid}', 'FilterController@sharedmap')->name('filter.sahredmap');

@@ -13,6 +13,7 @@ class FilterController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['sharedmap']);
+        $this->authorizeResource(Filter::class, 'filter');
     }
 
     /**
@@ -123,10 +124,6 @@ class FilterController extends Controller
      */
     public function update(Request $request, Filter $filter)
     {
-        if ($filter->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $filter->title = $request->title;
         $filter->description = $request->description;
 
@@ -156,10 +153,6 @@ class FilterController extends Controller
      */
     public function destroy(Filter $filter)
     {
-        if ($filter->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $filter->delete();
         return redirect()->route('filter.index');
     }

@@ -13,6 +13,7 @@ class UserCategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(UserCategory::class, 'user_category');
     }
 
     /**
@@ -87,10 +88,6 @@ class UserCategoryController extends Controller
      */
     public function update(Request $request, UserCategory $userCategory)
     {
-        if ($userCategory->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $userCategory->name  = $request->name;
         $userCategory->color = $request->color;
         $userCategory->order = $request->order;
@@ -108,10 +105,6 @@ class UserCategoryController extends Controller
      */
     public function destroy(UserCategory $userCategory)
     {
-        if ($userCategory->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $userCategory->delete();
         return redirect()->route('user_category.index');
     }

@@ -15,6 +15,7 @@ class PlaceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(Place::class, 'place');
     }
 
     /**
@@ -148,10 +149,6 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        if ($place->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $place->title = $request->title;
         $place->user_category_id = $request->user_category_id;
         $place->url = $request->url;
@@ -198,10 +195,6 @@ class PlaceController extends Controller
      */
     public function destroy(Place $place)
     {
-        if ($place->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $place->delete();
         return redirect()->route('place.table');
     }
