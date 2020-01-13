@@ -45,7 +45,7 @@
             </div>
 
             <div class="col-12 col-lg-4">
-                <div class="m-journey-map" style="position: sticky; top: 15px">
+                <div class="m-journey-map" style="position: sticky; top: 15px; z-index: 20;">
                     <div id="map" style="width: 100%; height: 400px"></div>
                 </div>
             </div>
@@ -122,6 +122,11 @@ function lsTest(){
 
     }).addTo(map); // fetch user location button
     L.control.scale().addTo(map); // km/mile scale at bottom/left
+
+    map.addControl(new L.Control.Fullscreen({
+        position: 'topright',
+        pseudoFullscreen: true // if true, fullscreen to page width and height
+    }));
 
     var markers = [];
 

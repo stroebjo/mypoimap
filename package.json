@@ -28,6 +28,7 @@
         "datatables.net-bs4": "^1.10.20",
         "datatables.net-responsive-bs4": "^2.2.3",
         "leaflet": "^1.6.0",
+        "leaflet-fullscreen": "^1.0.2",
         "leaflet.locatecontrol": "^0.66.2",
         "leaflet.markercluster": "^1.4.1",
         "photoswipe": "^4.1.3"
