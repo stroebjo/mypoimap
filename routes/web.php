@@ -21,8 +21,6 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'PlaceController@map')->name('place.map');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resources([
     'place'         => 'PlaceController',
     'journey'       => 'JourneyController',
