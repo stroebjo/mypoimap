@@ -65,3 +65,20 @@ blockquote {
         }
     }
 }
+
+
+.leaflet-popup-content {
+    margin: .5rem .75rem;
+
+    hr {
+        margin-top: .75rem;
+        margin-bottom: .5rem;
+
+        margin-left: -0.8rem;
+        margin-right: -0.8rem;
+    }
+}
+
+.leaflet-popup-close-button {
+    right: 2px;
+}

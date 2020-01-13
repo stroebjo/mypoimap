@@ -1,29 +1,32 @@
 <div class="m-popup">
 
-    <h4 class="m-popup-title">
-        @if ($place->url != '')
-        <a href="{{$place->url}}">
-        @endif
+    @if(!empty($title) && $title === true)
+    <h4 class="h5 m-popup-title">
         {{ $place->title }}
-        @if ($place->url != '')
-        </a>
-        @endif
     </h4>
+    @endif
 
-    <small>
-        <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer">{{ __('Maps') }}</a> |
-        <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">{{ __('Directions') }}</a> |
+
+    <div class="small mb-2">
+        <span>Prio: {{ $place->priority }}</span> | 
+
+        <span>
+            <span class="badge" style="display: inline-block; width: 1em; height: 1em; background: {{ $place->user_category->color }}"></span>
+            {{ $place->user_category->name }}
+        </span>
 
         @if (!empty($place->unesco_world_heritage))
-            <a href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a> |
+            | <a href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a>
         @endif
 
-        {{ $place->getLatLng() }} |
-        Prio: {{ $place->priority }}
-    </small>
+        @if ($place->url != '') |
+        <a href="{{$place->url}}">
+            @svg('link-external', 'icon--currentColor')
+        </a>
+        @endif
 
-    @if ($place->tags->count() > 0)
-        <ul style="list-style: none; padding: 0; margin: 0 0 1rem" class="d-flex">
+        @if ($place->tags->count() > 0)
+        | <div style="display: inline-block"><ul style="list-style: none; padding: 0; margin: 0" class="d-flex">
         @foreach($place->tags as $tag)
             <li class="mr-2">
                 <a rel="tag" class="" href="#">
@@ -31,8 +34,15 @@
                 </a>
             </li>
         @endforeach
-        </ul>
+        </ul></div>
     @endif
+
+    </div>
+
+    <div class="mb-2">
+        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_details_link !!}" rel="noreferrer">@svg('google-maps')</a>
+        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">@svg('directions')</a>
+    </div>
 
     <div class="m-popup-description">
         @parsedown($place->description)
@@ -70,11 +80,15 @@
 
     @endif
 
+
+    @if(!empty($controls) && $controls === true)
+    @auth
     <hr>
 
     <small>
         <!-- <a href="{{ route('place.show', ['place' => $place->id]) }}">{{ __('Details')}}</a> -->
         <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
     </small>
-
+    @endauth
+    @endif
 </div>

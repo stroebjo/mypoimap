@@ -161,9 +161,14 @@ $('.js-poitablesm-row').on('click', function() {
 
     if (lastClickedIndex !== false) {
         markers[lastClickedIndex].setZIndexOffset(0);
+        $(markers[lastClickedIndex]._icon).removeClass('custom-color-marker--highlighted');
     }
     lastClickedIndex = index;
     markers[index].setZIndexOffset(1000);
+
+
+    $(markers[index]._icon).addClass('custom-color-marker--highlighted');
+
 });
 
 

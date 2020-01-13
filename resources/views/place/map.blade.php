@@ -96,7 +96,7 @@ function lsTest(){
         title: '{{ $place->title }}',
     })
         .addTo(markers)
-        .bindPopup(`@include('place.popup', ['place' => $place])`)
+        .bindPopup(`@include('place.popup', ['title' => true, 'controls' => true, 'place' => $place])`)
         .on('popupopen', function(e) {
             var marker = e.popup._source;
 
