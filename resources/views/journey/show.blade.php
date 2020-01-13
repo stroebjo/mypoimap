@@ -10,7 +10,15 @@
             <h1 class="h2">{{ $journey->title }}</h1>
 
             <div>
+                @auth
+
+                @if ($journey->mode == 'visible_by_link')
+                    <a class="btn btn-sm btn-outline-secondary mr-1" target="_blank" href="{{ route('shared.journey', [$journey->uuid]) }}">{{ __('Public link')}} @svg('link-external')</a>
+                @endif
+
                 <a class="btn btn-sm btn-outline-primary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit') }}</a>
+
+                @endauth
             </div>
         </header>
 
@@ -30,7 +38,9 @@
 
             <div class="col-12 col-lg-8">
                 <div class="m-journey-places">
-                    @include('place.tablesm', ['places' => $journey->getAllPOIsInArea()])
+                    @include('place.table', [
+                        'places' => $journey->getAllPOIsInArea()]
+                    )
                 </div>
             </div>
 

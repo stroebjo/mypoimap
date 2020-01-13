@@ -11,7 +11,7 @@
         </div>
     </header>
 
-    <table id="journeystable" class="table">
+    <table id="journeystable" class="table table-sm">
         <thead>
             <tr>
                 <th>{{ __('Name')}}</th>
@@ -43,12 +43,12 @@
             <td>
                 <div class="d-flex justify-content-end">
 
-                    <a class="ml-1 btn btn-sm btn-secondary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit')}}</a>
+                    <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit')}}</a>
 
                     <form class="ml-1" method="POST" action="{{ route('journey.destroy', [$journey->id]) }}">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-sm btn-danger" type="submit">{{ __('Delete') }}</button>
+                        <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>
                     </form>
                 </div>
             </td>

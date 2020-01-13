@@ -28,6 +28,7 @@
 
 
                 <ul class="navbar-nav mr-auto" style="flex-direction: row;">
+                    @auth
                     <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('place.map') }}">{{ __('Map') }}</a>
                     </li>
@@ -37,6 +38,7 @@
                     <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('journey.index') }}">{{ __('Journeys') }}</a>
                     </li>
+                    @endauth
                 </ul>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -88,21 +90,23 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item" href="{{ route('place.create') }}">
-                                        {{ __('Add Place') }}
+                                    <a class="dropdown-item" href="{{ route('place.index') }}">
+                                        {{ __('Places') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('journey.create') }}">
-                                        {{ __('Add journey') }}
+                                    <a class="dropdown-item" href="{{ route('journey.index') }}">
+                                        {{ __('Journeys') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('filter.index') }}">
+                                        {{ __('Filters') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('user_category.index') }}">
                                         {{ __('Categories') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('filter.index') }}">
-                                        {{ __('Filters') }}
-                                    </a>
+                                    <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -118,7 +122,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+
         </nav>
 
         <main class="@yield('mainclass', 'py-3')">
