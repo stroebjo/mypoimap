@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $journey->title)
+
 @section('content')
 
 <div class="container-fluid">
