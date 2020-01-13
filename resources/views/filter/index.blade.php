@@ -12,7 +12,7 @@
         </div>
     </header>
 
-    <table id="poitable" class="table">
+    <table id="poitable" class="table table-sm">
         <thead>
             <tr>
                 <th>{{ __('Name')}}</th>
@@ -30,27 +30,27 @@
                 {{ $filter->title }}
 
                 <a class="" href="{{ route('filter.map', [$filter->id]) }}">{{ __('Map')}}</a>
-
-                @if ($filter->mode == 'visible_by_link')
-                    <a class="" href="{{ route('filter.sahredmap', [$filter->uuid]) }}">{{ __('Public map')}}</a>
-                @endif
             </td>
 
             <td>
-                @foreach($filter->places() as $place)
-                    {{ $place->title}} <br>
-                @endforeach
+                {{ $filter->places()->count() }}
             </td>
 
             <td>
                 <div class="d-flex justify-content-end">
 
-                    <a class="ml-1 btn btn-sm btn-secondary" href="{{ route('filter.edit', [$filter]) }}">{{ __('Edit')}}</a>
+                    @if ($filter->mode == 'visible_by_link')
+                        <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.sahredmap', [$filter->uuid]) }}">
+                            {{ __('Public map')}} @svg('link-external')
+                        </a>
+                    @endif
+
+                    <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.edit', [$filter]) }}">{{ __('Edit')}}</a>
 
                     <form class="ml-1" method="POST" action="{{ route('filter.destroy', [$filter->id]) }}">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <button class="btn btn-sm btn-danger" type="submit">{{ __('Delete') }}</button>
+                        <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>
                     </form>
                 </div>
             </td>

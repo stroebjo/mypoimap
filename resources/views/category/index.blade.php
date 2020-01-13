@@ -45,12 +45,12 @@
 
             <div class="d-flex justify-content-end">
 
-            <a class="btn btn-sm btn-secondary" href="{{ route('user_category.edit', [$category->id]) }}">{{ __('Edit') }}</a>
+            <a class="btn btn-sm btn-outline-secondary" href="{{ route('user_category.edit', [$category->id]) }}">{{ __('Edit') }}</a>
 
             <form class="ml-1" method="POST" action="{{ route('user_category.destroy', [$category->id]) }}">
                     @csrf
                     {{ method_field('DELETE') }}
-                    <button class="btn btn-sm btn-danger{{ (($category->places->count() > 0) ? ' js-category-not_empty disabled' : '') }}" type="submit">{{ __('Delete') }}</button>
+                    <button class="btn btn-sm btn-outline-danger{{ (($category->places->count() > 0) ? ' js-category-not_empty disabled' : '') }}" type="submit">{{ __('Delete') }}</button>
             </form>
 
         </div>
