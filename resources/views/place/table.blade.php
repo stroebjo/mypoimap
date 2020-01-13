@@ -1,129 +1,109 @@
-@extends('layouts.app')
-
-@section('style')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
-@endsection
-
-@section('content')
-
-<div class="container">
-
-    <header class="m-contentheader d-sm-flex justify-content-between">
-        <h1 class="h2">{{ __('Places') }}</h1>
-
-        <div>
-            <a class="btn btn-sm btn-primary" href="{{ route('place.create', []) }}">{{ __('Add new place') }}</a>
-        </div>
-    </header>
-
-<table id="poitable" class="table">
-
+<table id="poitable" class="table table-hover table-sm table-vertical-align-middle">
     <thead>
-
         <tr>
-            <th>{{ __('Name')}}</th>
-            <th>{{ __('Priority')}}</th>
-            <th class="no-sort">{{ __('Location')}}</th>
-            <th class="no-sort text-right">{{ __('Actions')}}</th>
+            @if(!empty($number) && $number === true)
+            <th class="all">#</th>
+            @endif
+            <th class="all">{{ __('Name')}}</th>
+            <th class="all">{{ __('Prio')}}</th>
+            <th class="desktop">{{ __('Category')}}</th>
+            <th class="all no-sort text-right">{{ __('Actions')}}</th>
         </tr>
-
-
     </thead>
 
     <tbody>
-
     @foreach($places as $place)
+    <tr class="js-poitablesm-row" data-index="{{ $loop->index }}">
 
-    <tr>
+        @if(!empty($number) && $number === true)
+        <td class="text-right">{{ $loop->iteration }}</td>
+        @endif
 
         <td>
-            @if ($place->url != '')
-            <a href="{{$place->url}}">
-            @endif
             {{ $place->title }}
+
             @if ($place->url != '')
+            <a class="ml-2" href="{{$place->url}}">
+                @svg('link-external', 'icon--currentColor')
             </a>
             @endif
 
+            {{-- Description in hidden container so DataTables can search in description... --}}
             <div style="display: none">
                 {{ $place->description }}
             </div>
-
         </td>
-
 
         <td>
             {{ $place->priority }}
         </td>
 
-
         <td>
-            <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer">{{ __('Maps') }}</a> |
-            <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">{{ __('Directions') }}</a>
+            <span class="badge" style="display: inline-block; width: 1em; height: 1em; background: {{ $place->user_category->color }}"></span>
+            {{ $place->user_category->name }}
         </td>
 
         <td>
-                <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end">
 
-            <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="btn btn-sm btn-primary js-open-modal">{{ __('Info')}}</button>
-            <a class="ml-1 btn btn-sm btn-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
+                <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer" aria-label="{{ __('Open in Google Maps') }}"
+                    class="ml-1 btn btn-sm btn-outline-primary">
+                    @svg('google-maps')
+                </a>
+                <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer" aria-label="{{ __('Directions') }}"
+                    class="ml-1 btn btn-sm btn-outline-primary">@svg('directions')
+                </a>
 
-            <form class="ml-1" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
-                @csrf
-                {{ method_field('DELETE') }}
-                <button class="btn btn-sm btn-danger" type="submit">{{ __('Delete') }}</button>
-            </form>
-        </div>
+                <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="ml-2 btn btn-sm btn-outline-primary js-open-modal">{{ __('Info')}}</button>
 
+                @if(!empty($edit) && $edit === true)
+                <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
+                @endif
+
+                @if(!empty($delete) && $delete === true)
+                <form class="ml-1" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>
+                </form>
+                @endif
+
+            </div>
         </td>
-
     </tr>
 
     @endforeach
     </tbody>
 
 </table>
-</div>
+
 
 @foreach($places as $place)
 
 <!-- Modal -->
-    <div class="modal" id="modal-place{{ $loop->index }}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="modal-place{{ $loop->index }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">{{ $place->title }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-                @include('place.popup', ['place' => $place])
-        </div>
+            <div class="modal-header">
+                <h5 class="modal-title">{{ $place->title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @include('place.popup', [
+                    'place' => $place,
+                    'title' => false
+                ])
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
     </div>
-    </div>
-
-
-
-
+</div>
 @endforeach
-
-
-
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $('#poitable').DataTable({
-                "pageLength": 50,
-
-                columnDefs: [
-                    { targets: 'no-sort', orderable: false }
-                ]
-
-            });
-        } );
-    </script>
-@endsection

@@ -20,7 +20,6 @@
 Auth::routes(['register' => false]);
 
 Route::get('/', 'PlaceController@map')->name('place.map');
-Route::get('/table', 'PlaceController@index')->name('place.table');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

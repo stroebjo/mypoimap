@@ -25,7 +25,7 @@ class PlaceController extends Controller
     public function index()
     {
         $places = Place::where('user_id', Auth::id())->get();
-        return view('place.table', ['places' => $places]);
+        return view('place.index', ['places' => $places]);
     }
 
     public function map()

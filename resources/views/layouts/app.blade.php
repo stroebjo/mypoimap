@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{ route('place.map') }}">{{ __('Map') }}</a>
                     </li>
                     <li class="nav-item mr-3 mr-md-0">
-                        <a class="nav-link" href="{{ route('place.table') }}">{{ __('Table') }}</a>
+                        <a class="nav-link" href="{{ route('place.index') }}">{{ __('Table') }}</a>
                     </li>
                     <li class="nav-item mr-3 mr-md-0">
                         <a class="nav-link" href="{{ route('journey.index') }}">{{ __('Journeys') }}</a>
