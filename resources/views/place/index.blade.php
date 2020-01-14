@@ -28,6 +28,7 @@
             $('#poitable').DataTable({
                 "pageLength": 50,
 
+                bAutoWidth: false,
                 "responsive": true,
 
                 columnDefs: [

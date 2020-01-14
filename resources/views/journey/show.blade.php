@@ -66,6 +66,7 @@
             "pageLength": 50,
 
             responsive: true,
+            bAutoWidth: false,
 
             columnDefs: [
                 { targets: 'no-sort', orderable: false }
