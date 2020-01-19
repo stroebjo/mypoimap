@@ -12,8 +12,12 @@
 @import '~photoswipe/src/css/main';
 @import '~photoswipe/src/css/default-skin/default-skin';
 
-// tagify (copied from node_modules b/c no defaults on vars?
-@import 'vendor/tagify';
+
+// tagify
+$tags-border-color       : $input-border-color;
+$tags-hover-border-color : $input-border-color;
+$tags-focus-border-color : $input-focus-border-color;
+@import '~@yaireo/tagify/src/tagify';
 
 @import 'vendor/leaflet';
 @import 'vendor/L.Control.Locate';

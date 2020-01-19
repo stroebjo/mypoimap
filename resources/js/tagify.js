@@ -5,31 +5,36 @@ var input = document.querySelector('input[name=tags]');
 if (input) {
     var form = input.form;
 
-    // init Tagify script on the above inputs
-    var tagify = new Tagify(input, {
-        whitelist : [],
-        blacklist : [] // <-- passed as an attribute in this demo
-    });
-
-    var controller;
+    /**
+     * Based on the provided example code for AJAX loaded tag suggestions.
+     *
+     * @see https://github.com/yairEO/tagify#ajax-whitelist
+     *
+     */
+    var tagify = new Tagify(input, {whitelist:[]}),
+      controller; // for aborting the call
 
     // listen to any keystrokes which modify tagify's input
     tagify.on('input', onInput);
 
-    function onInput( e ) {
-    var value = e.detail;
-    tagify.settings.whitelist.length = 0; // reset the whitelist
+    function onInput(e) {
+        var value = e.detail.value;
+        tagify.settings.whitelist.length = 0; // reset the whitelist
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
-    controller && controller.abort();
-    controller = new AbortController();
+        // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
+        controller && controller.abort();
+        controller = new AbortController();
 
-    fetch(app.routes.tagsAutocomplete + '?q=' + value, {signal:controller.signal})
-        .then(RES => RES.json())
-        .then(function(whitelist){
-        tagify.settings.whitelist = whitelist;
-        tagify.dropdown.show.call(tagify, value); // render the suggestions dropdown
-        })
+        // show loading animation and hide the suggestions dropdown
+        tagify.loading(true).dropdown.hide.call(tagify)
+
+        fetch(app.routes.tagsAutocomplete + '?q=' + value, {signal:controller.signal})
+            .then(RES => RES.json())
+            .then(function(whitelist) {
+                // update inwhitelist Array in-place
+                tagify.settings.whitelist.splice(0, whitelist.length, ...whitelist)
+                tagify.loading(false).dropdown.show.call(tagify, value); // render the suggestions dropdown
+            });
     }
 
     /**
