@@ -79,3 +79,10 @@
 
 @endsection
 
+
+@section('script')
+
+@include('javascript.easymde', ['id' => 'description']);
+
+
+@endsection

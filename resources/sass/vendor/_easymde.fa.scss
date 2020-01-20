@@ -1,0 +1,98 @@
+////
+// EasyMDE requires font-awesome icon font. We don't use FA anywhere else in the
+// project and thus just define the used fa-classes here with an SVG background
+// image.
+///
+
+.fa {
+    display: inline-block;
+    //font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    width: 14px;
+    height: 14px;
+
+    &::before {
+        width: 14px;
+        background-size: auto;
+        background-repeat: no-repeat;
+        height: 14px;
+        content: "";
+        display: block;
+    }
+
+    &-bold {
+        &::before {
+            background-image: url(../svg/fa/bold-solid.svg);
+        }
+    }
+
+    &-italic {
+        &::before {
+            background-image: url(../svg/fa/italic-solid.svg);
+        }
+    }
+
+    &-heading {
+        &::before {
+            background-image: url(../svg/fa/heading-solid.svg);
+        }
+    }
+
+    &-quote-left {
+        &::before {
+            background-image: url(../svg/fa/quote-left-solid.svg);
+        }
+    }
+
+    &-list-ul {
+        &::before {
+            background-image: url(../svg/fa/list-ul-solid.svg);
+        }
+    }
+
+    &-list-ol {
+        &::before {
+            background-image: url(../svg/fa/list-ol-solid.svg);
+        }
+    }
+
+    &-link {
+        &::before {
+            background-image: url(../svg/fa/link-solid.svg);
+        }
+    }
+
+    &-image {
+        &::before {
+            background-image: url(../svg/fa/image-solid.svg);
+        }
+    }
+
+    &-eye {
+        &::before {
+            background-image: url(../svg/fa/eye-solid.svg);
+        }
+    }
+
+    &-columns {
+        &::before {
+            background-image: url(../svg/fa/columns-solid.svg);
+        }
+    }
+
+    &-arrows-alt {
+        &::before {
+            background-image: url(../svg/fa/arrows-alt-solid.svg);
+        }
+    }
+
+    &-question-circle {
+        &::before {
+            background-image: url(../svg/fa/question-circle-solid.svg);
+        }
+    }
+}
