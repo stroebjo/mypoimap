@@ -24,6 +24,12 @@ class Journey extends Model
         'origin',
     ];
 
+
+    public function journey_entries()
+    {
+        return $this->hasMany('App\JourneyEntry');
+    }
+
     public function getNightsAttribute()
     {
         return $this->start->diffInDays($this->end);

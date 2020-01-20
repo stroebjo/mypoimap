@@ -25,7 +25,8 @@ Route::resources([
     'place'         => 'PlaceController',
     'journey'       => 'JourneyController',
     'user_category' => 'UserCategoryController',
-    'filter'        => 'FilterController'
+    'filter'        => 'FilterController',
+    'journey_entry' => 'JourneyEntryController',
 ]);
 
 Route::get('/kml', 'PlaceController@kml')->name('place.kml');

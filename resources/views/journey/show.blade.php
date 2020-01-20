@@ -33,7 +33,77 @@
         </div>
 
         <div class="m-journey-description">
-            @parsedown($journey->description)
+            {{-- @parsedown($journey->description) --}}
+        </div>
+
+
+        <div class="mb-2">
+            <button type="button" class="js-days-open-all btn btn-sm btn-outline-secondary">{{ __('Open all')}}</button>
+            <button type="button" class="js-days-hide-all btn btn-sm btn-outline-secondary">{{ __('Close all')}}</button>
+            <button type="button" class="js-days-open-only-today btn btn-sm btn-outline-secondary">{{ __('Open only today')}}</button>
+        </div>
+
+        <div class="m-journey-days">
+            {{-- @foreach($journey->journey_entries as $entry) --}}
+
+            <div class="m-accordion">
+            @for ($i = 0; $i <= $journey->nights; $i++)
+@php
+$date = $journey->start->addDays($i);
+$entry = $journey->journey_entries()->where('date', '=', $date)->first();
+$trigger_text = __('Day :day (:date)', [
+    'day' => $i+1,
+    'date' => $date->format('l, j.n.'),
+]);
+
+$is_today = $date->isToday();
+$is_passed = $date->isPast();
+$is_empty = !(bool) ($entry);
+
+$is_hidden = ($is_passed or $is_empty);
+$aria_expanded = ($is_hidden) ? "false" : "true";
+@endphp
+                <div id="day{{$i}}" class="m-accordion-item @if($is_empty) m-accordion-item--empty @endif @if($is_passed) m-accordion-item--muted @endif @if($is_today) m-accordion-item--highlighted @endif">
+                    <div class="m-accordion-item-top">
+                        <div>
+                            @if($is_empty)
+                                <span class="m-accordion-item-top-trigger">
+                                    {{ $trigger_text }}
+                                </span>
+                            @else {{ __('')}}
+                                <a class="m-accordion-item-top-trigger" data-toggle="collapse" href="#journey-day-{{ $i }}" role="button" aria-expanded="{{ $aria_expanded }}" aria-controls="journey-day-{{ $i }}">
+                                    {{ $trigger_text }}
+                                </a>
+                            @endif
+
+                            @include('misc.lunarphase', ['date' => $date])
+                        </div>
+                        <div>
+                            @auth
+                                @if($is_empty)
+                                    <a href="{{ route('journey_entry.create', [
+                                        'journey' => $journey->id,
+                                        'date' => $date->toDateString()
+                                    ]) }}" class="btn btn-sm btn-outline-secondary">{{ __('Create')}}</a>
+                                @else {{ __('')}}
+                                    <a href="{{ route('journey_entry.edit', [
+                                        'journey_entry' => $entry->id,
+                                    ]) }}" class="btn btn-sm btn-outline-secondary">{{ __('Edit')}}</a>
+                                @endif
+                            @endauth
+                        </div>
+                    </div>
+
+                    @if(!$is_empty)
+                        <div class="collapse multi-collapse @if(!$is_hidden) show @endif" id="journey-day-{{ $i }}">
+                            <div class="m-accordion-item-content">
+                                @parsedown($entry->description)
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                @endfor
+            </div>
         </div>
 
         <div class="row">
@@ -57,6 +127,7 @@
     </article>
 </div>
 
+
 @endsection
 
 @section('script')
@@ -73,7 +144,28 @@
             ]
 
         });
-    } );
+    });
+
+    $('.js-days-open-only-today').on('click', function() {
+        $(".m-accordion-item:not('.m-accordion-item--highlighted')").each(function() {
+            $(this).children('.collapse').collapse('hide');
+        });
+
+        $('.m-accordion-item--highlighted .collapse').collapse('show');
+    });
+
+    $('.js-days-open-all').on('click', function() {
+        $(".m-accordion-item").each(function() {
+            $(this).children('.collapse').collapse('show');
+        });
+    });
+
+    $('.js-days-hide-all').on('click', function() {
+        $(".m-accordion-item").each(function() {
+            $(this).children('.collapse').collapse('hide');
+        });
+    });
+
 </script>
 
 <script>

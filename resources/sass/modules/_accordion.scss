@@ -1,0 +1,78 @@
+
+
+
+.m-accordion {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 1rem;
+
+    &-item {
+        &--highlighted {
+            background: rgba(255, 255, 0, .1);
+        }
+
+        &--muted {
+            .m-accordion-item-top-trigger {
+                color: #6c757d;
+            }
+        }
+
+        &--empty {
+            .m-accordion-item-top-trigger {
+                color: #6c757d;
+                font-weight: normal;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+
+        &-top {
+            border-top: 1px solid $border-color;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-trigger {
+                display: inline-block;
+                padding: .5rem 0 .5rem 1.5rem;
+
+                position: relative;
+
+                font-weight: bold;
+                color: currentColor;
+
+                &:hover,
+                &:focus {
+                    color: currentColor;
+                }
+
+                &::before {
+                    content: '';
+                    width: 7px;
+                    height: 7px;
+                    border-top: 2px solid #6c757d;
+                    border-right: 2px solid #6c757d;
+                    transform: rotate(135deg);
+                    right: 3px;
+                    position: absolute;
+                    left: .5rem;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(135deg);
+                }
+
+                &[aria-expanded="false"]::before {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+        }
+
+
+        &-content {
+            margin-top: .5rem;
+            padding-bottom: 1px; // make sure margin of child expand the background color
+        }
+
+    }
+}

@@ -34,6 +34,7 @@ $tags-focus-border-color : $input-focus-border-color;
 @import 'modules/thumbgallery';
 @import 'modules/map';
 @import 'modules/contentheader';
+@import 'modules/accordion';
 
 .navbar-laravel {
     border-bottom: 1px solid $border-color;
@@ -86,4 +87,14 @@ blockquote {
 
 .leaflet-popup-close-button {
     right: 2px;
+}
+
+// on edit forms the delete button is an extra form after the edit form.
+// this class visually moves the delete button into the same row as cancel/update buttons.
+.card-form-delete {
+    height: 0;
+
+    .btn {
+        transform: translateY(-100%);
+    }
 }
