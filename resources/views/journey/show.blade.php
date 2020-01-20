@@ -32,8 +32,8 @@
             ]) }}</p>
         </div>
 
-        <div class="m-journey-description">
-            {{-- @parsedown($journey->description) --}}
+        <div class="m-journey-description mb-3">
+            @parsedown($journey->description)
         </div>
 
 
