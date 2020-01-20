@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
+
 
 class Journey extends Model
 {
+    use SpatialTrait;
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -14,6 +18,10 @@ class Journey extends Model
     protected $dates = [
         'start',
         'end',
+    ];
+
+    protected $spatialFields = [
+        'origin',
     ];
 
     public function getNightsAttribute()

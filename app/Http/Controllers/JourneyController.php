@@ -6,6 +6,7 @@ use App\Journey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 
 class JourneyController extends Controller
 {
@@ -54,6 +55,10 @@ class JourneyController extends Controller
         $journey->start = $request->start;
         $journey->end   = $request->end;
         $journey->area = $request->area;
+
+        if ($request->lat && $request->lng) {
+            $journey->origin = new Point($request->lat, $request->lng);	// (lat, lng)
+        }
 
         if ($request->visibility === 'visible_by_link') {
             $journey->mode = 'visible_by_link';
@@ -106,6 +111,12 @@ class JourneyController extends Controller
         $journey->start = $request->start;
         $journey->end   = $request->end;
         $journey->area = $request->area;
+
+        if ($request->lat && $request->lng) {
+            $journey->origin = new Point($request->lat, $request->lng);	// (lat, lng)
+        } else {
+            $journey->origin = null;
+        }
 
         if ($request->visibility === 'visible_by_link') {
             if (is_null($journey->uuid)) {

@@ -54,6 +54,42 @@
                             </div>
                         </div>
 
+
+                        <div class="row">
+
+                            <div class="col-md-4 text-md-right">
+                                Origin
+                                <label for="lat" class="col-form-label">{{ __('Lat') }}</label> /
+                                <label for="lng" class="col-form-label">{{ __('Lng') }}</label>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat', ($journey->origin ? $journey->origin->getLat() : '')) }}">
+
+                                        @if ($errors->has('lat'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('lat') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-6">
+                                        <input id="lng" type="text" class="form-control{{ $errors->has('lng') ? ' is-invalid' : '' }}" name="lng" value="{{ old('lng', ($journey->origin ? $journey->origin->getLng() : '')) }}">
+
+                                        @if ($errors->has('lng'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('lng') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="area" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
 
