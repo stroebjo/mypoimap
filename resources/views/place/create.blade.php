@@ -173,8 +173,8 @@
                                 <span class="col-form-label">
                                     <label for="google_place_id" class=" col-form-label">{{ __('Google Place ID') }}</label>
 
-                                    <button type="button" class="" data-toggle="modal" data-target="#modal_google_place_id">
-                                        ?
+                                    <button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#modal_google_place_id">
+                                        @svg('question')
                                     </button>
                                 </span>
                             </div>
