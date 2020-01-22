@@ -91,23 +91,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="description" class="">{{ __('Description') }}</label>
+                            <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
+                            <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
 
-                        <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
-
-                            <div class="col-md-6">
-
-                                <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
-                                <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
-
-                                @if ($errors->has('description'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('description') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('description'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </span>
+                            @endif
                         </div>
-
 
                         <div class="row">
 
@@ -234,4 +228,5 @@
 @section('script')
 <script src="{{ asset('js/openlocationcode.min.js') }}"></script>
 <script src="{{ asset('js/pluscode2latlng.js') }}"></script>
+@include('javascript.easymde', ['id' => 'description']);
 @endsection
