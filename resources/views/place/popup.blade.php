@@ -35,6 +35,10 @@
             <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->url}}" target="_blank" rel="noreferrer">@svg('link-external')</a>
         @endif
 
+        @if ($place->wikipedia_url != '')
+            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->wikipedia_url}}" target="_blank" rel="noreferrer">@svg('wikipedia')</a>
+        @endif
+
         @if (!empty($place->unesco_world_heritage))
             <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->unesco_world_heritage_link !!}" target="_blank" rel="noreferrer">{{ __('UNESCO') }}</a>
         @endif

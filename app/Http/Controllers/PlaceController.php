@@ -93,6 +93,7 @@ class PlaceController extends Controller
         $place->user_category_id = $request->user_category_id;
         $place->title = $request->title;
         $place->url = $request->url;
+        $place->wikipedia_url = $request->wikipedia_url;
         $place->priority = $request->priority;
         $place->description = $request->description;
 
@@ -152,6 +153,7 @@ class PlaceController extends Controller
         $place->title = $request->title;
         $place->user_category_id = $request->user_category_id;
         $place->url = $request->url;
+        $place->wikipedia_url = $request->wikipedia_url;
         $place->priority = $request->priority;
         $place->description = $request->description;
 

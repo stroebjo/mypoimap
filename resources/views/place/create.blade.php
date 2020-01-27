@@ -60,6 +60,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="wikipedia_url" class="col-md-4 col-form-label text-md-right">{{ __('Wikipedia') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="wikipedia_url" type="url" class="form-control{{ $errors->has('wikipedia_url') ? ' is-invalid' : '' }}" name="wikipedia_url" value="{{ old('wikipedia_url') }}">
+
+                                @if ($errors->has('wikipedia_url'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('wikipedia_url') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
 
                             <div class="col-md-6">
