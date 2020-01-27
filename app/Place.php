@@ -93,4 +93,15 @@ class Place extends Model implements HasMedia
         return 'https://whc.unesco.org/en/list/' . $this->unesco_world_heritage;
     }
 
+
+    /**
+     * Create geo URI scheme
+     *
+     * @see https://en.wikipedia.org/wiki/Geo_URI_scheme
+     * @return string
+     */
+    public function getGeoUriAttribute()
+    {
+        return 'geo:' . $this->getLatLng(',');
+    }
 }

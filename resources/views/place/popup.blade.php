@@ -6,7 +6,6 @@
     </h4>
     @endif
 
-
     <div class="small mb-2">
         <span>Prio: {{ $place->priority }}</span> | 
 
@@ -15,15 +14,7 @@
             {{ $place->user_category->name }}
         </span>
 
-        @if (!empty($place->unesco_world_heritage))
-            | <a href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a>
-        @endif
-
-        @if ($place->url != '') |
-        <a href="{{$place->url}}">
-            @svg('link-external', 'icon--currentColor')
-        </a>
-        @endif
+        | <a href="{!! $place->geo_uri !!}" rel="noreferrer">{{ $place->getLatLng(',') }}</a>
 
         @if ($place->tags->count() > 0)
         | <div style="display: inline-block"><ul style="list-style: none; padding: 0; margin: 0" class="d-flex">
@@ -35,11 +26,19 @@
             </li>
         @endforeach
         </ul></div>
-    @endif
-
+        @endif
     </div>
 
     <div class="mb-2">
+
+        @if ($place->url != '')
+            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->url}}">@svg('link-external')</a>
+        @endif
+
+        @if (!empty($place->unesco_world_heritage))
+            <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a>
+        @endif
+
         <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_details_link !!}" rel="noreferrer">@svg('google-maps')</a>
         <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">@svg('directions')</a>
     </div>
