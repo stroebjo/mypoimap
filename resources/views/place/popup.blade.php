@@ -32,15 +32,15 @@
     <div class="mb-2">
 
         @if ($place->url != '')
-            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->url}}">@svg('link-external')</a>
+            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->url}}" target="_blank" rel="noreferrer">@svg('link-external')</a>
         @endif
 
         @if (!empty($place->unesco_world_heritage))
-            <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->unesco_world_heritage_link !!}" rel="noreferrer">{{ __('UNESCO') }}</a>
+            <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->unesco_world_heritage_link !!}" target="_blank" rel="noreferrer">{{ __('UNESCO') }}</a>
         @endif
 
-        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_details_link !!}" rel="noreferrer">@svg('google-maps')</a>
-        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_directions_link !!}" rel="noreferrer">@svg('directions')</a>
+        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_details_link !!}" target="_blank" rel="noreferrer">@svg('google-maps')</a>
+        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_directions_link !!}" target="_blank" rel="noreferrer">@svg('directions')</a>
     </div>
 
     <div class="m-popup-description">
