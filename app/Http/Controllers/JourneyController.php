@@ -85,6 +85,27 @@ class JourneyController extends Controller
     }
 
     /**
+     * Download .gpx file for given journey.
+     *
+     * @param  \App\Journey  $journey
+     * @return \Illuminate\Http\Response
+     */
+    public function gpx(Journey $journey)
+    {
+        $this->authorize('gpx', $journey);
+
+        $gpx_file = $journey->getGtx();
+        $file_name = $journey->getFileName();
+        $gpx_xml = $gpx_file->toXML()->saveXML();
+
+        return response($gpx_xml, 200, [
+            'Content-Type'        => 'application/gpx+xml',
+            'Content-disposition' => sprintf('attachment; filename="%s.gpx"', $file_name),
+            'Content-length'      => strlen($gpx_xml),
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Journey  $journey

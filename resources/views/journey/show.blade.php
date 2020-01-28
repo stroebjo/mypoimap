@@ -12,10 +12,20 @@
             <h1 class="h2">{{ $journey->title }}</h1>
 
             <div>
+                @php
+                // determine routes
+                $route_gpx = (!empty($shared) && $shared === true) ?
+                  route('shared_journey.gpx', ['uuid' => $journey->uuid]) :
+                  route('journey.gpx', ['journey' => $journey->id]);
+
+                @endphp
+
+                <a class="btn btn-sm btn-outline-secondary mr-1" href="{{ $route_gpx }}">{{ __('GPX')}} @svg('desktop-download')</a>
+
                 @auth
 
                 @if ($journey->mode == 'visible_by_link')
-                    <a class="btn btn-sm btn-outline-secondary mr-1" target="_blank" href="{{ route('shared.journey', [$journey->uuid]) }}">{{ __('Public link')}} @svg('link-external')</a>
+                    <a class="btn btn-sm btn-outline-secondary mr-1" target="_blank" href="{{ route('shared_journey.show', [$journey->uuid]) }}">{{ __('Public link')}} @svg('link-external')</a>
                 @endif
 
                 <a class="btn btn-sm btn-outline-primary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit') }}</a>
@@ -35,7 +45,6 @@
         <div class="m-journey-description mb-3">
             @parsedown($journey->description)
         </div>
-
 
         <div class="mb-2">
             <button type="button" class="js-days-open-all btn btn-sm btn-outline-secondary">{{ __('Open all')}}</button>

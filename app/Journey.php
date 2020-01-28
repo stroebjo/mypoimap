@@ -5,6 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 
+use phpGPX\Models\GpxFile;
+use phpGPX\Models\Link;
+use phpGPX\Models\Person;
+use phpGPX\Models\Metadata;
+use phpGPX\Models\Point as GpxPoint;
 
 class Journey extends Model
 {
@@ -52,5 +57,76 @@ class Journey extends Model
         $query->whereRaw('ST_WITHIN(location, ST_GeomFromText(?))', [$this->area]);
 
         return $query->get();
+    }
+
+    /**
+     * Return a filename WITHOUT extension derived from the title.
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return preg_replace('/[^a-z0-9]+/', '-', strtolower($this->title));
+    }
+
+    /**
+     * Generate .gpx file with all POIs in the given journey as waypoint.
+     *
+     * WikiVoyage has the same for it's articles!
+     *
+     * @return \phpGPX\Models\GpxFile
+     */
+    public function getGtx()
+    {
+        $link       = new Link();
+        $link->href = route('journey.show', $this);
+        $link->text = $this->title;
+
+        $person = new Person();
+        $person->name = config('app.name');
+        $person->links[] = $link;
+
+        $gpx_file = new GpxFile();
+
+        $gpx_file->metadata = new Metadata();
+        $gpx_file->metadata->time = new \DateTime();
+        $gpx_file->metadata->name = $this->title;
+        $gpx_file->metadata->description = $this->description;
+        $gpx_file->metadata->author = $person;
+
+        foreach($this->getAllPOIsInArea() as $place) {
+            $point = new GpxPoint(GpxPoint::WAYPOINT);
+
+            $point->name = $place->title;
+            $point->description = $place->description;
+
+            if ($place->url) {
+                $link = new Link();
+                $link->text = 'Website';
+                $link->href = $place->url;
+                $point->links[] = $link;
+            }
+
+            if ($place->wikipedia_url) {
+                $link = new Link();
+                $link->text = 'Wikipedia';
+                $link->href = $place->wikipedia_url;
+                $point->links[] = $link;
+            }
+
+            if ($place->unesco_world_heritage) {
+                $link = new Link();
+                $link->text = 'UNESCO';
+                $link->href = $place->unesco_world_heritage_link;
+                $point->links[] = $link;
+            }
+
+            $point->latitude  = $place->location->getLat();
+	        $point->longitude = $place->location->getLng();
+
+            $gpx_file->waypoints[] = $point;
+        }
+
+        return $gpx_file;
     }
 }

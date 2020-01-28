@@ -34,6 +34,18 @@ class JourneyPolicy
     }
 
     /**
+     * Determine whether the user can export the journey as gpx file.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Journey  $journey
+     * @return mixed
+     */
+    public function gpx(User $user, Journey $journey)
+    {
+        return $journey->user_id === $user->id;
+    }
+
+    /**
      * Determine whether the user can create journeys.
      *
      * @param  \App\User  $user

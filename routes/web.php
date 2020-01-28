@@ -34,4 +34,9 @@ Route::get('/tags', 'PlaceController@tags')->name('tags.autocomplete');
 Route::get('/map/{filter}', 'FilterController@map')->name('filter.map');
 
 Route::get('/shared/map/{uuid}', 'FilterController@sharedmap')->name('filter.sahredmap');
-Route::get('/shared/journey/{uuid}', 'SharedController@journey')->name('shared.journey');
+
+Route::get('/shared/journey/{uuid}', 'SharedController@journey')->name('shared_journey.show');
+Route::get('/shared/journey/{uuid}/gpx', 'SharedController@journey_gpx')->name('shared_journey.gpx');
+
+
+Route::get('/journey/{journey}/gpx', 'JourneyController@gpx')->name('journey.gpx');

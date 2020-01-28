@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0",
         "nothingworks/blade-svg": "^0.3.2",
         "parsedown/laravel": "^1.2",
+        "sibyx/phpgpx": "@RC",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-tags": "^2.2",
         "webpatser/laravel-uuid": "^3.0"
