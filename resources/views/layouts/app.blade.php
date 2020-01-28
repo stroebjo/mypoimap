@@ -24,44 +24,37 @@
 </head>
 <body>
     <div id="app">
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
 
+        <nav id="navbar" class="l-navbar navbar navbar-light">
 
                 <ul class="navbar-nav mr-auto" style="flex-direction: row;">
                     @auth
-                    <li class="nav-item mr-3 mr-md-0">
+                    <li class="nav-item mr-2 mr-md-3">
                         <a class="nav-link" href="{{ route('place.map') }}">{{ __('Map') }}</a>
                     </li>
-                    <li class="nav-item mr-3 mr-md-0">
+                    <li class="nav-item mr-2 mr-md-3">
                         <a class="nav-link" href="{{ route('place.index') }}">{{ __('Table') }}</a>
                     </li>
-                    <li class="nav-item mr-3 mr-md-0">
+                    <li class="nav-item mr-2 mr-md-3">
                         <a class="nav-link" href="{{ route('journey.index') }}">{{ __('Journeys') }}</a>
                     </li>
                     @endauth
                 </ul>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="nav ml-auto">
 
                         @auth
 
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <div class="dropdown" style="padding-top: 0.4rem;">
                             <button class="btn btn-sm btn-outline-secondary btn-dropdown-add dropdown-toggle" type="button" id="dropdown-add" data-toggle="dropdown" aria-label="{{ __('New…') }}" aria-haspopup="true" aria-expanded="false">
                                     +
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdown-add">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-add">
                                     <a class="dropdown-item" href="{{ route('place.create') }}">{{ __('Place') }}</a>
                                     <a class="dropdown-item" href="{{ route('journey.create') }}">{{ __('Journey') }}</a>
                                     <a class="dropdown-item" href="{{ route('filter.create') }}">{{ __('Filter') }}</a>
@@ -84,7 +77,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle pr-0 text-muted" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

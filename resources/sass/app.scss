@@ -31,6 +31,8 @@ $tags-focus-border-color : $input-focus-border-color;
 // DataTables
 @import 'vendor/dataTables.bootstrap4.min';
 
+// Layouts
+@import 'layouts/navbar';
 
 // Modules
 @import 'modules/icon';
