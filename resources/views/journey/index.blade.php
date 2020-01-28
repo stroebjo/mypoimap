@@ -49,14 +49,7 @@
                         </a>
                     @endif
 
-
                     <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit')}}</a>
-
-                    <form class="ml-1" method="POST" action="{{ route('journey.destroy', [$journey->id]) }}">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>
-                    </form>
                 </div>
             </td>
         </tr>

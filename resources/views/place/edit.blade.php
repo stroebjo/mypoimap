@@ -268,14 +268,26 @@
                                 </div>
                             </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="d-flex justify-content-between">
+                            <div>{{-- for justify-content-between --}}</div>
+
+                            <div>
+                                <a class="btn btn-outline-secondary" href="{{ route('place.show', [$place]) }}">{{ __('Cancel') }}</a>
+
+                                <button type="submit" class="ml-3 btn btn-primary">
                                     {{ __('Update') }}
                                 </button>
                             </div>
                         </div>
+
                     </form>
+
+                    <form class="card-form-delete" method="POST" action="{{ route('place.destroy', [$place->id]) }}">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <button class="btn btn-outline-danger" type="submit">{{ __('Delete') }}</button>
+                    </form>
+
                 </div>
             </div>
         </div>

@@ -43,12 +43,6 @@
         <td>
             <div class="d-flex justify-content-end">
                 <a class="btn btn-sm btn-outline-secondary" href="{{ route('user_category.edit', [$category->id]) }}">{{ __('Edit') }}</a>
-
-                <form class="ml-1" method="POST" action="{{ route('user_category.destroy', [$category->id]) }}">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <button class="btn btn-sm btn-outline-danger{{ (($category->places->count() > 0) ? ' js-category-not_empty disabled' : '') }}" type="submit">{{ __('Delete') }}</button>
-                </form>
             </div>
         </td>
     </tr>
@@ -63,20 +57,9 @@
 @endsection
 
 @section('script')
-
 @include('javascript.datatable', ['el' => '#user_category_table', 'opts' => [
     'info' => false,
     'paging' => false,
     'searching' => false,
 ]])
-
-    <script>
-        $('.js-category-not_empty').on('click', function(e) {
-            e.preventDefault();
-            alert('{{ __('You can not delete a category that has places.') }}');
-        });
-    </script>
 @endsection
-
-
-

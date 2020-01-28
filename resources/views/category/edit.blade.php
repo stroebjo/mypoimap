@@ -59,17 +59,38 @@
                                 </div>
                             </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="d-flex justify-content-between">
+                            <div>{{-- for justify-content-between --}}</div>
+
+                            <div>
+                                <a class="btn btn-outline-secondary" href="{{ route('user_category.index') }}">{{ __('Cancel') }}</a>
+
+                                <button type="submit" class="ml-3 btn btn-primary">
                                     {{ __('Update') }}
                                 </button>
                             </div>
                         </div>
                     </form>
+
+
+                    <form class="card-form-delete" method="POST" action="{{ route('user_category.destroy', [$category->id]) }}">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <button class="btn btn-outline-danger{{ (($category->places->count() > 0) ? ' js-category-not_empty disabled' : '') }}" type="submit">{{ __('Delete') }}</button>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $('.js-category-not_empty').on('click', function(e) {
+        e.preventDefault();
+        alert('{{ __('You can not delete a category that has places.') }}');
+    });
+</script>
 @endsection

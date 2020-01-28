@@ -55,9 +55,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="d-flex justify-content-between">
+                            <div>{{-- for justify-content-between --}}</div>
+
+                            <div>
+                                <a class="btn btn-outline-secondary" href="{{ route('user_category.index') }}">{{ __('Cancel') }}</a>
+
+                                <button type="submit" class="ml-3 btn btn-primary">
                                     {{ __('Save') }}
                                 </button>
                             </div>
