@@ -39,8 +39,7 @@
         </td>
 
         <td>
-            <span class="badge" style="display: inline-block; width: 1em; height: 1em; background: {{ $place->user_category->color }}"></span>
-            {{ $place->user_category->name }}
+            @include('category.badge', ['user_category' => $place->user_category])
         </td>
 
         <td>

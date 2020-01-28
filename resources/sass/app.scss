@@ -38,6 +38,7 @@ $tags-focus-border-color : $input-focus-border-color;
 @import 'modules/map';
 @import 'modules/contentheader';
 @import 'modules/accordion';
+@import 'modules/categorybadge';
 
 .navbar-laravel {
     border-bottom: 1px solid $border-color;
