@@ -41,13 +41,12 @@
     @endif
 
     @if(!empty($controls) && $controls === true)
-    @auth
-    <hr>
-
-    <small>
-        <!-- <a href="{{ route('place.show', ['place' => $place->id]) }}">{{ __('Details')}}</a> -->
-        <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
-    </small>
-    @endauth
+        @auth
+            <hr>
+            <small>
+                <a href="{{ route('place.show', ['place' => $place->id]) }}">{{ __('Details')}}</a> |
+                <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
+            </small>
+        @endauth
     @endif
 </div>
