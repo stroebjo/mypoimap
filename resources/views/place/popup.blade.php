@@ -14,7 +14,7 @@
             {{ $place->user_category->name }}
         </span>
 
-        | <a href="{!! $place->geo_uri !!}" rel="noreferrer">{{ $place->getLatLng(',') }}</a>
+        | <a href="{!! $place->geo_uri !!}" rel="noreferrer">{{ $place->getLatLng(', ', 5) }}</a>
 
         @if ($place->tags->count() > 0)
         | <div style="display: inline-block"><ul style="list-style: none; padding: 0; margin: 0" class="d-flex">

@@ -50,9 +50,24 @@ class Place extends Model implements HasMedia
         return implode(', ', $tag_names);
     }
 
-    public function getLatLng($seperator = ', ')
+    /**
+     * Prints lat/lng with given glue.
+     *
+     * @param string $glue - string to combine lat/lng
+     * @param null|int $decimals - if not null lat/lng will be rounded to $decimal places
+     * @return string
+     */
+    public function getLatLng($glue = ', ', $decimals = null)
     {
-        return sprintf('%s%s%s', $this->location->getLat(), $seperator, $this->location->getLng());
+        $lat = $this->location->getLat();
+        $lng = $this->location->getLng();
+
+        if (!is_null($decimals)) {
+            $lat = number_format($lat, $decimals);
+            $lng = number_format($lng, $decimals);
+        }
+
+        return sprintf('%s%s%s', $lat, $glue, $lng);
     }
 
     /**
