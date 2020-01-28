@@ -68,16 +68,7 @@
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#journeystable').DataTable({
-                "pageLength": 50,
 
-                columnDefs: [
-                    { targets: 'no-sort', orderable: false }
-                ]
+@include('javascript.datatable', ['el' => '#journeystable'])
 
-            });
-        } );
-    </script>
 @endsection

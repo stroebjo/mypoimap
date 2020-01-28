@@ -64,16 +64,7 @@
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $('#poitable').DataTable({
-                "pageLength": 50,
 
-                columnDefs: [
-                    { targets: 'no-sort', orderable: false }
-                ]
+@include('javascript.datatable', ['el' => '#poitable'])
 
-            });
-        } );
-    </script>
 @endsection

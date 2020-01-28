@@ -131,21 +131,10 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
 @endsection
 
 @section('script')
+
+@include('javascript.datatable', ['el' => '#poitable'])
+
 <script>
-    $(document).ready(function() {
-        $('#poitable').DataTable({
-            "pageLength": 50,
-
-            responsive: true,
-            bAutoWidth: false,
-
-            columnDefs: [
-                { targets: 'no-sort', orderable: false }
-            ]
-
-        });
-    });
-
     $('.js-days-open-only-today').on('click', function() {
         $(".m-accordion-item:not('.m-accordion-item--highlighted')").each(function() {
             $(this).children('.collapse').collapse('hide');

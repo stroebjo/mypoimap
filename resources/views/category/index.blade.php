@@ -63,22 +63,14 @@
 @endsection
 
 @section('script')
+
+@include('javascript.datatable', ['el' => '#user_category_table', 'opts' => [
+    'info' => false,
+    'paging' => false,
+    'searching' => false,
+]])
+
     <script>
-        $(document).ready(function() {
-            $('#user_category_table').DataTable({
-                "pageLength": 50,
-
-                "info": false,
-                "paging": false,
-                "searching": false,
-
-                columnDefs: [
-                    { targets: 'no-sort', orderable: false }
-                ]
-            });
-        } );
-
-
         $('.js-category-not_empty').on('click', function(e) {
             e.preventDefault();
             alert('{{ __('You can not delete a category that has places.') }}');
