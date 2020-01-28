@@ -17,7 +17,7 @@
                 <th>{{ __('Name')}}</th>
                 <th>{{ __('Start')}}</th>
                 <th>{{ __('End')}}</th>
-                <th>{{ __('Nights')}}</th>
+                <th class="desktop">{{ __('Nights')}}</th>
                 <th class="no-sort text-right">{{ __('Actions')}}</th>
             </tr>
         </thead>
