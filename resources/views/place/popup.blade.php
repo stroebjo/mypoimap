@@ -2,7 +2,7 @@
 
     @if(!empty($title) && $title === true)
     <h4 class="h5 m-popup-title">
-        {{ $place->title }}
+        <a href="{{ route('place.show', [$place]) }}" class="invisible-link">{{ $place->title }}</a>
     </h4>
     @endif
 

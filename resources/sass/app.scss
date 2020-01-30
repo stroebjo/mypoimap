@@ -104,3 +104,13 @@ blockquote {
         transform: translateY(-100%);
     }
 }
+
+
+.invisible-link {
+    color: currentColor;
+}
+
+
+.poitable-row--visited {
+    color: $text-muted;
+}
