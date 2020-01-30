@@ -121,8 +121,9 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
                 <div class="m-journey-places">
                     @include('place.table', [
                         'number' => true,
-                        'places' => $journey->getAllPOIsInArea()]
-                    )
+                        'places' => $journey->getAllPOIsInArea(),
+                        'journey' => $journey, // auto prefill journey_id in visit link
+                    ])
                 </div>
             </div>
 
@@ -226,7 +227,7 @@ function lsTest(){
         icon: L.icon.customColorMarker({
             color: '{{ !is_null($place->user_category) ? $place->user_category->color : '#000000' }}',
             unique_id: '{{ $place->id}}',
-            visited: {{ !is_null($place->visited_at) ? 'true' : 'false' }},
+            visited: {{ $place->isVisited() ? 'true' : 'false' }},
             number: {{ $loop->iteration }}
         }),
         title: '{{ $place->title }}',

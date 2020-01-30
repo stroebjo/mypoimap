@@ -20,6 +20,11 @@ class Place extends Model implements HasMedia
         'location',
     ];
 
+    public function visits()
+    {
+        return $this->hasMany('App\Visit');
+    }
+
     public function user_category()
     {
         return $this->belongsTo('App\UserCategory');
@@ -38,6 +43,10 @@ class Place extends Model implements HasMedia
 
     }
 
+    public function isVisited()
+    {
+        return $this->visits()->count() > 0;
+    }
 
     public function getTagsAsString()
     {

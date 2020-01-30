@@ -13,6 +13,7 @@
 
             <div>
                 @auth
+                    <a class="btn btn-sm btn-outline-primary" href="{{ route('visit.create', ['place_id' => $place->id]) }}">{{ __('Add visit')}}</a>
                     <a class="btn btn-sm btn-outline-primary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit') }}</a>
                 @endauth
             </div>
@@ -26,6 +27,27 @@
 
                     @parsedown($place->description)
                 </div>
+
+                @if($place->visits()->count() > 0)
+                    @foreach($place->visits as $visit)
+                    <div class="mb-3">
+                        <div class="m-contentheader d-sm-flex justify-content-between">
+                            <h5 class="">
+                                {{__('Visited at :date', ['date' => $visit->visited_at->toDateString()]) }}
+                                @if($visit->journey_id)
+                                    <small><a href="{{ route('journey.show', [$visit->journey_id]) }}">{{ $visit->journey->title }}</a></small>
+                                @endif
+                            </h5>
+                            <div class="mb-1">
+                                <a class="btn btn-sm btn-outline-secondary" href="{{ route('visit.edit', ['visit' => $visit]) }}">{{ __('Edit')}}</a>
+                            </div>
+                        </div>
+                        <small class="text-muted">{{ __('Rating: :rating', ['rating' => $visit->rating ?? '-'])}}</small>
+                        @parsedown($visit->review)
+                    </div>
+                    @endforeach
+                @endif
+
             </div>
 
             <div class="col-12 col-lg-4">
@@ -86,7 +108,7 @@
         icon: L.icon.customColorMarker({
             color: '{{ !is_null($place->user_category) ? $place->user_category->color : '#000000' }}',
             unique_id: '{{ $place->id}}',
-            visited: {{ !is_null($place->visited_at) ? 'true' : 'false' }}
+            visited: {{ !is_null($place->isVisited()) ? 'true' : 'false' }}
         }),
         title: '{{ $place->title }}',
     })

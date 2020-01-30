@@ -13,7 +13,7 @@
 
     <tbody>
     @foreach($places as $place)
-    <tr class="js-poitablesm-row" data-index="{{ $loop->index }}">
+    <tr class="js-poitablesm-row{{ $place->isVisited() ? ' poitable-row--visited' : '' }}" data-visited="{{ $place->isVisited() ? '1' : '0' }}" data-index="{{ $loop->index }}">
 
         @if(!empty($number) && $number === true)
         <td class="text-right">{{ $loop->iteration }}</td>
@@ -92,6 +92,11 @@
 
             <div class="modal-footer">
                 @auth
+                <a class="btn btn-sm btn-outline-primary" href="{{ route('place.show', [$place]) }}">{{ __('Show')}}</a>
+
+                <a class="btn btn-sm btn-outline-primary" href="{{ route('visit.create', ['place_id' => $place->id, 'journey_id' => $journey->id ?? null]) }}">{{ __('Add visit')}}</a>
+
+
                 <a class="btn btn-sm btn-outline-primary" href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
                 @endauth
 

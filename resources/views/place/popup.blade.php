@@ -45,7 +45,9 @@
             <hr>
             <small>
                 <a href="{{ route('place.show', ['place' => $place->id]) }}">{{ __('Details')}}</a> |
-                <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
+                <a href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a> |
+                <a href="{{ route('visit.create', ['place_id' => $place->id]) }}">{{ __('Add visit')}}</a>
+
             </small>
         @endauth
     @endif
