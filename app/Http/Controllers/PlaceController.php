@@ -163,9 +163,6 @@ class PlaceController extends Controller
         $place->google_place_id = $request->google_place_id;
         $place->unesco_world_heritage = $request->unesco_world_heritage;
 
-        $place->visited_at = $request->visited_at;
-        $place->visit_review = $request->visit_review;
-
         $place->save();
 
         // tags

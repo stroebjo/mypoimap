@@ -234,40 +234,6 @@
                         </div>
 
 
-                        <hr>
-
-                        <div class="form-group row">
-                            <label for="visited_at" class="col-md-4 col-form-label text-md-right">{{ __('Visited at') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="visited_at" type="date" class="form-control{{ $errors->has('visited_at') ? ' is-invalid' : '' }}" name="visited_at" value="{{ old('visited_at', $place->visited_at) }}">
-
-                                @if ($errors->has('visited_at'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('visited_at') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group row">
-                                <label for="visit_review" class="col-md-4 col-form-label text-md-right">{{ __('Review') }}</label>
-
-                                <div class="col-md-6">
-
-                                    <textarea rows="8" id="visit_review" class="form-control{{ $errors->has('visit_review') ? ' is-invalid' : '' }}" name="visit_review">{{ old('visit_review', $place->visit_review) }}</textarea>
-                                    <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
-
-                                    @if ($errors->has('visit_review'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('visit_review') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
                         <div class="d-flex justify-content-between">
                             <div>{{-- for justify-content-between --}}</div>
 
