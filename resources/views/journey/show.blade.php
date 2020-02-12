@@ -128,9 +128,35 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
             </div>
 
             <div class="col-12 col-lg-4">
-                <div class="m-journey-map" style="position: sticky; top: 15px; z-index: 20;">
+                <div class="m-journey-map mb-3" style="position: sticky; top: 15px; z-index: 20;">
                     <div id="map" style="width: 100%; height: 400px"></div>
                 </div>
+
+                <section>
+
+                    <header class="m-contentheader d-sm-flex justify-content-between">
+                        <h5 class="">{{ __('Tracks') }}</h1>
+
+                        <div class="mb-1">
+                            @auth
+                                <a class="btn btn-sm btn-outline-primary" href="{{ route('track.create', ['journey_id' => $journey->id]) }}">{{ __('Add track')}}</a>
+                            @endauth
+                        </div>
+                    </header>
+
+                    <div>
+
+                        @if(count($journey->tracks))
+                        <ul>
+                        @foreach($journey->tracks as $track)
+                            <li>{{ $track->name }} @auth | <a href="{{ route('track.edit', [$track]) }}">{{ __('Edit') }}</a> @endauth </li>
+                        @endforeach
+                        </ul>
+                        @else
+                            <small class="text-muted">{{ __('No tracks uploaded yet.')}}</small>
+                        @endif
+                    </div>
+                </section>
             </div>
         </div>
 
@@ -170,8 +196,35 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
 @include('javascript.leaflet', [
     'places' => $journey->getAllPOIsInArea(),
     'show_number' => true,
+    'layer_control' => true,
 ])
 
+{{-- Put all uploaded track files in the HTML (yes it's larke, but also not
+b/c of gzip). Nevertheless this is a "interesting" solution, but solves the
+issue to provide a download warpper for the files. --}}
+<script>
+const parser = new DOMParser();
+
+@foreach($journey->tracks as $track)
+@switch($track->file_extension)
+@case('kml')
+
+    const kml{{ $loop->iteration }} = parser.parseFromString({!! json_encode($track->content) !!}, 'text/xml');
+    const track{{ $loop->iteration }} = new L.KML(kml{{ $loop->iteration }});
+    layerControl.addOverlay(track{{ $loop->iteration }}, '{{ $track->name }}');
+@break
+
+@case('gpx')
+    var gpx{{ $loop->iteration }} = {!! json_encode($track->content) !!}; // URL to your GPX file or the GPX itself
+    var gpxlayer = new L.GPX(gpx, {async: true});
+    layerControl.addOverlay(gpxlayer, '{{ $track->name }}');
+@break
+
+@endswitch
+@endforeach
+</script>
+
+{{-- Make click on table row highlight map marker --}}
 <script>
 var lastClickedIndex = false;
 

@@ -4,7 +4,7 @@ $cluster = $cluster ?? false;
 $journey = $journey ?? null;
 $check_for_saved_location = $check_for_saved_location ?? false;
 $check_for_query_location = $check_for_query_location ?? false;
-
+$layer_control = $layer_control ?? false;
 
 @endphp
 <script>
@@ -136,6 +136,15 @@ function lsTest(){
     var group = L.featureGroup(markers).addTo(map);
     map.fitBounds(group.getBounds());
     @endif
+
+@if($layer_control)
+var layerControl = L.control.layers().addTo(map);
+
+layerControl.addBaseLayer(osm, 'OSM');
+layerControl.addOverlay(group, 'POIs');
+@endif
+
+
 
 
 /**

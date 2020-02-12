@@ -30,6 +30,8 @@
         "easymde": "^2.9.0",
         "leaflet": "^1.6.0",
         "leaflet-fullscreen": "^1.0.2",
+        "leaflet-gpx": "^1.5.0",
+        "leaflet-kml": "^1.0.1",
         "leaflet.locatecontrol": "^0.66.2",
         "leaflet.markercluster": "^1.4.1",
         "photoswipe": "^4.1.3"
