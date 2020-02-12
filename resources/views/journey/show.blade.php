@@ -49,7 +49,10 @@
         <div class="mb-2">
             <button type="button" class="js-days-open-all btn btn-sm btn-outline-secondary">{{ __('Open all')}}</button>
             <button type="button" class="js-days-hide-all btn btn-sm btn-outline-secondary">{{ __('Close all')}}</button>
+
+            @if (Carbon\Carbon::now() >= $journey->start && Carbon\Carbon::now() <= $journey->end)
             <button type="button" class="js-days-open-only-today btn btn-sm btn-outline-secondary">{{ __('Open only today')}}</button>
+            @endif
         </div>
 
         <div class="m-journey-days">
