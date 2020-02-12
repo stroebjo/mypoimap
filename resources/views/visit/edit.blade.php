@@ -20,7 +20,7 @@
                             <label for="visited_at" class="col-md-4 col-form-label text-md-right">{{ __('Visited at') }}</label>
 
                             <div class="col-md-6">
-                                <input id="visited_at" type="date" class="form-control{{ $errors->has('visited_at') ? ' is-invalid' : '' }}" name="visited_at" value="{{ old('visited_at', $visit->visited_at->toDateString()) }}" required>
+                                <input id="visited_at" type="date" class="js-visited_at form-control{{ $errors->has('visited_at') ? ' is-invalid' : '' }}" name="visited_at" value="{{ old('visited_at', $visit->visited_at->toDateString()) }}" required>
 
                                 @if ($errors->has('visited_at'))
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
                             <div class="col-md-6">
 
-                                <select id="journey_id" class="form-control{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
+                                <select id="journey_id" class="js-journey_id form-control{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
                                     <option value="">{{ __('- No Journey -')}}</option>
                                 @foreach($journeys as $journey)
                                     <option {{ old('journey_id', $visit->journey_id) == $journey->id ? 'selected' : '' }} value="{{ $journey->id }}">{{ $journey->title}}</option>
@@ -166,6 +166,28 @@
 @endsection
 
 @section('script')
+
+<script>
+    const journey_durations = {
+        @foreach($journeys as $journey)
+            {{ $journey->id}}: {
+                'start': '{{ $journey->start->toDateString() }}',
+                'end': '{{ $journey->end->toDateString() }}',
+            }
+        @endforeach
+    };
+
+    $('.js-journey_id').on('change', function() {
+        let journey_id = $(this).val();
+
+        if(journey_id && typeof journey_durations[journey_id] !== 'undefined') {
+            $('.js-visited_at').attr('min', journey_durations[journey_id]['start']).attr('max', journey_durations[journey_id]['end']);
+        } else {
+            $('.js-visited_at').attr('min', '').attr('max', '');
+        }
+    }).trigger('change');
+</script>
+
 @include('javascript.easymde', ['id' => 'review']);
 
 @endsection
