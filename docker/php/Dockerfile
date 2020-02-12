@@ -1,10 +1,17 @@
-FROM php:7.2-apache
+FROM php:7.3-apache
 
 RUN a2enmod rewrite
 
 RUN apt-get update
-RUN apt-get install -y vim zlib1g-dev libxml2-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev imagemagick
-RUN docker-php-ext-install mysqli pdo pdo_mysql zip soap
+RUN apt-get install -y vim libxml2-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev imagemagick
+
+
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libzip-dev
+RUN docker-php-ext-install zip
+
+RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install gd
 
@@ -24,6 +31,12 @@ RUN docker-php-ext-install gd
 RUN docker-php-ext-install opcache
 
 RUN docker-php-ext-install exif
+
+# Intl (for NumberFormat etc.)
+RUN apt-get update -y && apt-get install -y \
+  zlib1g-dev libicu-dev g++ \
+  && docker-php-ext-configure intl \
+  && docker-php-ext-install intl
 
 # Install APCu
 RUN pecl install apcu
