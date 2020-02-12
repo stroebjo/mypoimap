@@ -8,6 +8,8 @@ use App\Journey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Spatie\MediaLibrary\Models\Media;
+
 class VisitController extends Controller
 {
     public function __construct()
@@ -81,6 +83,16 @@ class VisitController extends Controller
 
         $visit->save();
 
+        // media
+        if ($request->hasFile('images')) {
+            $fileAdders = $visit
+            ->addMultipleMediaFromRequest(['images'])
+            ->each(function ($fileAdder) {
+                $fileAdder->toMediaCollection('images');
+            });
+        }
+
+
         if (!empty($journey)) {
             return redirect()->route('journey.show', ['journey' => $journey->id]);
         }
@@ -142,6 +154,32 @@ class VisitController extends Controller
         }
 
         $visit->save();
+
+        // media
+        if ($request->hasFile('images')) {
+            $fileAdders = $visit
+            ->addMultipleMediaFromRequest(['images'])
+            ->each(function ($fileAdder) {
+                $fileAdder->toMediaCollection('images');
+            });
+        }
+
+        // update existing images
+        if ($request->media_images) {
+            foreach($request->media_images as $row) {
+                $mediaItem = Media::find($row['id']);
+
+                // is this the thing we edited?
+                if ($mediaItem->model_id != $visit->id) {
+                    continue;
+                }
+
+                if (isset($row['delete']) && $row['delete'] == '1') {
+                    $mediaItem->delete();
+                    continue;
+                }
+            }
+        }
 
         if (!empty($journey)) {
             return redirect()->route('journey.show', ['journey' => $journey->id]);

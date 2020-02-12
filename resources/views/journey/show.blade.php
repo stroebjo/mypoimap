@@ -192,4 +192,9 @@ $('.js-poitablesm-row').on('click', function() {
 });
 </script>
 
+
+<script>
+    initPhotoSwipeFromDOM('.js-gallery-poup');
+</script>
+
 @endsection

@@ -12,25 +12,47 @@
         @parsedown($place->description)
     </div>
 
-    @if(count($place->getMedia('images')) > 0)
-    <div class="m-thumbgallery">
-        <div class="m-thumbgallery-inner my-gallery" style="width: {{ count($place->getMedia('images')) * 151 }}px;" itemscope itemtype="http://schema.org/ImageGallery">
-            @foreach($place->getMedia('images') as $media)
 
-            <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="1200x800">
-                    <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
-                </a>
-
-                @if ($media->hasCustomProperty('caption'))
-                <figcaption itemprop="caption description">{{ $media->getCustomProperty('caption') }}</figcaption>
-                @endif
-            </figure>
-
-            @endforeach
+    @if($place->visits()->count() > 0)
+    @foreach($place->visits as $visit)
+    <div class="mb-3">
+        <div class="mb-2">
+            <div class="m-contentheader mb-0">
+                <span class="">
+                    {{__('Visited at :date', ['date' => $visit->visited_at->toDateString()]) }}
+                    @if($visit->journey_id)
+                        <small><a href="{{ route('journey.show', [$visit->journey_id]) }}">{{ $visit->journey->title }}</a></small>
+                    @endif
+                </span>
+            </div>
+            <small class="text-muted">{{ __('Rating: :rating', ['rating' => $visit->rating ?? '-'])}}</small>
         </div>
+
+        @if(count($visit->getMedia('images')) > 0)
+        <div class="m-thumbgallery mb-2">
+            <div class="m-thumbgallery-inner js-gallery-poup" style="width: {{ count($visit->getMedia('images')) * 151 }}px;" itemscope itemtype="http://schema.org/ImageGallery">
+                @foreach($visit->getMedia('images') as $media)
+
+                <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="1200x800">
+                        <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
+                    </a>
+
+                    @if ($media->hasCustomProperty('caption'))
+                    <figcaption itemprop="caption description">{{ $media->getCustomProperty('caption') }}</figcaption>
+                    @endif
+                </figure>
+
+                @endforeach
+            </div>
+        </div>
+        @endif
+
+        @parsedown($visit->review)
     </div>
-    @endif
+    @endforeach
+@endif
+
 
     @if (!is_null($place->visited_at))
         <div class="m-popup-review">

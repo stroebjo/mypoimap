@@ -24,4 +24,9 @@
 
 @section('script')
 @include('javascript.datatable', ['el' => '#poitable'])
+
+<script>
+    initPhotoSwipeFromDOM('.js-gallery-poup');
+</script>
+
 @endsection
