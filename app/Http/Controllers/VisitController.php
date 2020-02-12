@@ -158,7 +158,8 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
+        $place_id = $visit->place_id;
         $visit->delete();
-        return redirect()->route('place.index', []);
+        return redirect()->route('place.show', [$place_id]);
     }
 }
