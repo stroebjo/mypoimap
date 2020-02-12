@@ -233,7 +233,7 @@ function lsTest(){
         title: '{{ $place->title }}',
     })
         //.addTo(map)
-        .bindPopup(`@include('place.popup', ['title' => true, 'controls' => true, 'place' => $place])`)
+        .bindPopup(`@include('place.popup', ['title' => true, 'controls' => true, 'place' => $place, 'journey' => $journey])`)
         .on('popupopen', function(e) {
             var marker = e.popup._source;
 
