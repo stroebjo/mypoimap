@@ -173,7 +173,7 @@
             {{ $journey->id}}: {
                 'start': '{{ $journey->start->toDateString() }}',
                 'end': '{{ $journey->end->toDateString() }}',
-            }
+            },
         @endforeach
     };
 
