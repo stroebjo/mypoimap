@@ -39,8 +39,11 @@ class VisitController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+        $journeys = Journey::where('user_id', Auth::id())->get();
+
         return view('visit.create', [
             'place' => $place,
+            'journeys' => $journeys,
         ]);
     }
 
@@ -104,9 +107,12 @@ class VisitController extends Controller
      */
     public function edit(Visit $visit)
     {
+        $journeys = Journey::where('user_id', Auth::id())->get();
+
         return view('visit.edit', [
             'visit' => $visit,
             'place' => $visit->place,
+            'journeys' => $journeys,
         ]);
     }
 

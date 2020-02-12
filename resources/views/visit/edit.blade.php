@@ -30,6 +30,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="journey_id" class="col-md-4 col-form-label text-md-right">{{ __('Journey') }}</label>
+
+                            <div class="col-md-6">
+
+                                <select id="journey_id" class="form-control{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
+                                    <option value="">{{ __('- No Journey -')}}</option>
+                                @foreach($journeys as $journey)
+                                    <option {{ old('journey_id', $visit->journey_id) == $journey->id ? 'selected' : '' }} value="{{ $journey->id }}">{{ $journey->title}}</option>
+                                @endforeach
+                                </select>
+
+                                @if ($errors->has('journey_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('journey_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="review" class="">{{ __('Review') }}</label>
 

@@ -15,7 +15,6 @@
                         @csrf
 
                         <input type="hidden" name="place_id" value="{{ old('place_id', $place->id)}}">
-                        <input type="hidden" name="journey_id" value="{{ old('journey_id', app('request')->input('journey_id'))}}">
 
                         <div class="form-group row">
                             <label for="visited_at" class="col-md-4 col-form-label text-md-right">{{ __('Visited at') }}</label>
@@ -26,6 +25,26 @@
                                 @if ($errors->has('visited_at'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('visited_at') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="journey_id" class="col-md-4 col-form-label text-md-right">{{ __('Journey') }}</label>
+
+                            <div class="col-md-6">
+
+                                <select id="journey_id" class="form-control{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
+                                    <option value="">{{ __('- No Journey -')}}</option>
+                                @foreach($journeys as $journey)
+                                    <option {{ old('journey_id', app('request')->input('journey_id')) == $journey->id ? 'selected' : '' }} value="{{ $journey->id }}">{{ $journey->title}}</option>
+                                @endforeach
+                                </select>
+
+                                @if ($errors->has('journey_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('journey_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
