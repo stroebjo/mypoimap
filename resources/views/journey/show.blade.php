@@ -219,8 +219,8 @@ const parser = new DOMParser();
 
 @case('gpx')
     var gpx{{ $loop->iteration }} = {!! json_encode($track->content) !!}; // URL to your GPX file or the GPX itself
-    var gpxlayer = new L.GPX(gpx, {async: true});
-    layerControl.addOverlay(gpxlayer, '{{ $track->name }}');
+    var gpxlayer{{ $loop->iteration }} = new L.GPX(gpx{{ $loop->iteration }}, {async: true});
+    layerControl.addOverlay(gpxlayer{{ $loop->iteration }}, '{{ $track->name }}');
 @break
 
 @endswitch
