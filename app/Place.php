@@ -48,7 +48,7 @@ class Place extends Model implements HasMedia
         return $this->visits()->count() > 0;
     }
 
-    public function getTagsAsString()
+    public function getTagsAsArray()
     {
         $tag_names = [];
 
@@ -56,7 +56,12 @@ class Place extends Model implements HasMedia
             $tag_names[] = $tag->name;
         }
 
-        return implode(', ', $tag_names);
+        return $tag_names;
+    }
+
+    public function getTagsAsString()
+    {
+        return implode(', ', $this->getTagsAsArray());
     }
 
     /**

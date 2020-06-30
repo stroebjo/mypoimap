@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Get your access token
+Route::post('/login', 'API\AuthController@login');
+
+// remember to to set `Accept: application/json` header to actual get these routes.
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('places', 'API\PlaceController');
+});
+
+
