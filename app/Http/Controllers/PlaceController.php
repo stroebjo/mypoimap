@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 
+use App\Http\Requests\StorePlace;
+
+
 use Spatie\Tags\Tag;
 
 class PlaceController extends Controller
@@ -85,7 +88,7 @@ class PlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlace $request)
     {
         $place = new Place();
 
