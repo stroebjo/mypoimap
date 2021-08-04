@@ -104,6 +104,10 @@ class PlaceController extends Controller
         $place->google_place_id = $request->google_place_id;
         $place->unesco_world_heritage = $request->unesco_world_heritage;
 
+        if (!empty($place->google_place_id)) {
+            $place->google_place_id_date = date('Y-m-d');
+        }
+
         $place->save();
 
         $tags = array_filter(array_map('trim', explode(',', $request->tags)));
@@ -163,8 +167,20 @@ class PlaceController extends Controller
         $place->description = $request->description;
 
         $place->location = new Point($request->lat, $request->lng);	// (lat, lng)
+        $old_place_id = $place->google_place_id;
         $place->google_place_id = $request->google_place_id;
         $place->unesco_world_heritage = $request->unesco_world_heritage;
+
+        if (empty($place->google_place_id)) {
+            // has no id
+            $place->google_place_id_date = null;
+        } else if ($request->has('google_place_id_date')) {
+            // user says it's valid
+            $place->google_place_id_date = date('Y-m-d');
+        } else if (!empty($place->google_place_id) && $old_place_id !== $place->google_place_id) {
+            // user entered a new id
+            $place->google_place_id_date = date('Y-m-d');
+        }
 
         $place->save();
 

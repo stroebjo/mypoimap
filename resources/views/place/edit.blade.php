@@ -202,6 +202,18 @@
                         </div>
 
                         <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="google_place_id_date" name="google_place_id_date">
+                                    <label class="form-check-label" for="google_place_id_date">
+                                        {{ __('Is the ID up-to-date?') }}
+                                    </label>
+                                    <small class="form-text text-muted">See <a href="{{ route('settings.place_ids') }}">here</a> for more information.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="unesco_world_heritage" class="col-md-4 col-form-label text-md-right">{{ __('UNESCO World Heritage ID') }}</label>
 
                             <div class="col-md-6">

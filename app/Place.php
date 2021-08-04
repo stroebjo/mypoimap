@@ -16,6 +16,15 @@ class Place extends Model implements HasMedia
     use \Spatie\Tags\HasTags;
     use HasMediaTrait;
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'google_place_id_date' => 'datetime:Y-m-d'
+    ];
+
     protected $spatialFields = [
         'location',
     ];
