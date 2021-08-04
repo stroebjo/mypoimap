@@ -21,6 +21,10 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'PlaceController@map')->name('place.map');
 
+Route::get('/settings', 'SettingsController@index')->name('settings.index');
+Route::get('/settings/place_ids', 'SettingsController@place_ids')->name('settings.place_ids');
+Route::post('/settings/place_ids', 'SettingsController@update_place_ids')->name('settings.update_place_ids');
+
 Route::resources([
     'place'         => 'PlaceController',
     'journey'       => 'JourneyController',
