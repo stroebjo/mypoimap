@@ -8,11 +8,6 @@ caption {
     caption-side: top;
 }
 
-// centered+max-wdith, but flexibile on smaller sizes
-.container-fluid {
-    max-width: 1140px;
-}
-
 // custom select hast rounded corners on the inside
 .input-group-append > .custom-select {
     border-top-left-radius: 0;

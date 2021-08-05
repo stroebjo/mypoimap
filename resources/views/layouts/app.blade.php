@@ -25,8 +25,8 @@
 <body>
     <div id="app">
 
-        <nav id="navbar" class="l-navbar navbar navbar-light">
-
+        <nav id="navbar" class="l-navbar navbar  navbar-expand-lg navbar-light">
+            <div class="container-fluid">
                 <ul class="navbar-nav mr-auto" style="flex-direction: row;">
                     @auth
                     <li class="nav-item mr-2 mr-md-3">
@@ -121,10 +121,10 @@
                         @endguest
                     </ul>
                 </div>
-
+            </div>
         </nav>
 
-        <main class="@yield('mainclass', 'py-3')">
+        <main class="@yield('mainclass', 'l-main py-3')">
             @yield('content')
         </main>
     </div>

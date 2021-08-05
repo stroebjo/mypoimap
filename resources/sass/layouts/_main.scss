@@ -1,0 +1,10 @@
+.l-main {
+    // centered+max-width, but flexible on smaller sizes
+    max-width: 1140px;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--bs-gutter-x,.75rem);
+    padding-right: var(--bs-gutter-x,.75rem);
+    width: 100%;
+}

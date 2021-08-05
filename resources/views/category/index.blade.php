@@ -1,16 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<header class="m-contentheader d-sm-flex justify-content-between">
+    <h1 class="h2">{{ __('Categories') }}</h1>
 
-<div class="container-fluid">
-
-    <header class="m-contentheader d-sm-flex justify-content-between">
-        <h1 class="h2">{{ __('Categories') }}</h1>
-
-        <div>
-            <a class="btn btn-sm btn-primary" href="{{ route('user_category.create', []) }}">{{ __('Add new category') }}</a>
-        </div>
-    </header>
+    <div>
+        <a class="btn btn-sm btn-primary" href="{{ route('user_category.create', []) }}">{{ __('Add new category') }}</a>
+    </div>
+</header>
 
 <table id="user_category_table" class="table table-sm table-hover">
 
@@ -51,9 +48,6 @@
     </tbody>
 
 </table>
-
-</div>
-
 @endsection
 
 @section('script')
