@@ -16,12 +16,12 @@
 
             @endphp
 
-            <a class="btn btn-sm btn-outline-secondary mr-1" href="{{ $route_gpx }}">{{ __('GPX')}} @svg('desktop-download')</a>
+            <a class="btn btn-sm btn-outline-secondary me-1" href="{{ $route_gpx }}">{{ __('GPX')}} @svg('desktop-download')</a>
 
             @auth
 
             @if ($journey->mode == 'visible_by_link')
-                <a class="btn btn-sm btn-outline-secondary mr-1" target="_blank" href="{{ route('shared_journey.show', [$journey->uuid]) }}">{{ __('Public link')}} @svg('link-external')</a>
+                <a class="btn btn-sm btn-outline-secondary me-1" target="_blank" href="{{ route('shared_journey.show', [$journey->uuid]) }}">{{ __('Public link')}} @svg('link-external')</a>
             @endif
 
             <a class="btn btn-sm btn-outline-primary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit') }}</a>
@@ -79,7 +79,7 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
                                 {{ $trigger_text }}
                             </span>
                         @else {{ __('')}}
-                            <a class="m-accordion-item-top-trigger" data-toggle="collapse" href="#journey-day-{{ $i }}" role="button" aria-expanded="{{ $aria_expanded }}" aria-controls="journey-day-{{ $i }}">
+                            <a class="m-accordion-item-top-trigger" data-bs-toggle="collapse" href="#journey-day-{{ $i }}" role="button" aria-expanded="{{ $aria_expanded }}" aria-controls="journey-day-{{ $i }}">
                                 {{ $trigger_text }}
                             </a>
                         @endif

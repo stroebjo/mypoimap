@@ -37,14 +37,14 @@
             <div class="d-flex justify-content-end">
 
                 @if ($filter->mode == 'visible_by_link')
-                    <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.sahredmap', [$filter->uuid]) }}">
+                    <a class="me-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.sahredmap', [$filter->uuid]) }}">
                         {{ __('Public map')}} @svg('link-external')
                     </a>
                 @endif
 
-                <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.edit', [$filter]) }}">{{ __('Edit')}}</a>
+                <a class="me-1 btn btn-sm btn-outline-secondary" href="{{ route('filter.edit', [$filter]) }}">{{ __('Edit')}}</a>
 
-                <form class="ml-1" method="POST" action="{{ route('filter.destroy', [$filter->id]) }}">
+                <form method="POST" action="{{ route('filter.destroy', [$filter->id]) }}">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button class="btn btn-sm btn-outline-danger" type="submit">{{ __('Delete') }}</button>

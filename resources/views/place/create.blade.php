@@ -11,8 +11,8 @@
                     <form method="POST" action="{{ route('place.store') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                        <div class="mb-3 row">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
@@ -26,8 +26,8 @@
                         </div>
 
 
-                        <div class="form-group row">
-                            <label for="user_category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                        <div class="mb-3 row">
+                            <label for="user_category_id" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
 
@@ -45,8 +45,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="url" class="col-md-4 col-form-label text-md-right">{{ __('Website') }}</label>
+                        <div class="mb-3 row">
+                            <label for="url" class="col-md-4 col-form-label text-md-end">{{ __('Website') }}</label>
 
                             <div class="col-md-6">
                                 <input id="url" type="url" class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" name="url" value="{{ old('url') }}">
@@ -59,8 +59,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="wikipedia_url" class="col-md-4 col-form-label text-md-right">{{ __('Wikipedia') }}</label>
+                        <div class="mb-3 row">
+                            <label for="wikipedia_url" class="col-md-4 col-form-label text-md-end">{{ __('Wikipedia') }}</label>
 
                             <div class="col-md-6">
                                 <input id="wikipedia_url" type="url" class="form-control{{ $errors->has('wikipedia_url') ? ' is-invalid' : '' }}" name="wikipedia_url" value="{{ old('wikipedia_url') }}">
@@ -73,12 +73,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
+                        <div class="mb-3 row">
+                            <label for="priority" class="col-md-4 col-form-label text-md-end">{{ __('Priority') }}</label>
 
                             <div class="col-md-6">
                                 <input id="priority" type="number" min="0" max="5" step="1" class="form-control{{ $errors->has('priority') ? ' is-invalid' : '' }}" name="priority" value="{{ old('priority') }}" required>
-                                <small class="form-text text-muted">{{ __('A value between 0 and 5, where 5 is a must see and 0 is not important.') }}</small>
+                                <div class="form-text">{{ __('A value between 0 and 5, where 5 is a must see and 0 is not important.') }}</div>
 
                                 @if ($errors->has('priority'))
                                     <span class="invalid-feedback" role="alert">
@@ -88,13 +88,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="tags" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
+                        <div class="mb-3 row">
+                            <label for="tags" class="col-md-4 col-form-label text-md-end">{{ __('Tags') }}</label>
 
                             <div class="col-md-6">
                                 <input id="tags" type="text" class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags" value="{{ old('tags') }}">
 
-                                <small class="form-text text-muted">{{ __('Seperated by commas.') }}</small>
+                                <div class="form-text">{{ __('Seperated by commas.') }}</div>
 
 
                                 @if ($errors->has('tags'))
@@ -105,10 +105,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="description" class="">{{ __('Description') }}</label>
                             <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
-                            <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
+                            <div class="form-text">{{ __('You can use Markdown.') }}</div>
 
                             @if ($errors->has('description'))
                                 <span class="invalid-feedback" role="alert">
@@ -119,14 +119,14 @@
 
                         <div class="row">
 
-                            <div class="col-md-4 text-md-right">
+                            <div class="col-md-4 text-md-end">
                                 <label for="lat" class="col-form-label">{{ __('Lat') }}</label> /
                                 <label for="lng" class="col-form-label">{{ __('Lng') }}</label>
                             </div>
 
                             <div class="col-md-6">
 
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <div class="col-6">
                                         <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat') }}" required>
 
@@ -147,14 +147,11 @@
                                         @endif
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
-
-
-                        <div class="form-group row">
-                            <label for="plus_code" class="col-md-4 col-form-label col-form-label-sm text-md-right">{{ __('Plus Code') }}</label>
+                        <div class="mb-3 row">
+                            <label for="plus_code" class="col-md-4 col-form-label col-form-label-sm text-md-end">{{ __('Plus Code') }}</label>
 
                             <div class="col-md-6">
                                 <input id="plus_code" type="text" class="form-control form-control-sm{{ $errors->has('plus_code') ? ' is-invalid' : '' }}" name="plus_code" value="{{ old('plus_code') }}">
@@ -167,21 +164,15 @@
 
                                 <div class="small js-plus_code_feedback"></div>
 
-                                <small class="text-muted">{{ __('Derive Lat/Lng by Googles Plus Code.') }}</small>
-
-
+                                <div class="form-text">{{ __('Derive Lat/Lng by Googles Plus Code.') }}</div>
                             </div>
                         </div>
 
-
-                        <div class="form-group row">
-
-                            <div class="col-md-4 text-md-right">
-
+                        <div class="mb-3 row">
+                            <div class="col-md-4 text-md-end">
                                 <span class="col-form-label">
                                     <label for="google_place_id" class=" col-form-label">{{ __('Google Place ID') }}</label>
-
-                                    <button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#modal_google_place_id">
+                                    <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#modal_google_place_id">
                                         @svg('question')
                                     </button>
                                 </span>
@@ -191,8 +182,7 @@
                             <div class="col-md-6">
                                 <input id="google_place_id" type="text" class="form-control{{ $errors->has('google_place_id') ? ' is-invalid' : '' }}" name="google_place_id" value="{{ old('google_place_id') }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 
-                                <small class="form-text text-muted"><a href="https://developers.google.com/places/place-id" rel="noreferrer" target="_blank">{{ __('Google Place ID finder.') }}</a></small>
-
+                                <div class="form-text"><a href="https://developers.google.com/places/place-id" rel="noreferrer" target="_blank">{{ __('Google Place ID finder.') }}</a></div>
 
                                 @if ($errors->has('google_place_id'))
                                     <span class="invalid-feedback" role="alert">
@@ -203,13 +193,13 @@
                         </div>
 
 
-                        <div class="form-group row">
-                            <label for="unesco_world_heritage" class="col-md-4 col-form-label text-md-right">{{ __('UNESCO World Heritage ID') }}</label>
+                        <div class="mb-3 row">
+                            <label for="unesco_world_heritage" class="col-md-4 col-form-label text-md-end">{{ __('UNESCO World Heritage ID') }}</label>
 
                             <div class="col-md-6">
                                 <input id="unesco_world_heritage" type="text" class="form-control{{ $errors->has('unesco_world_heritage') ? ' is-invalid' : '' }}" name="unesco_world_heritage" value="{{ old('unesco_world_heritage') }}">
 
-                                <small class="form-text text-muted">Get the ID from the URL of the <a href="https://whc.unesco.org/en/list/" rel="noreferrer" target="_blank">World Heritage List</a> item.</small>
+                                <div class="form-text">Get the ID from the URL of the <a href="https://whc.unesco.org/en/list/" rel="noreferrer" target="_blank">World Heritage List</a> item.</div>
 
 
                                 @if ($errors->has('unesco_world_heritage'))
@@ -226,7 +216,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('place.index') }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Save') }}
                                 </button>
                             </div>

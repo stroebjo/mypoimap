@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <form @submit.prevent="submit">
-            <div class="form-group row">
+            <div class="mb-3 row">
                 <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
 
                 <div class="col-md-6">
@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="mb-3 row">
                 <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                 <div class="col-md-6">
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="mb-3 row">
                 <label for="visibility" class="col-md-4 col-form-label text-md-right">Visibility</label>
 
                 <div class="col-md-6">
@@ -44,7 +44,7 @@
 
             <hr>
 
-            <div class="form-group row">
+            <div class="mb-3 row">
                 <div class="col-2">
                     <select class="form-control form-control-sm" v-model="fields.filter_operator">
                         <option value="and">All</option>
@@ -61,9 +61,9 @@
                 </div>
             </div>
 
-            <div class="ml-3" v-for="(filter, index) in fields.filters">
+            <div class="ms-3" v-for="(filter, index) in fields.filters">
 
-                <div class="form-group row mb-2">
+                <div class="mb-3 row mb-2">
                     <div class="col-md-3">
                         <select class="form-control form-control-sm" v-model="filter.type">
                             <option v-for="option in options" v-bind:value="option.value">
@@ -105,13 +105,13 @@
                     <div class="col-md-2">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-sm btn-outline-danger" v-on:click="remove_filter(index)">-</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-1" v-on:click="add_filter_after(index)">+</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-1" v-on:click="add_filter_after(index)">+</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
+            <div class="mb-3 row mb-0">
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         Save

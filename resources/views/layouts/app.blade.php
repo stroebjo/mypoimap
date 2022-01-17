@@ -56,7 +56,7 @@
                     <!-- Left Side Of Navbar -->
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav ml-auto">
+                    <ul class="nav">
 
                         @auth
 

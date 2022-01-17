@@ -15,7 +15,7 @@
                         @csrf
                         {{ method_field('PATCH') }}
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
@@ -30,7 +30,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="description" class="">{{ __('Description') }}</label>
 
                             <textarea rows="8" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description', $track->description) }}</textarea>
@@ -43,7 +43,7 @@
                             @endif
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="order" class="col-md-4 col-form-label text-md-right">{{ __('Order') }}</label>
 
                             <div class="col-md-6">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <small>{{ __('To change the track file, please delete this and create a new one.')}}</small>
                         </div>
 
@@ -70,7 +70,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('journey.show', [$track->journey_id]) }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Update') }}
                                 </button>
                             </div>

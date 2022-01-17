@@ -15,7 +15,7 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
 
                             <div class="col-md-6">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="description" class="">{{ __('Description') }}</label>
 
                     <textarea rows="30" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
@@ -66,7 +66,7 @@
                     <div>
                         <a class="btn btn-outline-secondary" href="{{ route('journey.show', [$journey]) }}">{{ __('Cancel') }}</a>
 
-                        <button type="submit" class="ml-3 btn btn-primary">
+                        <button type="submit" class="ms-3 btn btn-primary">
                             {{ __('Save') }}
                         </button>
                     </div>

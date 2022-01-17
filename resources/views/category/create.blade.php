@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('user_category.store') }}">
                         @csrf
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="order" class="col-md-4 col-form-label text-md-right">{{ __('Order') }}</label>
 
                             <div class="col-md-6">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Color') }}</label>
 
                             <div class="col-md-6">
@@ -61,7 +61,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('user_category.index') }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Save') }}
                                 </button>
                             </div>

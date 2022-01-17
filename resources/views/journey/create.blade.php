@@ -9,7 +9,7 @@
             <form method="POST" action="{{ route('journey.store') }}">
                 @csrf
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                     <div class="col-md-6">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="start" class="col-md-4 col-form-label text-md-right">{{ __('Start') }}</label>
 
                     <div class="col-md-6">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="end" class="col-md-4 col-form-label text-md-right">{{ __('End') }}</label>
 
                     <div class="col-md-6">
@@ -63,7 +63,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="col-6">
                                 <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat') }}">
 
@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="area" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
 
                     <div class="col-md-6">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="description" class="">{{ __('Description') }}</label>
 
                     <textarea rows="30" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
@@ -118,7 +118,7 @@
                 </div>
 
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="visibility" class="col-md-4 col-form-label text-md-right">Visibility</label>
 
                     <div class="col-md-6">
@@ -142,7 +142,7 @@
                     <div>
                         <a class="btn btn-outline-secondary" href="{{ route('journey.index') }}">{{ __('Cancel') }}</a>
 
-                        <button type="submit" class="ml-3 btn btn-primary">
+                        <button type="submit" class="ms-3 btn btn-primary">
                             {{ __('Save') }}
                         </button>
                     </div>

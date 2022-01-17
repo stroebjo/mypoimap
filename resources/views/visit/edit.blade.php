@@ -16,7 +16,7 @@
                         {{ method_field('PATCH') }}
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="visited_at" class="col-md-4 col-form-label text-md-right">{{ __('Visited at') }}</label>
 
                             <div class="col-md-6">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="journey_id" class="col-md-4 col-form-label text-md-right">{{ __('Journey') }}</label>
 
                             <div class="col-md-6">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="review" class="">{{ __('Review') }}</label>
 
                             <textarea rows="8" id="review" class="form-control{{ $errors->has('review') ? ' is-invalid' : '' }}" name="review">{{ old('review', $visit->review) }}</textarea>
@@ -64,7 +64,7 @@
                         </div>
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="rating" class="col-md-4 col-form-label text-md-right">{{ __('Rating') }}</label>
 
                             <div class="col-md-6">
@@ -123,7 +123,7 @@
 
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
                             <div class="col-md-6">
@@ -144,7 +144,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('place.show', [$place]) }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Update') }}
                                 </button>
                             </div>

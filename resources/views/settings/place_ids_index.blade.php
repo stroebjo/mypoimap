@@ -46,7 +46,7 @@
             </td>
             <td class="text-nowrap">
                 <code>{{ $place->google_place_id }}</code>
-                <a class="ml-2" href="{!! $place->google_maps_details_link !!}" target="_blank">
+                <a class="ms-2" href="{!! $place->google_maps_details_link !!}" target="_blank">
                     @svg('link-external', 'icon--currentColor')
                 </a>
             </td>
@@ -65,7 +65,7 @@
             <div>{{-- for justify-content-between --}}</div>
 
             <div>
-                <button type="submit" class="ml-3 btn btn-primary">
+                <button type="submit" class="ms-3 btn btn-primary">
                     {{ __('Check place_id\'s') }}
                 </button>
             </div>

@@ -41,12 +41,12 @@
         <td>
             <div class="d-flex justify-content-end">
                 @if ($journey->mode == 'visible_by_link')
-                    <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('shared_journey.show', [$journey->uuid]) }}">
+                    <a class="me-1 btn btn-sm btn-outline-secondary" href="{{ route('shared_journey.show', [$journey->uuid]) }}">
                         {{ __('Public link')}} @svg('link-external')
                     </a>
                 @endif
 
-                <a class="ml-1 btn btn-sm btn-outline-secondary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit')}}</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ route('journey.edit', [$journey]) }}">{{ __('Edit')}}</a>
             </div>
         </td>
     </tr>

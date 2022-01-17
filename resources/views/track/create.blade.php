@@ -17,7 +17,7 @@
                         <input type="hidden" name="journey_id" value="{{ old('journey_id', $journey->id)}}">
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="description" class="">{{ __('description') }}</label>
 
                             <textarea rows="8" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
@@ -45,7 +45,7 @@
                         </div>
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Track file') }}</label>
 
                             <div class="col-md-6">
@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="order" class="col-md-4 col-form-label text-md-right">{{ __('Order') }}</label>
 
                             <div class="col-md-6">
@@ -85,7 +85,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('journey.show', [$journey]) }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Save') }}
                                 </button>
                             </div>

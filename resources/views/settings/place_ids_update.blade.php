@@ -39,7 +39,7 @@
 
             <td class="text-nowrap">
                 <code>{{ $result->place->google_place_id }}</code>
-                <a class="ml-2" href="{!! $result->place->google_maps_details_link !!}" target="_blank">
+                <a class="ms-2" href="{!! $result->place->google_maps_details_link !!}" target="_blank">
                     @svg('link-external', 'icon--currentColor')
                 </a>
             </td>

@@ -23,7 +23,7 @@
             {{ $place->title }}
 
             @if ($place->url != '')
-            <a class="ml-2" href="{{$place->url}}">
+            <a class="ms-2" href="{{$place->url}}">
                 @svg('link-external', 'icon--currentColor')
             </a>
             @endif
@@ -46,17 +46,17 @@
             <div class="d-flex justify-content-end">
 
                 <a href="{!! $place->google_maps_details_link !!}" rel="noreferrer" aria-label="{{ __('Open in Google Maps') }}"
-                    class="ml-1 btn btn-sm btn-outline-primary">
+                    class="ms-1 btn btn-sm btn-outline-primary">
                     @svg('google-maps')
                 </a>
                 <a href="{!! $place->google_maps_directions_link !!}" rel="noreferrer" aria-label="{{ __('Directions') }}"
-                    class="ml-1 btn btn-sm btn-outline-primary">@svg('directions')
+                    class="ms-1 btn btn-sm btn-outline-primary">@svg('directions')
                 </a>
 
-                <button  data-toggle="modal" data-target="#modal-place{{ $loop->index }}" class="ml-2 btn btn-sm btn-outline-primary js-open-modal">{{ __('Info')}}</button>
+                <button  data-bs-toggle="modal" data-bs-target="#modal-place{{ $loop->index }}" class="ms-2 btn btn-sm btn-outline-primary js-open-modal">{{ __('Info')}}</button>
 
                 @if(!empty($edit) && $edit === true)
-                    <a class="ml-1 d-none d-sm-inline btn btn-sm btn-outline-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
+                    <a class="ms-1 d-none d-sm-inline btn btn-sm btn-outline-secondary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit')}}</a>
                 @endif
             </div>
         </td>
@@ -80,9 +80,7 @@
                         {{ $place->title }}
                     </a>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Close') }}">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
             </div>
 
             <div class="modal-body">
@@ -104,7 +102,7 @@
                 <a class="btn btn-sm btn-outline-primary" href="{{ route('place.edit', ['place' => $place->id]) }}">{{ __('Edit')}}</a>
                 @endauth
 
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
             </div>
 
 

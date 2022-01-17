@@ -9,7 +9,7 @@
         @if ($place->tags->count() > 0)
         | <div style="display: inline-block"><ul style="list-style: none; padding: 0; margin: 0" class="d-flex">
         @foreach($place->tags as $tag)
-            <li class="mr-2">
+            <li class="me-2">
                 <a rel="tag" class="" href="#">
                     #{{ $tag->name }}
                 </a>
@@ -22,18 +22,18 @@
     <div class="mb-2">
 
         @if ($place->url != '')
-            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->url}}" target="_blank" rel="noreferrer">@svg('link-external')</a>
+            <a class="btn btn-sm btn-outline-primary me-1" href="{{$place->url}}" target="_blank" rel="noreferrer">@svg('link-external')</a>
         @endif
 
         @if ($place->wikipedia_url != '')
-            <a class="btn btn-sm btn-outline-primary mr-1" href="{{$place->wikipedia_url}}" target="_blank" rel="noreferrer">@svg('wikipedia')</a>
+            <a class="btn btn-sm btn-outline-primary me-1" href="{{$place->wikipedia_url}}" target="_blank" rel="noreferrer">@svg('wikipedia')</a>
         @endif
 
         @if (!empty($place->unesco_world_heritage))
-            <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->unesco_world_heritage_link !!}" target="_blank" rel="noreferrer">{{ __('UNESCO') }}</a>
+            <a class="btn btn-sm btn-outline-primary me-1" href="{!! $place->unesco_world_heritage_link !!}" target="_blank" rel="noreferrer">{{ __('UNESCO') }}</a>
         @endif
 
-        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_details_link !!}" target="_blank" rel="noreferrer">@svg('google-maps')</a>
-        <a class="btn btn-sm btn-outline-primary mr-1" href="{!! $place->google_maps_directions_link !!}" target="_blank" rel="noreferrer">@svg('directions')</a>
+        <a class="btn btn-sm btn-outline-primary me-1" href="{!! $place->google_maps_details_link !!}" target="_blank" rel="noreferrer">@svg('google-maps')</a>
+        <a class="btn btn-sm btn-outline-primary me-1" href="{!! $place->google_maps_directions_link !!}" target="_blank" rel="noreferrer">@svg('directions')</a>
     </div>
 </div>

@@ -12,7 +12,7 @@
                         @csrf
                         {{ method_field('PATCH') }}
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                                 <label for="user_category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                                 <div class="col-md-6">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="url" class="col-md-4 col-form-label text-md-right">{{ __('Website') }}</label>
 
                             <div class="col-md-6">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="wikipedia_url" class="col-md-4 col-form-label text-md-right">{{ __('Wikipedia') }}</label>
 
                             <div class="col-md-6">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="priority" class="col-md-4 col-form-label text-md-right">{{ __('Priority') }}</label>
 
                             <div class="col-md-6">
@@ -88,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="tags" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
 
                             <div class="col-md-6">
@@ -106,7 +106,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="description" class="">{{ __('Description') }}</label>
                             <textarea rows="8" id="description"  class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description', $place->description) }}</textarea>
                             <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
@@ -127,7 +127,7 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <div class="col-6">
                                         <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat', $place->location->getLat()) }}" required>
 
@@ -154,7 +154,7 @@
 
 
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="plus_code" class="col-md-4 col-form-label col-form-label-sm text-md-right">{{ __('Plus Code') }}</label>
 
                             <div class="col-md-6">
@@ -174,13 +174,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="col-md-4 text-md-right">
 
                                 <span class="col-form-label">
                                     <label for="google_place_id" class=" col-form-label">{{ __('Google Place ID') }}</label>
 
-                                    <button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#modal_google_place_id">
+                                    <button type="button" class="btn btn-sm btn-link" data-bs-toggle="modal" data-bs-target="#modal_google_place_id">
                                         @svg('question')
                                     </button>
                                 </span>
@@ -201,7 +201,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="1" id="google_place_id_date" name="google_place_id_date">
@@ -213,7 +213,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="unesco_world_heritage" class="col-md-4 col-form-label text-md-right">{{ __('UNESCO World Heritage ID') }}</label>
 
                             <div class="col-md-6">
@@ -231,7 +231,7 @@
 
                         <hr>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
                             <div class="col-md-6">
@@ -252,7 +252,7 @@
                             <div>
                                 <a class="btn btn-outline-secondary" href="{{ route('place.show', [$place]) }}">{{ __('Cancel') }}</a>
 
-                                <button type="submit" class="ml-3 btn btn-primary">
+                                <button type="submit" class="ms-3 btn btn-primary">
                                     {{ __('Update') }}
                                 </button>
                             </div>
