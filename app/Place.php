@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
+use MatanYadaev\EloquentSpatial\SpatialBuilder;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
@@ -12,9 +13,12 @@ use Spatie\Image\Manipulations;
 
 class Place extends Model implements HasMedia
 {
-    use SpatialTrait;
     use \Spatie\Tags\HasTags;
     use InteractsWithMedia;
+
+    protected $fillable = [
+        'location',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -22,11 +26,8 @@ class Place extends Model implements HasMedia
      * @var array
      */
     protected $casts = [
-        'google_place_id_date' => 'datetime:Y-m-d'
-    ];
-
-    protected $spatialFields = [
-        'location',
+        'google_place_id_date' => 'datetime:Y-m-d',
+        'location' => Point::class,
     ];
 
     public function visits()
@@ -37,6 +38,11 @@ class Place extends Model implements HasMedia
     public function user_category()
     {
         return $this->belongsTo('App\UserCategory');
+    }
+
+    public function newEloquentBuilder($query): SpatialBuilder
+    {
+        return new SpatialBuilder($query);
     }
 
 
@@ -82,8 +88,8 @@ class Place extends Model implements HasMedia
      */
     public function getLatLng($glue = ', ', $decimals = null)
     {
-        $lat = $this->location->getLat();
-        $lng = $this->location->getLng();
+        $lat = $this->location->latitude;
+        $lng = $this->location->longitude;
 
         if (!is_null($decimals)) {
             $lat = number_format($lat, $decimals);

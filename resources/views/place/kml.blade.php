@@ -7,7 +7,7 @@
         <name>{{ $place->title }}</name>
         <description><![CDATA[@parsedown($place->description)]]></description>
         <Point>
-            <coordinates>{{ $place->location->getLng() }},{{ $place->location->getLat() }}</coordinates>
+            <coordinates>{{ $place->location->longitude }},{{ $place->location->latitude }}</coordinates>
         </Point>
     </Placemark>
 @endforeach

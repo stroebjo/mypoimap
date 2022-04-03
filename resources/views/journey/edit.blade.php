@@ -65,7 +65,7 @@
 
                         <div class="mb-3 row">
                             <div class="col-6">
-                                <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat', ($journey->origin ? $journey->origin->getLat() : '')) }}">
+                                <input id="lat" type="text" class="form-control{{ $errors->has('lat') ? ' is-invalid' : '' }}" name="lat" value="{{ old('lat', ($journey->origin ? $journey->origin->latitude : '')) }}">
 
                                 @if ($errors->has('lat'))
                                     <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="col-6">
-                                <input id="lng" type="text" class="form-control{{ $errors->has('lng') ? ' is-invalid' : '' }}" name="lng" value="{{ old('lng', ($journey->origin ? $journey->origin->getLng() : '')) }}">
+                                <input id="lng" type="text" class="form-control{{ $errors->has('lng') ? ' is-invalid' : '' }}" name="lng" value="{{ old('lng', ($journey->origin ? $journey->origin->longitude : '')) }}">
 
                                 @if ($errors->has('lng'))
                                     <span class="invalid-feedback" role="alert">

@@ -97,7 +97,7 @@ function lsTest(){
 
 
     @foreach($places as $place)
-    var marker = L.marker([{{ $place->location->getLat() }}, {{ $place->location->getLng()}}], {
+    var marker = L.marker([{{ $place->location->latitude }}, {{ $place->location->longitude }}], {
         // unique icon per place, so we can use visited / color settings
         // inside the CustomColorMarker class
         icon: L.icon.customColorMarker({

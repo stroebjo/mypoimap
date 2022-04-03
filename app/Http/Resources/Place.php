@@ -25,8 +25,8 @@ class Place extends JsonResource
             'user_category_id' => $this->user_category_id,
 
             'location' => [
-                'lat' => $this->location->getLat(),
-                'lng' => $this->location->getLng(),
+                'lat' => $this->location->latitude,
+                'lng' => $this->location->longitude,
             ],
 
             'url' => $this->url,

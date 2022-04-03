@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
+use MatanYadaev\EloquentSpatial\SpatialBuilder;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 use phpGPX\Models\GpxFile;
 use phpGPX\Models\Link;
@@ -13,7 +14,6 @@ use phpGPX\Models\Point as GpxPoint;
 
 class Journey extends Model
 {
-    use SpatialTrait;
 
     /**
      * The attributes that should be mutated to dates.
@@ -25,10 +25,14 @@ class Journey extends Model
         'end',
     ];
 
-    protected $spatialFields = [
-        'origin',
+    protected $casts = [
+        'origin' => Point::class,
     ];
 
+    public function newEloquentBuilder($query): SpatialBuilder
+    {
+        return new SpatialBuilder($query);
+    }
 
     public function journey_entries()
     {
@@ -126,8 +130,8 @@ class Journey extends Model
                 $point->links[] = $link;
             }
 
-            $point->latitude  = $place->location->getLat();
-	        $point->longitude = $place->location->getLng();
+            $point->latitude  = $place->location->latitude;
+	        $point->longitude = $place->location->longitude;
 
             $gpx_file->waypoints[] = $point;
         }

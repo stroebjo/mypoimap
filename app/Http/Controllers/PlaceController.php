@@ -6,7 +6,7 @@ use App\Place;
 use App\UserCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Grimzy\LaravelMysqlSpatial\Types\Point;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 use App\Http\Requests\StorePlace;
 
@@ -115,8 +115,8 @@ class PlaceController extends Controller
         $place->save();
 
         return redirect()->route('place.map', [
-            'lat' => $place->location->getLat(),
-            'lng' => $place->location->getLng(),
+            'lat' => $place->location->latitude,
+            'lng' => $place->location->longitude,
             'zoom' => 12
         ]);
     }
@@ -201,8 +201,8 @@ class PlaceController extends Controller
         }
 
         return redirect()->route('place.map', [
-            'lat' => $place->location->getLat(),
-            'lng' => $place->location->getLng(),
+            'lat' => $place->location->latitude,
+            'lng' => $place->location->longitude,
             'zoom' => 12
         ]);
     }
