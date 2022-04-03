@@ -5,16 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 
-use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 
 class Place extends Model implements HasMedia
 {
     use SpatialTrait;
     use \Spatie\Tags\HasTags;
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     /**
      * The attributes that should be cast.
@@ -40,7 +40,7 @@ class Place extends Model implements HasMedia
     }
 
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null) : void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 150, 75)

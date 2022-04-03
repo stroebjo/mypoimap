@@ -4,21 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 
 class Visit extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     protected $dates = [
         'visited_at',
     ];
 
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null) : void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 150, 75)
