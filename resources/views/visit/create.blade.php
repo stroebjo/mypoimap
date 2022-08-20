@@ -35,7 +35,7 @@
 
                             <div class="col-md-6">
 
-                                <select id="journey_id" class="js-journey_id form-control{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
+                                <select id="journey_id" class="js-journey_id form-select{{ $errors->has('journey_id') ? ' is-invalid' : '' }}"  name="journey_id">
                                     <option value="">{{ __('- No Journey -')}}</option>
                                 @foreach($journeys as $journey)
                                     <option {{ old('journey_id', app('request')->input('journey_id')) == $journey->id ? 'selected' : '' }} value="{{ $journey->id }}">{{ $journey->title}}</option>

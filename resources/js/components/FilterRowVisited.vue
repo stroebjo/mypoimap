@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select class="form-control form-control-sm" v-model="fields.operator">
+        <select class="form-select form-select-sm" v-model="fields.operator">
             <option value="is">is visited</option>
             <option value="isnot">is not visited</option>
         </select>

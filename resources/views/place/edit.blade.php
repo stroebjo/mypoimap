@@ -31,7 +31,7 @@
 
                                 <div class="col-md-6">
 
-                                    <select id="user_category_id" class="form-control{{ $errors->has('user_category_id') ? ' is-invalid' : '' }}"  name="user_category_id" required>
+                                    <select id="user_category_id" class="form-select{{ $errors->has('user_category_id') ? ' is-invalid' : '' }}"  name="user_category_id" required>
                                     @foreach($categories as $category)
                                         <option {{ old('user_category_id', $place->user_category_id ) == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name}}</option>
                                     @endforeach

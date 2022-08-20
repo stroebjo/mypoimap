@@ -123,7 +123,7 @@
 
                     <div class="col-md-6">
 
-                        <select id="visibility" class="form-control" name="visibility">
+                        <select id="visibility" class="form-select" name="visibility">
                             <option {{ old('visibility') == 'private' ? 'selected' : '' }} value="private">Private</option>
                             <option {{ old('visibility') == 'visible_by_link' ? 'selected' : '' }} value="visible_by_link">Public (unlisted)</option>
                         </select>

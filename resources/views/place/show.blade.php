@@ -10,7 +10,7 @@
 
         <div>
             @auth
-                <a class="btn btn-sm btn-outline-primary" href="{{ route('visit.create', ['place_id' => $place->id]) }}">{{ __('Add visit')}}</a>
+                <a class="btn btn-sm btn-outline-primary me-1" href="{{ route('visit.create', ['place_id' => $place->id]) }}">{{ __('Add visit')}}</a>
                 <a class="btn btn-sm btn-outline-primary" href="{{ route('place.edit', [$place]) }}">{{ __('Edit') }}</a>
             @endauth
         </div>

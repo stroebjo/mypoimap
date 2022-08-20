@@ -31,7 +31,7 @@
 
                 <div class="col-md-6">
 
-                    <select id="visibility" class="form-control" v-model="fields.visibility">
+                    <select id="visibility" class="form-select" v-model="fields.visibility">
                         <option value="private">Private</option>
                         <option value="visible_by_link">Public (unlisted)</option>
                     </select>
@@ -46,7 +46,7 @@
 
             <div class="mb-3 row">
                 <div class="col-2">
-                    <select class="form-control form-control-sm" v-model="fields.filter_operator">
+                    <select class="form-select form-select-sm" v-model="fields.filter_operator">
                         <option value="and">All</option>
                         <option value="or">Any</option>
                     </select>
@@ -65,7 +65,7 @@
 
                 <div class="mb-3 row mb-2">
                     <div class="col-md-3">
-                        <select class="form-control form-control-sm" v-model="filter.type">
+                        <select class="form-select form-select-sm" v-model="filter.type">
                             <option v-for="option in options" v-bind:value="option.value">
                                 {{ option.text }}
                             </option>
