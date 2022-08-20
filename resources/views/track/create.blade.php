@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('place.show', [$journey]) }}">{{ $journey->title }}</a> /
+                    <a href="{{ route('journey.show', [$journey]) }}">{{ $journey->title }}</a> /
                     {{ __('Track') }}
                 </div>
 
