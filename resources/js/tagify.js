@@ -40,10 +40,10 @@ if (input) {
     /**
      * tagify will NOT keep the original input.value intact, but will write
      * JSON stuff into it (https://github.com/yairEO/tagify/issues/197).
-     * So we convert the JSON back to a comma-seperated string for spatie-tags on
+     * So we convert the JSON back to a comma-separated string for spatie-tags on
      * the backend site.
      */
-    $(form).on('submit', function(e) {
+    form.addEventListener('submit', function(e) {
         var value = JSON.parse(input.value);
         var tags = [];
 
