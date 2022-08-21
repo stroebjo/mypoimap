@@ -49,7 +49,7 @@ class Place extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null) : void
     {
         $this->addMediaConversion('thumb')
-            ->fit(Manipulations::FIT_CROP, 150, 75)
+            ->fit(Manipulations::FIT_CROP, 150, 100)
             ->optimize();
 
         $this->addMediaConversion('gallery')
