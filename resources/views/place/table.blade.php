@@ -20,7 +20,7 @@
         @endif
 
         <td>
-            {{ $place->title }}
+            <a href="{{ route('place.show', $place->id) }}">{{ $place->title }}</a>
 
             @if ($place->url != '')
             <a class="ms-2" href="{{$place->url}}">
