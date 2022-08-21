@@ -31,9 +31,9 @@
                         @foreach($place->getMedia('images') as $media)
 
                         @php
-                        $info = getimagesize($media->getPath('gallery'));
-                        $width = $info[0];
-                        $height = $info[1];
+                        $info = @getimagesize($media->getPath('gallery'));
+                        $width = $info[0] ?? "";
+                        $height = $info[1] ?? "";
                         @endphp
 
                         <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
@@ -76,9 +76,9 @@
                             @foreach($visit->getMedia('images') as $media)
 
                             @php
-                            $info = getimagesize($media->getPath('gallery'));
-                            $width = $info[0];
-                            $height = $info[1];
+                            $info = @getimagesize($media->getPath('gallery'));
+                            $width = $info[0] ?? "";
+                            $height = $info[1] ?? "";
                             @endphp
 
                             <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
