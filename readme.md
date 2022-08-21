@@ -1,6 +1,6 @@
 # POI Map
 
-This is a simple map on wich you can store point of interest to you. Think of it as an geographical todo list. I use it to store POIs I want to visit someday and write down notes about places I visited. 
+This is a simple map on which you can store point of interest to you. Think of it as a geographical to-do list. I use it to store POIs I want to visit someday and write down notes about places I visited. 
 
 ![Screenshot of Map with some saved places](./poi-map-example.png)
 
@@ -14,7 +14,7 @@ This is a simple map on wich you can store point of interest to you. Think of it
 - Run the migrations `$ php artisan migrate`
 - Login and create your first categories and places! 
 
-Since this is mostly a private project for myself, their might be some incomplete or missing steps. If you run into any trouble or have some suggestions, please reach out!
+Since this is mostly a private project for myself, there might be some incomplete or missing steps. If you run into any trouble or have some suggestions, please reach out!
 
 ## Development infos
 
