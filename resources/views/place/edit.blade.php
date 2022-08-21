@@ -231,6 +231,32 @@
 
                         <hr>
 
+
+
+                        @foreach ($place->getMedia('images') as $media)
+
+                        <div class="row">
+                            <div class="col-2">
+
+                                <input type="hidden" name="media_images[{{$loop->index}}][id]" value="{{ $media->id }}">
+
+                                <figure>
+                                    <img class="img-fluid" src="{{ $media->getUrl('thumb') }}" alt="" width="100" height="100">
+                                </figure>
+                            </div>
+
+                            <div class="col-10">
+                                <div class="form-check">
+                                    <input class="form-check-input"  name="media_images[{{$loop->index}}][delete]" type="checkbox" value="1" id="media_images_{{$loop->index}}_delete">
+                                    <label class="form-check-label" for="media_images_{{$loop->index}}_delete">
+                                        {{ __('Delete media') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
                         <div class="mb-3 row">
                             <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 

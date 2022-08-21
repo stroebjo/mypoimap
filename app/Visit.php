@@ -20,12 +20,14 @@ class Visit extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null) : void
     {
+        // fixed size, smaller images would by resized to match
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 150, 75)
             ->optimize();
 
+        // max 1200x800 but will nut upscale smaller images
         $this->addMediaConversion('gallery')
-            ->fit(Manipulations::FIT_CROP, 1200, 800)
+            ->fit(Manipulations::FIT_MAX, 1200, 800)
             ->optimize();
 
     }

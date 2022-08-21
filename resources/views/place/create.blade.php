@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Place') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('place.store') }}">
+                    <form method="POST" action="{{ route('place.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3 row">
@@ -205,6 +205,20 @@
                                 @if ($errors->has('unesco_world_heritage'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('unesco_world_heritage') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="images" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="images" type="file" multiple="multiple" class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" name="images[]" value="{{ old('images') }}">
+
+                                @if ($errors->has('images'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('images') }}</strong>
                                     </span>
                                 @endif
                             </div>

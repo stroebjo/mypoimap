@@ -21,12 +21,12 @@ import './leaflet';
 import './tagify';
 
 
-/*
+
 import PhotoSwipeLightbox from  'photoswipe/lightbox';
 window.PhotoSwipeLightbox = PhotoSwipeLightbox;
 
 import PhotoSwipe from 'photoswipe';
-window.PhotoSwipe = PhotoSwipe; */
+window.PhotoSwipe = PhotoSwipe;
 
 //require('./photoswipe');
 

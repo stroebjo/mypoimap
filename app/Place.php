@@ -53,7 +53,7 @@ class Place extends Model implements HasMedia
             ->optimize();
 
         $this->addMediaConversion('gallery')
-            ->fit(Manipulations::FIT_CROP, 1200, 800)
+            ->fit(Manipulations::FIT_MAX, 1200, 800)
             ->optimize();
 
     }

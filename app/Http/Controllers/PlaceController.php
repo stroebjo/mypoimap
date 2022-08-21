@@ -7,6 +7,7 @@ use App\UserCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use MatanYadaev\EloquentSpatial\Objects\Point;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 use App\Http\Requests\StorePlace;
 
@@ -110,6 +111,15 @@ class PlaceController extends Controller
 
         $place->save();
 
+        // media
+        if ($request->hasFile('images')) {
+            $fileAdders = $place
+            ->addMultipleMediaFromRequest(['images'])
+            ->each(function ($fileAdder) {
+                $fileAdder->toMediaCollection('images');
+            });
+        }
+
         $tags = array_filter(array_map('trim', explode(',', $request->tags)));
         $place->syncTags($tags); // all other tags on this model will be detached
         $place->save();
@@ -199,6 +209,24 @@ class PlaceController extends Controller
                 $fileAdder->toMediaCollection('images');
             });
         }
+
+        // update existing images
+        if ($request->media_images) {
+            foreach($request->media_images as $row) {
+                $mediaItem = Media::find($row['id']);
+
+                // is this the thing we edited?
+                if ($mediaItem->model_id != $place->id) {
+                    continue;
+                }
+
+                if (isset($row['delete']) && $row['delete'] == '1') {
+                    $mediaItem->delete();
+                    continue;
+                }
+            }
+        }
+
 
         return redirect()->route('place.map', [
             'lat' => $place->location->latitude,

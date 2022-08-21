@@ -23,6 +23,33 @@
                 @include('place.popup.meta', ['place' => $place])
 
                 @parsedown($place->description)
+
+
+                @if(count($place->getMedia('images')) > 0)
+                <div class="m-thumbgallery mb-2">
+                    <div class="m-thumbgallery-inner js-gallery-visit" style="width: {{ count($place->getMedia('images')) * 151 }}px;" itemscope itemtype="http://schema.org/ImageGallery">
+                        @foreach($place->getMedia('images') as $media)
+
+                        @php
+                        $info = getimagesize($media->getPath('gallery'));
+                        $width = $info[0];
+                        $height = $info[1];
+                        @endphp
+
+                        <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                            <a href="{{ $media->getUrl('gallery') }}" data-pswp-height="{{ $height }}" data-pswp-width="{{ $width }}" itemprop="contentUrl">
+                                <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
+                            </a>
+
+                            @if ($media->hasCustomProperty('caption'))
+                            <figcaption itemprop="caption description">{{ $media->getCustomProperty('caption') }}</figcaption>
+                            @endif
+                        </figure>
+
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
 
             @if($place->visits()->count() > 0)
@@ -48,8 +75,14 @@
                         <div class="m-thumbgallery-inner js-gallery-visit" style="width: {{ count($visit->getMedia('images')) * 151 }}px;" itemscope itemtype="http://schema.org/ImageGallery">
                             @foreach($visit->getMedia('images') as $media)
 
+                            @php
+                            $info = getimagesize($media->getPath('gallery'));
+                            $width = $info[0];
+                            $height = $info[1];
+                            @endphp
+
                             <figure class="mb-0" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                <a href="{{ $media->getUrl('gallery') }}" itemprop="contentUrl" data-size="1200x800">
+                                <a href="{{ $media->getUrl('gallery') }}" data-pswp-height="{{ $height }}" data-pswp-width="{{ $width }}" itemprop="contentUrl">
                                     <img src="{{ $media->getUrl('thumb') }}" itemprop="thumbnail" alt="Image description" />
                                 </a>
 
@@ -87,6 +120,13 @@
 ])
 
 <script>
-    initPhotoSwipeFromDOM('.js-gallery-visit');
+window.addEventListener("load", function() {
+    const lightbox = new PhotoSwipeLightbox({
+    gallery: '.js-gallery-visit',
+    children: 'a',
+    pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+});
 </script>
 @endsection

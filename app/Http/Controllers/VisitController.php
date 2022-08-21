@@ -8,7 +8,7 @@ use App\Journey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class VisitController extends Controller
 {
