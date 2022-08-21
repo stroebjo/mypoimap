@@ -2,22 +2,34 @@
 @import 'variables';
 @import 'mixins';
 
+/*
+
+Webpack uses ~ to reference node_modules folder:
+
+    @import '~bootstrap/scss/bootstrap';
+
+Vite uses "node_modules/" directly:
+
+    @import 'node_modules/bootstrap/scss/bootstrap';
+
+*/
+
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/bootstrap';
 
 @import 'bootstrap-overwrites';
 @import 'bootstrap-additions';
 
 // Photoswipe
-@import '~photoswipe/src/css/main';
-@import '~photoswipe/src/css/default-skin/default-skin';
+//@import 'node_modules/photoswipe/photoswipe';
+@import 'vendor/photoswipe';
 
 
 // tagify
 $tags-border-color       : $input-border-color;
 $tags-hover-border-color : $input-border-color;
 $tags-focus-border-color : $input-focus-border-color;
-@import '~@yaireo/tagify/src/tagify';
+@import 'node_modules/@yaireo/tagify/src/tagify';
 
 @import 'vendor/leaflet';
 @import 'vendor/L.Control.Locate';

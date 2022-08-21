@@ -14,21 +14,21 @@ if(isset($opts)) {
 
 @endphp
 <script>
-    $(document).ready(function() {
-        $('{{ $el ?? '#datatable' }}').DataTable({
-            pageLength: 50,
+window.addEventListener("load", function() {
+    $('{{ $el ?? '#datatable' }}').DataTable({
+        pageLength: 50,
 
-            bAutoWidth: false,
-            responsive: true,
+        bAutoWidth: false,
+        responsive: true,
 
-            info: {{ $params['info'] ? 'true' : 'false' }},
-            paging: {{ $params['paging'] ? 'true' : 'false' }},
-            searching: {{ $params['searching'] ? 'true' : 'false' }},
+        info: {{ $params['info'] ? 'true' : 'false' }},
+        paging: {{ $params['paging'] ? 'true' : 'false' }},
+        searching: {{ $params['searching'] ? 'true' : 'false' }},
 
-            columnDefs: [
-                { targets: 'no-sort', orderable: false }
-            ]
+        columnDefs: [
+            { targets: 'no-sort', orderable: false }
+        ]
 
-        });
-    } );
+    });
+} );
 </script>

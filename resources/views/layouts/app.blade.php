@@ -17,7 +17,8 @@
     </script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite('resources/js/app.js')
+    @vite('resources/sass/app.scss')
 
     @yield('head')
     @yield('style')
@@ -140,10 +141,6 @@
         </main>
     </div>
 
-    <script src="{{ asset('js/app.js') }}" ></script>
-
     @yield('script')
-
-    @include('layouts.photoswipe')
 </body>
 </html>

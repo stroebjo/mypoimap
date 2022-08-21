@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
+@vite('resources/js/vue.js')
 <script>
     const filter_edit = {
         id: {{ $filter->id }},

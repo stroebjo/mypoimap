@@ -1,13 +1,16 @@
 @php
 $show_number = $show_number ?? false;
+$ref_numbers = $ref_numbers ?? false;
 $cluster = $cluster ?? false;
 $journey = $journey ?? null;
 $check_for_saved_location = $check_for_saved_location ?? false;
 $check_for_query_location = $check_for_query_location ?? false;
 $layer_control = $layer_control ?? false;
+$tracks = $tracks ?? [];
 
 @endphp
 <script>
+window.addEventListener("load", function() {
 
 function lsTest(){
     var test = 'test';
@@ -117,9 +120,6 @@ function lsTest(){
         .bindPopup(`@include('place.popup', ['title' => true, 'controls' => true, 'place' => $place, 'journey' => $journey])`)
         .on('popupopen', function(e) {
             var marker = e.popup._source;
-
-            // init photoswipe on popup
-            initPhotoSwipeFromDOM('.js-gallery-poup');
         })
         @if($cluster)
         .addTo(markers);
@@ -145,6 +145,76 @@ layerControl.addOverlay(group, 'POIs');
 @endif
 
 
+{{-- Make click on table row highlight map marker --}}
+@if($ref_numbers)
+var lastClickedIndex = false;
+$('.js-poitablesm-row').on('click', function() {
+    var $row = $(this);
+    var index = $row.data('index');
+
+    if (lastClickedIndex !== false) {
+        markers[lastClickedIndex].setZIndexOffset(0);
+        $(markers[lastClickedIndex]._icon).removeClass('custom-color-marker--highlighted');
+    }
+    lastClickedIndex = index;
+    markers[index].setZIndexOffset(1000);
+
+    $(markers[index]._icon).addClass('custom-color-marker--highlighted');
+});
+@endif
+
+
+@if(count($tracks) > 0)
+
+var layers = [
+    'Coastline600BCE.geojson',
+    'Coastline400BCE.geojson',
+    'Coastline0CE.geojson',
+    'Coastline395-early-byzantium.geojson',
+    'Coastline1200-high-byzantium.geojson',
+    'Coastline1400-late-byzantium.geojson'
+]
+var map_layers = []
+layers.forEach(function(el) {
+    var geojsonLayer = new L.GeoJSON.AJAX(`/coast/${el}`);
+    //geojsonLayer.addTo(map);
+    //map_layers.push(geojsonLayer);
+
+    layerControl.addOverlay(geojsonLayer, el);
+});
+//var coast_line_group = L.featureGroup(map_layers).addTo(map);
+//layerControl.addOverlay(coast_line_group, 'Coastlines');
+
+
+
+
+{{-- Put all uploaded track files in the HTML (yes it's larke, but also not
+b/c of gzip). Nevertheless this is a "interesting" solution, but solves the
+issue to provide a download warpper for the files. --}}
+
+const parser = new DOMParser();
+
+@foreach($tracks as $track)
+@switch($track->file_extension)
+@case('kml')
+    const kml{{ $loop->iteration }} = parser.parseFromString({!! json_encode($track->content) !!}, 'text/xml');
+    const track{{ $loop->iteration }} = new L.KML(kml{{ $loop->iteration }});
+    layerControl.addOverlay(track{{ $loop->iteration }}, '{{ $track->name }}');
+@break
+
+@case('gpx')
+    var gpx{{ $loop->iteration }} = {!! json_encode($track->content) !!}; // URL to your GPX file or the GPX itself
+    var gpxlayer{{ $loop->iteration }} = new L.GPX(gpx{{ $loop->iteration }}, {async: true});
+    layerControl.addOverlay(gpxlayer{{ $loop->iteration }}, '{{ $track->name }}');
+@break
+
+@endswitch
+@endforeach
+
+
+
+
+@endif
 
 
 /**
@@ -157,6 +227,8 @@ const appHeight = () => {
     // set global css variable
     doc.style.setProperty('--app-height', `${window.innerHeight - document.getElementById('navbar').offsetHeight}px`);
 }
-window.addEventListener('resize', appHeight)
-appHeight()
+window.addEventListener('resize', appHeight);
+appHeight();
+
+});
 </script>

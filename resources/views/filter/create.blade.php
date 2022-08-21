@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+@vite('resources/js/vue.js')
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

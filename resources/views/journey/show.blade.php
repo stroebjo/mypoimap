@@ -166,6 +166,7 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
 @include('javascript.datatable', ['el' => '#poitable'])
 
 <script>
+window.addEventListener("load", function() {
     $('.js-days-open-only-today').on('click', function() {
         $(".m-accordion-item:not('.m-accordion-item--highlighted')").each(function() {
             $(this).children('.collapse').collapse('hide');
@@ -176,73 +177,24 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
 
     $('.js-days-open-all').on('click', function() {
         $(".m-accordion-item").each(function() {
-            $(this).children('.collapse').collapse('show');
+            $(this).children('.collapse').addClass('show');
         });
     });
 
     $('.js-days-hide-all').on('click', function() {
         $(".m-accordion-item").each(function() {
-            $(this).children('.collapse').collapse('hide');
+            $(this).children('.collapse').removeClass('show');
         });
     });
-
+});
 </script>
 
 @include('javascript.leaflet', [
     'places' => $journey->getAllPOIsInArea(),
     'show_number' => true,
+    'ref_numbers' => true,
     'layer_control' => true,
+    'tracks' => $journey->tracks,
 ])
-
-{{-- Put all uploaded track files in the HTML (yes it's larke, but also not
-b/c of gzip). Nevertheless this is a "interesting" solution, but solves the
-issue to provide a download warpper for the files. --}}
-<script>
-const parser = new DOMParser();
-
-@foreach($journey->tracks as $track)
-@switch($track->file_extension)
-@case('kml')
-
-    const kml{{ $loop->iteration }} = parser.parseFromString({!! json_encode($track->content) !!}, 'text/xml');
-    const track{{ $loop->iteration }} = new L.KML(kml{{ $loop->iteration }});
-    layerControl.addOverlay(track{{ $loop->iteration }}, '{{ $track->name }}');
-@break
-
-@case('gpx')
-    var gpx{{ $loop->iteration }} = {!! json_encode($track->content) !!}; // URL to your GPX file or the GPX itself
-    var gpxlayer{{ $loop->iteration }} = new L.GPX(gpx{{ $loop->iteration }}, {async: true});
-    layerControl.addOverlay(gpxlayer{{ $loop->iteration }}, '{{ $track->name }}');
-@break
-
-@endswitch
-@endforeach
-</script>
-
-{{-- Make click on table row highlight map marker --}}
-<script>
-var lastClickedIndex = false;
-
-$('.js-poitablesm-row').on('click', function() {
-    var $row = $(this);
-    var index = $row.data('index');
-
-    if (lastClickedIndex !== false) {
-        markers[lastClickedIndex].setZIndexOffset(0);
-        $(markers[lastClickedIndex]._icon).removeClass('custom-color-marker--highlighted');
-    }
-    lastClickedIndex = index;
-    markers[index].setZIndexOffset(1000);
-
-
-    $(markers[index]._icon).addClass('custom-color-marker--highlighted');
-
-});
-</script>
-
-
-<script>
-    initPhotoSwipeFromDOM('.js-gallery-poup');
-</script>
 
 @endsection

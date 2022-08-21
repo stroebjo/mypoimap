@@ -113,7 +113,6 @@
 @endsection
 
 @section('script')
-
 <script>
     const journey_durations = {
         @foreach($journeys as $journey)
@@ -124,15 +123,17 @@
         @endforeach
     };
 
-    $('.js-journey_id').on('change', function() {
-        let journey_id = $(this).val();
+    window.addEventListener("load", function() {
+        $('.js-journey_id').on('change', function() {
+            let journey_id = $(this).val();
 
-        if(journey_id && typeof journey_durations[journey_id] !== 'undefined') {
-            $('.js-visited_at').attr('min', journey_durations[journey_id]['start']).attr('max', journey_durations[journey_id]['end']);
-        } else {
-            $('.js-visited_at').attr('min', '').attr('max', '');
-        }
-    }).trigger('change');
+            if(journey_id && typeof journey_durations[journey_id] !== 'undefined') {
+                $('.js-visited_at').attr('min', journey_durations[journey_id]['start']).attr('max', journey_durations[journey_id]['end']);
+            } else {
+                $('.js-visited_at').attr('min', '').attr('max', '');
+            }
+        }).trigger('change');
+    });
 </script>
 
 @include('javascript.easymde', ['id' => 'review']);

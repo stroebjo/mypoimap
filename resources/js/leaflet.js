@@ -1,13 +1,11 @@
+import L from 'leaflet';
+window.L = L;
 
+import 'leaflet.markercluster';
+import 'leaflet.locatecontrol';
+import 'leaflet-fullscreen';
+import 'leaflet-kml';
+import 'leaflet-gpx';
 
-window.L = require('leaflet');
-
-require('leaflet.markercluster');
-require('leaflet.locatecontrol');
-require('leaflet-fullscreen');
-
-require('leaflet-kml');
-require('leaflet-gpx');
-
-require('./leaflet/L.Control.StartPosition');
-require('./leaflet/L.Icon.CustomColorMarker');
+import './leaflet/L.Control.StartPosition';
+import './leaflet/L.Icon.CustomColorMarker';
