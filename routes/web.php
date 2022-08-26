@@ -46,6 +46,7 @@ Route::resources([
 ]);
 
 Route::get('/kml', [PlaceController::class, 'kml'])->name('place.kml');
+Route::get('/geojson', [PlaceController::class, 'geojson'])->name('place.geojson');
 Route::get('/tags', [PlaceController::class, 'tags'])->name('tags.autocomplete');
 Route::get('/map/{filter}', [FilterController::class, 'map'])->name('filter.map');
 

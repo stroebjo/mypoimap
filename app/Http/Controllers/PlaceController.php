@@ -55,6 +55,15 @@ class PlaceController extends Controller
         ]);
     }
 
+    public function geojson()
+    {
+        $places = Place::where('user_id', Auth::id())->get();
+        $categories =  UserCategory::where('user_id', Auth::id())->orderBy('order', 'ASC')->get();
+
+        return view('place.geojson', [
+            'places' => $places,
+        ]);
+    }
 
     public function tags(Request $request)
     {
