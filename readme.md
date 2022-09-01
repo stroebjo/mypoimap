@@ -16,9 +16,13 @@ This is a simple map on which you can store point of interest to you. Think of i
 
 Since this is mostly a private project for myself, there might be some incomplete or missing steps. If you run into any trouble or have some suggestions, please reach out!
 
-## Development infos
+## Development information
 
 - Reload autoloading: `$ composer dump-autoload`
 - Enter Docker container for database relevant tasks: `$ docker-compose exec webserver bash`
 - Execute all migration and refresh: `$ php artisan migrate:refresh --seed`
-- Deploy `$ php deployer.phar deploy production`
+
+### Deployment
+
+- Create new Laravel recipe for [Deployer](https://deployer.org/) with: `$ ./vendor/bin/dep init`
+- Deploy `$ ./vendor/bin/dep deploy`
