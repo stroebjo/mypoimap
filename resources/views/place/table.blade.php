@@ -7,7 +7,7 @@
             <th class="all">{{ __('Name')}}</th>
             <th class="all">{{ __('Prio')}}</th>
             <th class="desktop">{{ __('Category')}}</th>
-            <th class="all no-sort text-right">{{ __('Actions')}}</th>
+            <th class="all no-sort text-end">{{ __('Actions')}}</th>
         </tr>
     </thead>
 
@@ -16,7 +16,7 @@
     <tr class="js-poitablesm-row{{ $place->isVisited() ? ' poitable-row--visited' : '' }}" data-visited="{{ $place->isVisited() ? '1' : '0' }}" data-index="{{ $loop->index }}">
 
         @if(!empty($number) && $number === true)
-        <td class="text-right">{{ $loop->iteration }}</td>
+        <td class="text-end">{{ $loop->iteration }}</td>
         @endif
 
         <td>

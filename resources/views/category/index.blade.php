@@ -16,7 +16,7 @@
             <th>{{ __('Name')}}</th>
             <th>{{ __('Places')}}</th>
             <th>{{ __('Order')}}</th>
-            <th class="no-sort text-right">{{ __('Actions')}}</th>
+            <th class="no-sort text-end">{{ __('Actions')}}</th>
         </tr>
     </thead>
 
