@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="">{{ __('description') }}</label>
+                            <label for="description" class="">{{ __('Description') }}</label>
 
                             <textarea rows="8" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
                             <small class="form-text text-muted">{{ __('You can use Markdown.') }}</small>
