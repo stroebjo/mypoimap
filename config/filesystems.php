@@ -55,6 +55,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'annotations' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/annotations'),
+            'url' => env('APP_URL').'/storage/annotations',
+            'visibility' => 'public',
+        ],
+
         'media' => [
             'driver' => 'local',
             'root' => storage_path('app/public/media'),

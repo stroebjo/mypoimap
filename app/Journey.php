@@ -44,6 +44,11 @@ class Journey extends Model
         return $this->hasMany('App\Track')->orderBy('order', 'ASC');
     }
 
+    public function annotations()
+    {
+        return $this->morphToMany(Annotation::class, 'annotatable');
+    }
+
     public function getNightsAttribute()
     {
         return $this->start->diffInDays($this->end);

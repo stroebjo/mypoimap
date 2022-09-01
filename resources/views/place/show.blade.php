@@ -104,9 +104,14 @@
         </div>
 
         <div class="col-12 col-lg-4">
-            <div style="position: sticky; top: 15px; z-index: 20;">
+            <div class="mb-3">
                 <div id="map" style="width: 100%; height: 400px"></div>
             </div>
+
+            @include('annotation.list', [
+                'annotations' => $place->annotations,
+                'annotatable' => $place,
+            ])
         </div>
     </div>
 </article>

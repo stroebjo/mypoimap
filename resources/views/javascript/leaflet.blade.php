@@ -7,7 +7,8 @@ $check_for_saved_location = $check_for_saved_location ?? false;
 $check_for_query_location = $check_for_query_location ?? false;
 $layer_control = $layer_control ?? false;
 $tracks = $tracks ?? [];
-
+$annotations = $annotations ?? [];
+$places = $places ?? [];
 @endphp
 <script>
 window.addEventListener("load", function() {
@@ -133,8 +134,10 @@ function lsTest(){
     @if($cluster)
     map.addLayer(markers);
     @else
-    var group = L.featureGroup(markers).addTo(map);
-    map.fitBounds(group.getBounds());
+    if (markers.length > 0) {
+        var group = L.featureGroup(markers).addTo(map);
+        map.fitBounds(group.getBounds());
+    }
     @endif
 
 @if($layer_control)
@@ -210,11 +213,45 @@ const parser = new DOMParser();
 
 @endswitch
 @endforeach
-
-
-
-
 @endif
+
+
+@foreach($annotations as $annotation)
+var annotations = [];
+@switch($annotation->type)
+@case('geojson')
+
+var {{$annotation->varname}} = new L.GeoJSON.AJAX('{{$annotation->url}}').bindPopup(`@include('annotation.popup', ['annotation' => $annotation])`);
+if(typeof layerControl !== 'undefined') {
+    layerControl.addOverlay({{$annotation->varname}}, '{{$annotation->name}}');
+} else {
+    {{$annotation->varname}}.addTo(map);
+
+    {{$annotation->varname}}.on('data:loaded', function() {
+       map.fitBounds({{$annotation->varname}}.getBounds())
+   });
+
+    //map.fitBounds({{$annotation->varname}}.getBounds());
+}
+@break
+@case('image')
+var {{$annotation->varname}} = L.imageOverlay('{{$annotation->url}}', {!! json_encode($annotation->image_bounds) !!}, {
+    opacity: {{$annotation->opacity}},
+    interactive: true
+}).bindPopup(`@include('annotation.popup', ['annotation' => $annotation])`);
+
+if(typeof layerControl !== 'undefined') {
+    layerControl.addOverlay({{$annotation->varname}}, '{{$annotation->name}}');
+} else {
+    {{$annotation->varname}}.addTo(map);
+    map.fitBounds({{$annotation->varname}}.getBounds());
+}
+
+@break
+
+@endswitch
+@endforeach
+
 
 
 /**

@@ -71,6 +71,7 @@
                                     <a class="dropdown-item" href="{{ route('journey.create') }}">{{ __('Journey') }}</a>
                                     <a class="dropdown-item" href="{{ route('filter.create') }}">{{ __('Filter') }}</a>
                                     <a class="dropdown-item" href="{{ route('user_category.create') }}">{{ __('Category') }}</a>
+                                    <a class="dropdown-item" href="{{ route('annotation.create') }}">{{ __('Annotation') }}</a>
                                 </div>
                             </div>
                         </li>
@@ -111,6 +112,10 @@
                                         {{ __('Categories') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('annotation.index') }}">
+                                        {{ __('Annotations') }}
+                                    </a>
+
                                     <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('settings.index') }}">
@@ -137,6 +142,11 @@
         </nav>
 
         <main class="@yield('mainclass', 'l-main py-3')">
+
+            @if(Session::has('error'))
+            <p class="alert alert-danger">{{ Session::get('error') }}</p>
+            @endif
+
             @yield('content')
         </main>
     </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\JourneyEntryController;
 use App\Http\Controllers\VisitController;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\AnnotationController;
 use App\Http\Controllers\SharedController;
 
 /*
@@ -35,6 +36,12 @@ Route::get('/settings', [SettingsController::class, 'index'])->name('settings.in
 Route::get('/settings/place_ids', [SettingsController::class, 'place_ids'])->name('settings.place_ids');
 Route::post('/settings/place_ids', [SettingsController::class, 'update_place_ids'])->name('settings.update_place_ids');
 
+
+Route::get('/annotation/link', [AnnotationController::class, 'link'])->name('annotation.link');
+Route::post('/annotation/updateLink', [AnnotationController::class, 'updateLink'])->name('annotation.updateLink');
+Route::delete('/annotation/destroyLink', [AnnotationController::class, 'destroyLink'])->name('annotation.destroyLink');
+
+
 Route::resources([
     'place'         => PlaceController::class,
     'journey'       => JourneyController::class,
@@ -43,7 +50,9 @@ Route::resources([
     'journey_entry' => JourneyEntryController::class,
     'visit'         => VisitController::class,
     'track'         => TrackController::class,
+    'annotation'    => AnnotationController::class,
 ]);
+
 
 Route::get('/kml', [PlaceController::class, 'kml'])->name('place.kml');
 Route::get('/geojson', [PlaceController::class, 'geojson'])->name('place.geojson');

@@ -35,6 +35,11 @@ class Place extends Model implements HasMedia
         return $this->hasMany('App\Visit');
     }
 
+    public function annotations()
+    {
+        return $this->morphToMany(Annotation::class, 'annotatable');
+    }
+
     public function user_category()
     {
         return $this->belongsTo('App\UserCategory');

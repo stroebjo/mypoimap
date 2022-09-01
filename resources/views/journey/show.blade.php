@@ -131,8 +131,7 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
                 <div id="map" style="width: 100%; height: 400px"></div>
             </div>
 
-            <section>
-
+            <section class="mb-3">
                 <header class="m-contentheader d-sm-flex justify-content-between">
                     <h5 class="">{{ __('Tracks') }}</h1>
 
@@ -156,6 +155,13 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
                     @endif
                 </div>
             </section>
+
+
+            @include('annotation.list', [
+                'annotations' => $journey->annotations,
+                'annotatable' => $journey,
+            ])
+
         </div>
     </div>
 </article>
@@ -195,6 +201,7 @@ window.addEventListener("load", function() {
     'ref_numbers' => true,
     'layer_control' => true,
     'tracks' => $journey->tracks,
+    'annotations' => $journey->annotations,
 ])
 
 @endsection
