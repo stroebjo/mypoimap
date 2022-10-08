@@ -169,28 +169,6 @@ $('.js-poitablesm-row').on('click', function() {
 
 @if(count($tracks) > 0)
 
-var layers = [
-    'Coastline600BCE.geojson',
-    'Coastline400BCE.geojson',
-    'Coastline0CE.geojson',
-    'Coastline395-early-byzantium.geojson',
-    'Coastline1200-high-byzantium.geojson',
-    'Coastline1400-late-byzantium.geojson'
-]
-var map_layers = []
-layers.forEach(function(el) {
-    var geojsonLayer = new L.GeoJSON.AJAX(`/coast/${el}`);
-    //geojsonLayer.addTo(map);
-    //map_layers.push(geojsonLayer);
-
-    layerControl.addOverlay(geojsonLayer, el);
-});
-//var coast_line_group = L.featureGroup(map_layers).addTo(map);
-//layerControl.addOverlay(coast_line_group, 'Coastlines');
-
-
-
-
 {{-- Put all uploaded track files in the HTML (yes it's larke, but also not
 b/c of gzip). Nevertheless this is a "interesting" solution, but solves the
 issue to provide a download warpper for the files. --}}
@@ -214,7 +192,6 @@ const parser = new DOMParser();
 @endswitch
 @endforeach
 @endif
-
 
 @foreach($annotations as $annotation)
 var annotations = [];
