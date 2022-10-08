@@ -24,7 +24,7 @@ class JourneyController extends Controller
      */
     public function index()
     {
-        $journeys = Journey::where('user_id', Auth::id())->get();
+        $journeys = Journey::where('user_id', Auth::id())->orderBy('start', 'desc')->get();
         return view('journey.index', ['journeys' => $journeys]);
     }
 

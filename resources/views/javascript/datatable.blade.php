@@ -5,6 +5,7 @@ $defaults = [
     'info' => true,
     'paging' => true,
     'searching' => true,
+    'order' => [[0, 'asc']],
 ];
 if(isset($opts)) {
     $params = array_merge($defaults, $opts);
@@ -24,6 +25,7 @@ window.addEventListener("load", function() {
         info: {{ $params['info'] ? 'true' : 'false' }},
         paging: {{ $params['paging'] ? 'true' : 'false' }},
         searching: {{ $params['searching'] ? 'true' : 'false' }},
+        order: {!! json_encode($params['order']) !!},
 
         columnDefs: [
             { targets: 'no-sort', orderable: false }

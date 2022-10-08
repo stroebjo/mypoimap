@@ -57,6 +57,8 @@
 
 @section('script')
 
-@include('javascript.datatable', ['el' => '#journeystable'])
+@include('javascript.datatable', ['el' => '#journeystable', 'opts' => [
+    'order' => [[1, 'desc']]
+]])
 
 @endsection
