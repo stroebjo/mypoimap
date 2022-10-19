@@ -118,16 +118,18 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
 
         <div class="col-12 col-lg-8">
             <div class="m-journey-places">
+                <div class="table-responsive">
                 @include('place.table', [
                     'number' => true,
                     'places' => $journey->getAllPOIsInArea(),
                     'journey' => $journey, // auto prefill journey_id in visit link
                 ])
+                </div>
             </div>
         </div>
 
         <div class="col-12 col-lg-4">
-            <div class="m-journey-map mb-3" style="position: sticky; top: 15px; z-index: 20;">
+            <div class="m-journey-map mb-3">
                 <div id="map" style="width: 100%; height: 400px"></div>
             </div>
 
