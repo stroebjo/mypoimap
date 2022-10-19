@@ -119,6 +119,7 @@ class Parsedown
         'ssh:',
         'news:',
         'steam:',
+        'zotero://',
     );
 
     #
