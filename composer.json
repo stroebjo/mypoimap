@@ -15,7 +15,6 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "blade-ui-kit/blade-icons": "^1.0.0",
-        "parsedown/laravel": "^1.2",
         "sibyx/phpgpx": "@RC",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-tags": "^4.0.0",
@@ -47,7 +46,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/markdown.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
