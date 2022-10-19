@@ -39,7 +39,7 @@
     </div>
 
     <div class="m-journey-description mb-3">
-        @parsedown($journey->description)
+        @markdown($journey->description)
     </div>
 
     <div class="mb-2">
@@ -105,7 +105,7 @@ $aria_expanded = ($is_hidden) ? "false" : "true";
                 @if(!$is_empty)
                     <div class="collapse multi-collapse @if(!$is_hidden) show @endif" id="journey-day-{{ $i }}">
                         <div class="m-accordion-item-content">
-                            @parsedown($entry->description)
+                            @markdown($entry->description)
                         </div>
                     </div>
                 @endif

@@ -9,7 +9,7 @@
     @include('place.popup.meta', ['place' => $place])
 
     <div class="m-popup-description">
-        @parsedown($place->description)
+        @markdown($place->description)
     </div>
 
 
@@ -27,7 +27,7 @@
             </div>
             <small class="text-muted">{{ __('Rating: :rating', ['rating' => $visit->rating ?? '-'])}}</small>
         </div>
-        @parsedown($visit->review)
+        @markdown($visit->review)
     </div>
     @endforeach
 @endif
@@ -37,7 +37,7 @@
         <div class="m-popup-review">
         <hr>
         <b>{{ __('was there at :date:', ['date' => $place->visited_at]) }}</b><br>
-        @parsedown($place->visit_review)
+        @markdown($place->visit_review)
         </div>
     @endif
 

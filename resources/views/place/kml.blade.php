@@ -5,7 +5,7 @@
 @foreach($places as $place)
     <Placemark>
         <name>{{ $place->title }}</name>
-        <description><![CDATA[@parsedown($place->description)]]></description>
+        <description><![CDATA[@markdown($place->description)]]></description>
         <Point>
             <coordinates>{{ $place->location->longitude }},{{ $place->location->latitude }}</coordinates>
         </Point>

@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-12 col-lg-8">
             <div class="mb-3">
-                @parsedown($annotation->description)
+                @markdown($annotation->description)
             </div>
 
             <table class="table table-sm">

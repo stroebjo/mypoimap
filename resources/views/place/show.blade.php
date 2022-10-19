@@ -22,7 +22,7 @@
 
                 @include('place.popup.meta', ['place' => $place])
 
-                @parsedown($place->description)
+                @markdown($place->description)
 
 
                 @if(count($place->getMedia('images')) > 0)
@@ -96,7 +96,7 @@
                     </div>
                     @endif
 
-                    @parsedown($visit->review)
+                    @markdown($visit->review)
                 </div>
                 @endforeach
             @endif
@@ -108,8 +108,10 @@
                 <div id="map" style="width: 100%; height: 400px"></div>
             </div>
 
+
             @include('annotation.list', [
                 'annotations' => $place->annotations,
+                'layer_control' => true,
                 'annotatable' => $place,
             ])
         </div>
@@ -122,6 +124,7 @@
 @include('javascript.leaflet', [
     'id' => 'map',
     'places' => [$place],
+    'annotations' => $place->annotations,
 ])
 
 <script>

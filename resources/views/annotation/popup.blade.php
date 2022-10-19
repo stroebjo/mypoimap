@@ -4,6 +4,6 @@
     </h4>
 
     <div class="m-popup-description">
-        @parsedown($annotation->description)
+        @markdown($annotation->description)
     </div>
 </div>
