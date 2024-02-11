@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use MatanYadaev\EloquentSpatial\SpatialBuilder;
 use MatanYadaev\EloquentSpatial\Objects\Point;
+use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
+
 
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
@@ -15,6 +16,7 @@ class Place extends Model implements HasMedia
 {
     use \Spatie\Tags\HasTags;
     use InteractsWithMedia;
+    use HasSpatial;
 
     protected $fillable = [
         'location',
@@ -44,12 +46,6 @@ class Place extends Model implements HasMedia
     {
         return $this->belongsTo('App\UserCategory');
     }
-
-    public function newEloquentBuilder($query): SpatialBuilder
-    {
-        return new SpatialBuilder($query);
-    }
-
 
     public function registerMediaConversions(Media $media = null) : void
     {

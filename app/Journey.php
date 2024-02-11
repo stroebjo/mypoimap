@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use MatanYadaev\EloquentSpatial\SpatialBuilder;
+use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 
 use phpGPX\Models\GpxFile;
@@ -14,25 +14,18 @@ use phpGPX\Models\Point as GpxPoint;
 
 class Journey extends Model
 {
+    use HasSpatial;
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = [
-        'start',
-        'end',
+    protected $fillable = [
+        'origin',
     ];
 
     protected $casts = [
         'origin' => Point::class,
+        'start' => 'date',
+        'end' => 'date',
     ];
 
-    public function newEloquentBuilder($query): SpatialBuilder
-    {
-        return new SpatialBuilder($query);
-    }
 
     public function journey_entries()
     {
