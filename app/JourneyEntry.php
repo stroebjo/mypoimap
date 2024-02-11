@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class JourneyEntry extends Model
 {
 
-    protected $dates = [
-        'date',
+    protected $casts = [
+        'date' => 'date',
     ];
 
     public function journey()

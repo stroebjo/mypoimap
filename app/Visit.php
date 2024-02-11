@@ -13,8 +13,8 @@ class Visit extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $dates = [
-        'visited_at',
+    protected $casts = [
+        'visited_at' => 'date',
     ];
 
 
