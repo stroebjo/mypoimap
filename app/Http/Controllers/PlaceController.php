@@ -253,6 +253,6 @@ class PlaceController extends Controller
     public function destroy(Place $place)
     {
         $place->delete();
-        return redirect()->route('place.table');
+        return redirect()->route('place.index');
     }
 }
