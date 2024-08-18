@@ -251,4 +251,17 @@
 <script src="{{ asset('js/openlocationcode.min.js') }}"></script>
 <script src="{{ asset('js/pluscode2latlng.js') }}"></script>
 @include('javascript.easymde', ['id' => 'description']);
+<script>
+const $lat = document.querySelector("input#lat");
+const $lng = document.querySelector("input#lng");
+$lat.addEventListener("paste", (event) => {
+    let paste = (event.clipboardData || window.clipboardData).getData("text");
+    if (paste.indexOf(',') > -1) {
+        event.preventDefault();
+        let [lat, lng] = paste.split(',').map(s => s.trim());
+        $lat.value = lat;
+        $lng.value = lng;
+    }
+});
+</script>
 @endsection
