@@ -20,7 +20,7 @@
         "@yaireo/tagify": "^4.16.2",
         "datatables.net-bs5": "^1.12.1",
         "datatables.net-responsive-bs5": "^2.3.0",
-        "easymde": "^2.17.0",
+        "easymde": "^2.18.0",
         "leaflet": "^1.9.4",
         "leaflet-fullscreen": "^1.0.2",
         "leaflet-gpx": "^2.1.1",

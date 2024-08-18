@@ -1,4 +1,12 @@
 {
+  "_easymde-SHDFkw_r.js": {
+    "file": "assets/easymde-SHDFkw_r.js",
+    "name": "easymde",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
   "node_modules/leaflet/dist/images/marker-icon-2x.png": {
     "file": "assets/marker-icon-2x-_ZA0WGCc.png",
     "src": "node_modules/leaflet/dist/images/marker-icon-2x.png"
@@ -12,10 +20,13 @@
     "src": "node_modules/leaflet/dist/images/marker-shadow.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app-cOel0eUo.js",
+    "file": "assets/app-CkHYBmo4.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "dynamicImports": [
+      "_easymde-SHDFkw_r.js"
+    ],
     "assets": [
       "assets/marker-icon-hN30_KVU.png",
       "assets/marker-icon-2x-_ZA0WGCc.png",
