@@ -1,39 +1,35 @@
 {
+  "resources/svg/fa/italic-solid.svg": {
+    "file": "assets/italic-solid.f6e3c915.svg",
+    "src": "resources/svg/fa/italic-solid.svg"
+  },
   "resources/svg/fa/heading-solid.svg": {
     "file": "assets/heading-solid.a0f909d6.svg",
     "src": "resources/svg/fa/heading-solid.svg"
-  },
-  "resources/svg/fa/bold-solid.svg": {
-    "file": "assets/bold-solid.d4ddcd55.svg",
-    "src": "resources/svg/fa/bold-solid.svg"
   },
   "resources/svg/fa/quote-left-solid.svg": {
     "file": "assets/quote-left-solid.e4e5076f.svg",
     "src": "resources/svg/fa/quote-left-solid.svg"
   },
-  "resources/svg/fa/italic-solid.svg": {
-    "file": "assets/italic-solid.f6e3c915.svg",
-    "src": "resources/svg/fa/italic-solid.svg"
-  },
-  "resources/svg/fa/list-ul-solid.svg": {
-    "file": "assets/list-ul-solid.9d5b7de7.svg",
-    "src": "resources/svg/fa/list-ul-solid.svg"
-  },
   "resources/svg/fa/link-solid.svg": {
     "file": "assets/link-solid.90c9ac52.svg",
     "src": "resources/svg/fa/link-solid.svg"
+  },
+  "resources/svg/fa/list-ol-solid.svg": {
+    "file": "assets/list-ol-solid.ec395ee9.svg",
+    "src": "resources/svg/fa/list-ol-solid.svg"
   },
   "resources/svg/fa/image-solid.svg": {
     "file": "assets/image-solid.c765694e.svg",
     "src": "resources/svg/fa/image-solid.svg"
   },
-  "resources/svg/fa/arrows-alt-solid.svg": {
-    "file": "assets/arrows-alt-solid.d1369476.svg",
-    "src": "resources/svg/fa/arrows-alt-solid.svg"
+  "resources/svg/fa/bold-solid.svg": {
+    "file": "assets/bold-solid.d4ddcd55.svg",
+    "src": "resources/svg/fa/bold-solid.svg"
   },
-  "resources/svg/fa/eye-solid.svg": {
-    "file": "assets/eye-solid.7af700e5.svg",
-    "src": "resources/svg/fa/eye-solid.svg"
+  "resources/svg/fa/list-ul-solid.svg": {
+    "file": "assets/list-ul-solid.9d5b7de7.svg",
+    "src": "resources/svg/fa/list-ul-solid.svg"
   },
   "resources/svg/fa/question-circle-solid.svg": {
     "file": "assets/question-circle-solid.5a28c8f1.svg",
@@ -43,12 +39,16 @@
     "file": "assets/columns-solid.b05cf4ee.svg",
     "src": "resources/svg/fa/columns-solid.svg"
   },
-  "resources/svg/fa/list-ol-solid.svg": {
-    "file": "assets/list-ol-solid.ec395ee9.svg",
-    "src": "resources/svg/fa/list-ol-solid.svg"
+  "resources/svg/fa/eye-solid.svg": {
+    "file": "assets/eye-solid.7af700e5.svg",
+    "src": "resources/svg/fa/eye-solid.svg"
+  },
+  "resources/svg/fa/arrows-alt-solid.svg": {
+    "file": "assets/arrows-alt-solid.d1369476.svg",
+    "src": "resources/svg/fa/arrows-alt-solid.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.a2ce9f00.js",
+    "file": "assets/app.6bdcbdc4.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },

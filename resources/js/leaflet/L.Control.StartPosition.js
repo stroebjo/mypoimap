@@ -35,7 +35,7 @@ L.Control.StartPosition = L.Control.extend({
     },
 
     _onClick: function() {
-        if (lsTest() === true) {
+        if (this.lsTest() === true) {
             var map_position = {
                 lat: this._map.getCenter().lat,
                 lng: this._map.getCenter().lng,
