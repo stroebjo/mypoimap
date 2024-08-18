@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Journey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Str;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 
 class JourneyController extends Controller
@@ -62,7 +62,7 @@ class JourneyController extends Controller
 
         if ($request->visibility === 'visible_by_link') {
             $journey->mode = 'visible_by_link';
-            $journey->uuid = Uuid::generate(4);
+            $journey->uuid = (string) Str::uuid();
         } else {
             $journey->mode = 'private';
             $journey->uuid = null;
@@ -142,7 +142,7 @@ class JourneyController extends Controller
         if ($request->visibility === 'visible_by_link') {
             if (is_null($journey->uuid)) {
                 $journey->mode = 'visible_by_link';
-                $journey->uuid = Uuid::generate(4);
+                $journey->uuid = (string) Str::uuid();
             }
         } else {
             $journey->mode = 'private';

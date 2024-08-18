@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Filter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 class FilterController extends Controller
 {
@@ -82,7 +82,7 @@ class FilterController extends Controller
 
         if ($request->visibility === 'visible_by_link') {
             $filter->mode = 'visible_by_link';
-            $filter->uuid = Uuid::generate(4);
+            $filter->uuid = (string) Str::uuid();
         } else {
             $filter->mode = 'private';
             $filter->uuid = null;
@@ -135,7 +135,7 @@ class FilterController extends Controller
         if ($request->visibility === 'visible_by_link') {
             if (is_null($filter->uuid)) {
                 $filter->mode = 'visible_by_link';
-                $filter->uuid = Uuid::generate(4);
+                $filter->uuid = (string) Str::uuid();
             }
         } else {
             $filter->mode = 'private';

@@ -10,7 +10,7 @@ use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Image\Manipulations;
+use Spatie\Image\Enums\Fit;
 
 class Place extends Model implements HasMedia
 {
@@ -49,14 +49,15 @@ class Place extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null) : void
     {
+        // fixed size, smaller images would by resized to match
         $this->addMediaConversion('thumb')
-            ->fit(Manipulations::FIT_CROP, 150, 100)
+            ->crop(150, 100)
             ->optimize();
 
+        // max 1200x800 but will not upscale smaller images
         $this->addMediaConversion('gallery')
-            ->fit(Manipulations::FIT_MAX, 1200, 800)
+            ->fit(Fit::Max, 1200, 800)
             ->optimize();
-
     }
 
     public function isVisited()
