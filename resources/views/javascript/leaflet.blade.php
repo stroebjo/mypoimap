@@ -10,9 +10,7 @@ $tracks = $tracks ?? [];
 $annotations = $annotations ?? [];
 $places = $places ?? [];
 @endphp
-<script>
-window.addEventListener("load", function() {
-
+<script type="module">
 function lsTest(){
     var test = 'test';
     try {
@@ -254,6 +252,4 @@ const appHeight = () => {
 }
 window.addEventListener('resize', appHeight);
 appHeight();
-
-});
 </script>

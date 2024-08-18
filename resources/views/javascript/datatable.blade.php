@@ -1,6 +1,4 @@
-
 @php
-
 $defaults = [
     'info' => true,
     'paging' => true,
@@ -12,25 +10,21 @@ if(isset($opts)) {
 } else {
     $params = $defaults;
 }
-
 @endphp
-<script>
-window.addEventListener("load", function() {
-    $('{{ $el ?? '#datatable' }}').DataTable({
-        pageLength: 50,
+<script type="module">
+$('{{ $el ?? '#datatable' }}').DataTable({
+    pageLength: 50,
 
-        bAutoWidth: false,
-        responsive: true,
+    bAutoWidth: false,
+    responsive: true,
 
-        info: {{ $params['info'] ? 'true' : 'false' }},
-        paging: {{ $params['paging'] ? 'true' : 'false' }},
-        searching: {{ $params['searching'] ? 'true' : 'false' }},
-        order: {!! json_encode($params['order']) !!},
+    info: {{ $params['info'] ? 'true' : 'false' }},
+    paging: {{ $params['paging'] ? 'true' : 'false' }},
+    searching: {{ $params['searching'] ? 'true' : 'false' }},
+    order: {!! json_encode($params['order']) !!},
 
-        columnDefs: [
-            { targets: 'no-sort', orderable: false }
-        ]
-
-    });
-} );
+    columnDefs: [
+        { targets: 'no-sort', orderable: false }
+    ]
+});
 </script>

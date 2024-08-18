@@ -14,8 +14,8 @@ window.jQuery = window.$ = $
 import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;
 
-import DataTable from "datatables.net-bs5";
-DataTable(window, window.$);
+import DataTable from 'datatables.net-bs5';
+window.DataTable = DataTable;
 
 import './leaflet';
 import './tagify';
