@@ -1,15 +1,12 @@
-version: '3'
-
 services:
   webserver:
-    build: ./docker/php
+    build: ./
     ports:
-      - 80:80
+      - "80:80"
+      - "443:443"
+      - "443:443/udp" # HTTP/3
     volumes:
-      - ./docker/php/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./log/s:/var/log/
-      - ./:/var/www/html
+      - ./:/app/
     links:
       - mysql
 
