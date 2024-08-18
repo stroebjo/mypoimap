@@ -7,6 +7,12 @@
 
 import './bootstrap';
 
+/**
+ * Svelte components.
+ *
+ *
+ */
+import Filter from './components/Filter.svelte';
 
 import $ from 'jquery'
 window.jQuery = window.$ = $

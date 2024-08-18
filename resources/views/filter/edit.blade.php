@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('head')
-@vite('resources/js/vue.js')
 <script>
     const filter_edit = {
         id: {{ $filter->id }},
@@ -22,7 +21,7 @@
 
                 <div class="card-body">
 
-                    <filter-component></filter-component>
+                    <my-filter></my-filter>
 
                 </div>
             </div>
