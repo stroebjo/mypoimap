@@ -193,12 +193,23 @@ const parser = new DOMParser();
 @endforeach
 @endif
 
+
+async function loadGeoJson(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return L.geoJSON(data);
+}
 @foreach($annotations as $annotation)
 var annotations = [];
 @switch($annotation->type)
 @case('geojson')
 
-var {{$annotation->varname}} = new L.GeoJSON.AJAX('{{$annotation->url}}').bindPopup(`@include('annotation.popup', ['annotation' => $annotation])`);
+
+var {{$annotation->varname}} = await loadGeoJson('{{$annotation->url}}');
+{{$annotation->varname}}.bindPopup(`@include('annotation.popup', ['annotation' => $annotation])`);
+
+
+
 if(typeof layerControl !== 'undefined') {
     layerControl.addOverlay({{$annotation->varname}}, '{{$annotation->name}}');
 } else {
@@ -208,7 +219,7 @@ if(typeof layerControl !== 'undefined') {
        map.fitBounds({{$annotation->varname}}.getBounds())
    });
 
-    //map.fitBounds({{$annotation->varname}}.getBounds());
+    map.fitBounds({{$annotation->varname}}.getBounds());
 }
 @break
 @case('image')
